@@ -1,0 +1,5604 @@
+[
+  {
+    "chinese_title": "旋风棒",
+    "id": "breeze_rod",
+    "initial_release": "1.21",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Breeze Rod",
+    "usage": [
+      "Crafting ingredient",
+      "Repairing",
+      "Brewing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "船",
+    "id": "boat",
+    "initial_release": "Alpha 1.0.6",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Boat",
+    "usage": [
+      "Crafting",
+      "Trading",
+      "Fuel",
+      "Transportation"
+    ]
+  },
+  {
+    "chinese_title": "运输船",
+    "id": "chest_boat",
+    "initial_release": "1.19",
+    "inventory_categories": [
+      "tools_and_utilities",
+      "redstone_blocks"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Boat with Chest",
+    "usage": [
+      "Fuel",
+      "Transportation"
+    ]
+  },
+  {
+    "chinese_title": "盔甲架",
+    "id": "armor_stand",
+    "initial_release": "1.8",
+    "inventory_categories": [
+      "functional_blocks",
+      "redstone_blocks"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Breaking",
+      "Natural generation",
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 16,
+    "title": "Armor Stand",
+    "usage": [
+      "Decoration"
+    ]
+  },
+  {
+    "chinese_title": "甜菜种子",
+    "id": "beetroot_seeds",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "natural_blocks"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Breaking",
+      "Natural generation",
+      "Chest loot",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Beetroot Seeds",
+    "usage": [
+      "Farming",
+      "Breeding",
+      "Taming",
+      "Composting",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "收纳袋",
+    "id": "bundle",
+    "initial_release": "1.21.2",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Bundle",
+    "usage": [
+      "Storage"
+    ]
+  },
+  {
+    "chinese_title": "附魔之瓶",
+    "id": "experience_bottle",
+    "initial_release": "1.2.1",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Chest loot",
+      "Trading"
+    ],
+    "rarity": "uncommon",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Bottle o' Enchanting",
+    "usage": [
+      "Experience"
+    ]
+  },
+  {
+    "chinese_title": "弓",
+    "id": "bow",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "combat"
+    ],
+    "loot": [
+      "mob",
+      "fishing",
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Mob loot",
+      "Trading",
+      "Fishing"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Bow",
+    "usage": [
+      "Weapon",
+      "Crafting ingredient",
+      "Enchantments",
+      "Repairing",
+      "Fuel"
+    ]
+  },
+  {
+    "chinese_title": "铁桶",
+    "id": "bucket",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Chest loot",
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table",
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 16,
+    "title": "Bucket",
+    "usage": [
+      "Fillable"
+    ]
+  },
+  {
+    "chinese_title": "美西螈桶",
+    "id": "aquatic_mob_bucket",
+    "initial_release": "1.13",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "trading"
+    ],
+    "obtaining": [
+      "Trading",
+      "Tactical fishing"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Bucket of Aquatic Mob",
+    "usage": [
+      "Bucket of tropical fish",
+      "Bucket of axolotl",
+      "Bucket of tadpole"
+    ]
+  },
+  {
+    "chinese_title": "胡萝卜",
+    "id": "carrot",
+    "initial_release": "1.4.2",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Breaking",
+      "Natural generation",
+      "Mob loot",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Carrot",
+    "usage": [
+      "Farming",
+      "Breeding",
+      "Trading",
+      "Crafting ingredient",
+      "Composting"
+    ]
+  },
+  {
+    "chinese_title": "可可豆",
+    "id": "cocoa_beans",
+    "initial_release": "Beta 1.2",
+    "inventory_categories": [
+      "natural_blocks"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Breaking"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Cocoa Beans",
+    "usage": [
+      "Farming",
+      "Composting",
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "弩",
+    "id": "crossbow",
+    "initial_release": "1.14",
+    "inventory_categories": [
+      "combat"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Generated loot",
+      "Mob loot",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Crossbow",
+    "usage": [
+      "Weapon",
+      "Fireworks",
+      "Repairing",
+      "Enchantments",
+      "Fuel"
+    ]
+  },
+  {
+    "chinese_title": "鸡蛋",
+    "id": "egg",
+    "initial_release": "Alpha 1.0.14",
+    "inventory_categories": [
+      "combat",
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 16,
+    "title": "Egg",
+    "usage": [
+      "Crafting ingredient",
+      "combat",
+      "Spawning chickens"
+    ]
+  },
+  {
+    "chinese_title": "末地水晶",
+    "id": "end_crystal",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "functional_blocks",
+      "combat"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "End Crystal",
+    "usage": [
+      "Healing the ender dragon",
+      "Respawning the ender dragon",
+      "Explosions",
+      "Beams",
+      "Properties"
+    ]
+  },
+  {
+    "chinese_title": "末影珍珠",
+    "id": "ender_pearl",
+    "initial_release": "Beta 1.8",
+    "inventory_categories": [
+      "tools_and_utilities",
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Trading",
+      "Bartering"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 16,
+    "title": "Ender Pearl",
+    "usage": [
+      "Teleporting",
+      "Stasis chamber",
+      "Spawning endermites",
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "末影之眼",
+    "id": "ender_eye",
+    "initial_release": "1.0.0",
+    "inventory_categories": [
+      "functional_blocks",
+      "tools_and_utilities",
+      "ingredients"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Eye of Ender",
+    "usage": [
+      "Locating strongholds",
+      "Activating end portals",
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "火焰弹",
+    "id": "fire_charge",
+    "initial_release": "1.2.1",
+    "inventory_categories": [
+      "tools_and_utilities",
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Chest loot",
+      "Crafting",
+      "Bartering"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Fire Charge",
+    "usage": [
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "烟花火箭",
+    "id": "firework_rocket",
+    "initial_release": "1.4.6",
+    "inventory_categories": [
+      "tools_and_utilities",
+      "combat"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "partial",
+    "stackable": 64,
+    "title": "Firework Rocket",
+    "usage": [
+      "Launching fireworks",
+      "Elytra",
+      "Crossbow"
+    ]
+  },
+  {
+    "chinese_title": "钓鱼竿",
+    "id": "fishing_rod",
+    "initial_release": "Alpha 1.1.1",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "fishing",
+      "trading"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Crafting",
+      "Fishing",
+      "Trading",
+      "Carrot/warped fungus on a stick"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Fishing Rod",
+    "usage": [
+      "Fishing",
+      "Crafting ingredient",
+      "Hooking mobs and other entities",
+      "Fuel",
+      "Other usage",
+      "Enchantments"
+    ]
+  },
+  {
+    "chinese_title": "打火石",
+    "id": "flint_and_steel",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Chest loot",
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Flint and Steel",
+    "usage": [
+      "Igniting",
+      "Enchantments"
+    ]
+  },
+  {
+    "chinese_title": "发光浆果",
+    "id": "glow_berries",
+    "initial_release": "1.17",
+    "inventory_categories": [
+      "natural_blocks",
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Natural generation",
+      "Chest loot",
+      "Post-generation"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Glow Berries",
+    "usage": [
+      "Placement",
+      "Growth",
+      "Food",
+      "Light",
+      "Composting",
+      "Breeding"
+    ]
+  },
+  {
+    "chinese_title": "物品展示框",
+    "id": "item_frame",
+    "initial_release": "1.4.2",
+    "inventory_categories": [
+      "functional_blocks"
+    ],
+    "loot": [
+      "trading"
+    ],
+    "obtaining": [
+      "Breaking",
+      "Natural generation",
+      "Crafting",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Item Frame",
+    "usage": [
+      "Item display",
+      "Rotation",
+      "Glow item frames"
+    ]
+  },
+  {
+    "chinese_title": "海带",
+    "id": "kelp",
+    "initial_release": "1.13",
+    "inventory_categories": [
+      "natural_blocks"
+    ],
+    "loot": [
+      "trading"
+    ],
+    "obtaining": [
+      "Breaking",
+      "Natural generation",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Kelp",
+    "usage": [
+      "Cooking ingredient",
+      "Composting",
+      "Growth mechanics",
+      "Farming"
+    ]
+  },
+  {
+    "chinese_title": "熔岩桶",
+    "id": "lava_bucket",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Interacting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Lava Bucket",
+    "usage": [
+      "Smelting",
+      "Trading",
+      "Cauldrons"
+    ]
+  },
+  {
+    "chinese_title": "拴绳",
+    "id": "lead",
+    "initial_release": "1.6.1",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Lead",
+    "usage": [
+      "Crafting ingredient",
+      "Leashing mobs"
+    ]
+  },
+  {
+    "chinese_title": "滞留药水",
+    "id": "lingering_potion",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Brewing"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "brewing_stand"
+    ],
+    "renewable": "partial",
+    "stackable": 1,
+    "title": "Lingering Potion",
+    "usage": [
+      "Creating area effect clouds",
+      "Lingering water bottle",
+      "Crafting ingredient",
+      "Filling cauldrons",
+      "Uncraftable lingering potion"
+    ]
+  },
+  {
+    "chinese_title": "重锤",
+    "id": "mace",
+    "initial_release": "1.21",
+    "inventory_categories": [
+      "combat"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "epic",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "no",
+    "stackable": 1,
+    "title": "Mace",
+    "usage": [
+      "Normal attack",
+      "Smash attack",
+      "Mining",
+      "Enchantments",
+      "Repairing"
+    ]
+  },
+  {
+    "chinese_title": "西瓜种子",
+    "id": "melon_seeds",
+    "initial_release": "Beta 1.8",
+    "inventory_categories": [
+      "natural_blocks"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Breaking",
+      "Natural generation",
+      "Chest loot",
+      "Crafting",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Melon Seeds",
+    "usage": [
+      "Farming",
+      "Breeding",
+      "Taming",
+      "Composting"
+    ]
+  },
+  {
+    "chinese_title": "矿车",
+    "id": "minecart",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "redstone_blocks",
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Entity loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Minecart",
+    "usage": [
+      "Crafting ingredient",
+      "Transportation",
+      "Dismounting"
+    ]
+  },
+  {
+    "chinese_title": "运输矿车",
+    "id": "chest_minecart",
+    "initial_release": "Alpha 1.0.14",
+    "inventory_categories": [
+      "redstone_blocks",
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Natural generation",
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Minecart with Chest",
+    "usage": [
+      "Item transportation"
+    ]
+  },
+  {
+    "chinese_title": "命令方块矿车",
+    "id": "command_block_minecart",
+    "initial_release": "1.7.2",
+    "inventory_categories": [
+      "operator_utilities"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Commands"
+    ],
+    "rarity": "epic",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "no",
+    "stackable": 1,
+    "title": "Minecart with Command Block",
+    "usage": [
+      "Command Execution"
+    ]
+  },
+  {
+    "chinese_title": "动力矿车",
+    "id": "furnace_minecart",
+    "initial_release": "Alpha 1.0.14",
+    "inventory_categories": [
+      "redstone_blocks",
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Minecart with Furnace",
+    "usage": [
+      "Train mechanics"
+    ]
+  },
+  {
+    "chinese_title": "漏斗矿车",
+    "id": "hopper_minecart",
+    "initial_release": "1.5",
+    "inventory_categories": [
+      "redstone_blocks",
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Minecart with Hopper",
+    "usage": [
+      "Item Pickup"
+    ]
+  },
+  {
+    "chinese_title": "TNT矿车",
+    "id": "tnt_minecart",
+    "initial_release": "1.5",
+    "inventory_categories": [
+      "redstone_blocks",
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Minecart with TNT",
+    "usage": [
+      "Explosion"
+    ]
+  },
+  {
+    "chinese_title": "下界疣",
+    "id": "nether_wart",
+    "initial_release": "1.0.0",
+    "inventory_categories": [
+      "natural_blocks",
+      "ingredients"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Breaking",
+      "Natural generation",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Nether Wart",
+    "usage": [
+      "Brewing ingredient",
+      "Crafting ingredient",
+      "Trading",
+      "Farming",
+      "Composting"
+    ]
+  },
+  {
+    "chinese_title": "不祥之瓶",
+    "id": "ominous_bottle",
+    "initial_release": "1.21",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Mob Loot",
+      "Container Loot"
+    ],
+    "rarity": "uncommon",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Ominous Bottle",
+    "usage": [
+      "Bad Omen"
+    ]
+  },
+  {
+    "chinese_title": "画",
+    "id": "painting",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "functional_blocks",
+      "operator_utilities"
+    ],
+    "loot": [
+      "trading"
+    ],
+    "obtaining": [
+      "Breaking",
+      "Crafting",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Painting",
+    "usage": [
+      "Placement",
+      "Properties"
+    ]
+  },
+  {
+    "chinese_title": "瓶子草荚果",
+    "id": "pitcher_pod",
+    "initial_release": "1.20",
+    "inventory_categories": [
+      "natural_blocks"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Sniffer"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Pitcher Pod",
+    "usage": [
+      "Pitcher Crop",
+      "Feeding",
+      "Taming"
+    ]
+  },
+  {
+    "chinese_title": "马铃薯",
+    "id": "potato",
+    "initial_release": "1.4.2",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Natural generation",
+      "Mob loot",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Potato",
+    "usage": [
+      "Farming",
+      "Food",
+      "Breeding",
+      "Smelting ingredient",
+      "Trading",
+      "Composting"
+    ]
+  },
+  {
+    "chinese_title": "细雪桶",
+    "id": "powder_snow_bucket",
+    "initial_release": "1.17",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Interacting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Powder Snow Bucket",
+    "usage": [
+      "Block Placing"
+    ]
+  },
+  {
+    "chinese_title": "南瓜种子",
+    "id": "pumpkin_seeds",
+    "initial_release": "Beta 1.8",
+    "inventory_categories": [
+      "natural_blocks"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Breaking",
+      "Natural generation",
+      "Chest loot",
+      "Crafting",
+      "Trading",
+      "Post-generation"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Pumpkin Seeds",
+    "usage": [
+      "Farming",
+      "Breeding",
+      "Taming",
+      "Composting"
+    ]
+  },
+  {
+    "chinese_title": "红石粉",
+    "id": "redstone",
+    "initial_release": "Alpha 1.0.1",
+    "inventory_categories": [
+      "redstone_blocks",
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Breaking",
+      "Mining",
+      "Natural generation",
+      "Mob loot",
+      "Chest loot",
+      "Crafting",
+      "Smelting",
+      "Trading",
+      "Villager gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table",
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Redstone Dust",
+    "usage": [
+      "Brewing ingredient",
+      "Crafting ingredient",
+      "Redstone component",
+      "Smithing ingredient",
+      "Placement",
+      "Behavior"
+    ]
+  },
+  {
+    "chinese_title": "树脂砖",
+    "id": "resin_brick",
+    "initial_release": "1.21.4",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Smelting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Resin Brick",
+    "usage": [
+      "Crafting ingredient",
+      "Smithing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "雪球",
+    "id": "snowball",
+    "initial_release": "Alpha 1.0.5",
+    "inventory_categories": [
+      "combat",
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Mining",
+      "Mob loot",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 16,
+    "title": "Snowball",
+    "usage": [
+      "Crafting ingredient",
+      "combat",
+      "Dispenser"
+    ]
+  },
+  {
+    "chinese_title": "喷溅药水",
+    "id": "splash_potion",
+    "initial_release": "1.0.0",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Natural generation",
+      "Brewing",
+      "Bartering",
+      "Filling bottles"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "brewing_stand"
+    ],
+    "renewable": "partial",
+    "stackable": 1,
+    "title": "Splash Potion",
+    "usage": [
+      "Brewing",
+      "Using",
+      "Splash water bottles",
+      "Filling cauldrons",
+      "Uncraftable splash potion"
+    ]
+  },
+  {
+    "chinese_title": "线",
+    "id": "string",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "redstone_blocks",
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "fishing",
+      "trading"
+    ],
+    "obtaining": [
+      "Breaking",
+      "Natural generation",
+      "Mob loot",
+      "Chest loot",
+      "Fishing",
+      "Bartering",
+      "Cat gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "String",
+    "usage": [
+      "Crafting ingredient",
+      "Redstone component",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "甜浆果",
+    "id": "sweet_berries",
+    "initial_release": "1.14",
+    "inventory_categories": [
+      "natural_blocks",
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Breaking",
+      "Natural generation",
+      "Chest loot",
+      "Post-generation"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Sweet Berries",
+    "usage": [
+      "Food",
+      "Composting",
+      "Breeding",
+      "Trading",
+      "Entity movement"
+    ]
+  },
+  {
+    "chinese_title": "火把花种子",
+    "id": "torchflower_seeds",
+    "initial_release": "1.20",
+    "inventory_categories": [
+      "natural_blocks"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Sniffer"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Torchflower Seeds",
+    "usage": [
+      "Crop",
+      "Feeding",
+      "Taming",
+      "Composting"
+    ]
+  },
+  {
+    "chinese_title": "试炼钥匙",
+    "id": "trial_key",
+    "initial_release": "1.21",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Container loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Trial Key",
+    "usage": [
+      "Unlocking"
+    ]
+  },
+  {
+    "chinese_title": "三叉戟",
+    "id": "trident",
+    "initial_release": "1.13",
+    "inventory_categories": [
+      "combat"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Vault loot"
+    ],
+    "rarity": "rare",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Trident",
+    "usage": [
+      "Melee attack",
+      "Ranged attack",
+      "Elytra",
+      "Impaling damage",
+      "Enchantments",
+      "Repairing"
+    ]
+  },
+  {
+    "chinese_title": "水桶",
+    "id": "water_bucket",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Interacting",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Water Bucket",
+    "usage": [
+      "Dispensers",
+      "Cauldrons",
+      "Filling bucket with mobs",
+      "Transportation"
+    ]
+  },
+  {
+    "chinese_title": "小麦种子",
+    "id": "wheat_seeds",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "natural_blocks"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Breaking",
+      "Natural generation",
+      "Chest loot",
+      "Trading",
+      "Villager gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Wheat Seeds",
+    "usage": [
+      "Crop",
+      "Breeding",
+      "Taming",
+      "Composting"
+    ]
+  },
+  {
+    "chinese_title": "风弹",
+    "id": "wind_charge",
+    "initial_release": "1.21",
+    "inventory_categories": [
+      "tools_and_utilities",
+      "combat"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Container Loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Wind Charge",
+    "usage": [
+      "Throwing"
+    ]
+  },
+  {
+    "chinese_title": "紫水晶碎片",
+    "id": "amethyst_shard",
+    "initial_release": "1.17",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Mining",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Amethyst Shard",
+    "usage": [
+      "Crafting ingredient",
+      "Smithing ingredient",
+      "Allay duplication"
+    ]
+  },
+  {
+    "chinese_title": "苹果",
+    "id": "apple",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Block loot",
+      "Chest loot",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Apple",
+    "usage": [
+      "Crafting ingredient",
+      "Composting",
+      "Food",
+      "Feeding"
+    ]
+  },
+  {
+    "chinese_title": "箭",
+    "id": "arrow",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "combat"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Picking up arrows",
+      "Mob loot",
+      "Chest loot",
+      "Crafting",
+      "Trading",
+      "Villager gifts",
+      "Bartering",
+      "Retrieving"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Arrow",
+    "usage": [
+      "Redstone circuits",
+      "Explosions"
+    ]
+  },
+  {
+    "chinese_title": "药箭",
+    "id": "tipped_arrow",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "combat"
+    ],
+    "loot": [
+      "mob",
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Picking up arrows",
+      "Mob loot",
+      "Crafting",
+      "Trading",
+      "Villager gifts",
+      "Bartering"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "partial",
+    "stackable": 64,
+    "title": "Tipped Arrow",
+    "usage": [
+      "Special properties",
+      "No-effect tipped arrows"
+    ]
+  },
+  {
+    "chinese_title": "光灵箭",
+    "id": "spectral_arrow",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "combat"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Picking up arrows",
+      "Chest loot",
+      "Crafting",
+      "Bartering"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Spectral Arrow",
+    "usage": [
+      "Special properties"
+    ]
+  },
+  {
+    "chinese_title": "烤马铃薯",
+    "id": "baked_potato",
+    "initial_release": "1.4.2",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Mob Loot",
+      "Generated loot",
+      "Cooking"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Baked Potato",
+    "usage": [
+      "Crafting ingredient",
+      "Composting",
+      "Food"
+    ]
+  },
+  {
+    "chinese_title": "甜菜根",
+    "id": "beetroot",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Farming"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Beetroot",
+    "usage": [
+      "Food",
+      "Crafting ingredient",
+      "Breeding",
+      "Composting",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "甜菜汤",
+    "id": "beetroot_soup",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Chest loot",
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Beetroot Soup",
+    "usage": [
+      "Food"
+    ]
+  },
+  {
+    "chinese_title": "骨头",
+    "id": "bone",
+    "initial_release": "Beta 1.2",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "fishing"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Fishing"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Bone",
+    "usage": [
+      "Taming",
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "骨粉",
+    "id": "bone_meal",
+    "initial_release": "Beta 1.2",
+    "inventory_categories": [
+      "tools_and_utilities",
+      "ingredients"
+    ],
+    "loot": [
+      "mob",
+      "container"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Crafting",
+      "Trading",
+      "Composters"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Bone Meal",
+    "usage": [
+      "Crafting ingredient",
+      "Loom ingredient",
+      "Dye",
+      "Fertilizer",
+      "Creating new plants",
+      "Farmer villagers"
+    ]
+  },
+  {
+    "chinese_title": "书",
+    "id": "book",
+    "initial_release": "Alpha 1.0.11",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Block loot",
+      "Chest loot",
+      "Crafting",
+      "Grindstones",
+      "Villager gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Book",
+    "usage": [
+      "Crafting ingredient",
+      "Chiseled bookshelf",
+      "Enchanting",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "书与笔",
+    "id": "writable_book",
+    "initial_release": "1.3.1",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Natural generation",
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Book and Quill",
+    "usage": [
+      "Crafting ingredient",
+      "Writing",
+      "Lecterns",
+      "Formatting codes",
+      "Signing",
+      "Chiseled bookshelf",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "碗",
+    "id": "bowl",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob",
+      "fishing"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Crafting",
+      "Fishing",
+      "Eating"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Bowl",
+    "usage": [
+      "Crafting ingredient",
+      "Mooshrooms",
+      "Fuel"
+    ]
+  },
+  {
+    "chinese_title": "面包",
+    "id": "bread",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Chest loot",
+      "Trading",
+      "Villager gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Bread",
+    "usage": [
+      "Food",
+      "Breeding",
+      "Composting"
+    ]
+  },
+  {
+    "chinese_title": "刷子",
+    "id": "brush",
+    "initial_release": "1.20",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Brush",
+    "usage": [
+      "Enchantments",
+      "Archeology",
+      "Armadillos"
+    ]
+  },
+  {
+    "chinese_title": "胡萝卜钓竿",
+    "id": "carrot_on_a_stick",
+    "initial_release": "1.4.2",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Carrot on a Stick",
+    "usage": [
+      "Riding a pig",
+      "Enchantments"
+    ]
+  },
+  {
+    "chinese_title": "靴子",
+    "id": "boots",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "combat"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "fishing",
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Upgrading",
+      "Chest loot",
+      "Mob loot",
+      "Trading",
+      "Bartering",
+      "Fishing"
+    ],
+    "rarity": "mixed",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "partial",
+    "stackable": 1,
+    "title": "Boots",
+    "usage": [
+      "Defense points",
+      "Knockback resistance",
+      "Durability",
+      "Enchantments",
+      "Armor trimming",
+      "Smelting usage",
+      "Piglins",
+      "Repairing",
+      "Powder snow"
+    ]
+  },
+  {
+    "chinese_title": "胸甲",
+    "id": "chestplate",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "combat"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Upgrading",
+      "Natural generation",
+      "Chest loot",
+      "Mob loot",
+      "Trading"
+    ],
+    "rarity": "mixed",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "partial",
+    "stackable": 1,
+    "title": "Chestplate",
+    "usage": [
+      "Defense points",
+      "Knockback Resistance",
+      "Durability",
+      "Enchantments",
+      "Armor trimming",
+      "Smelting usage",
+      "Repairing",
+      "Piglins"
+    ]
+  },
+  {
+    "chinese_title": "头盔",
+    "id": "helmet",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "combat"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Upgrading",
+      "Natural generation",
+      "Chest loot",
+      "Mob loot",
+      "Trading"
+    ],
+    "rarity": "mixed",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "partial",
+    "stackable": 1,
+    "title": "Helmet",
+    "usage": [
+      "Defense points",
+      "Knockback resistance",
+      "Durability",
+      "Enchantments",
+      "Armor trimming",
+      "Turtle shell effect",
+      "Brewing ingredient",
+      "Smelting usage",
+      "Repairing",
+      "Piglins"
+    ]
+  },
+  {
+    "chinese_title": "护腿",
+    "id": "leggings",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "combat"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Upgrading",
+      "Chest loot",
+      "Mob loot",
+      "Trading"
+    ],
+    "rarity": "mixed",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "partial",
+    "stackable": 1,
+    "title": "Leggings",
+    "usage": [
+      "Defense points",
+      "Knockback resistance",
+      "Durability",
+      "Enchantments",
+      "Armor trimming",
+      "Smelting usage",
+      "Repairing",
+      "Piglins"
+    ]
+  },
+  {
+    "chinese_title": "紫颂果",
+    "id": "chorus_fruit",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Mining"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Chorus Fruit",
+    "usage": [
+      "Smelting ingredient",
+      "Food"
+    ]
+  },
+  {
+    "chinese_title": "指南针",
+    "id": "compass",
+    "initial_release": "Alpha 1.1.0",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Chest loot",
+      "Crafting",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Compass",
+    "usage": [
+      "Crafting ingredient",
+      "Trading",
+      "Enchantments"
+    ]
+  },
+  {
+    "chinese_title": "熟鸡肉",
+    "id": "cooked_chicken",
+    "initial_release": "Beta 1.8",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Cooking",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Cooked Chicken",
+    "usage": [
+      "Food",
+      "Wolves"
+    ]
+  },
+  {
+    "chinese_title": "熟鳕鱼",
+    "id": "cooked_cod",
+    "initial_release": "Alpha 1.2.0",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Cooking",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Cooked Cod",
+    "usage": [
+      "Food",
+      "Wolves"
+    ]
+  },
+  {
+    "chinese_title": "熟羊肉",
+    "id": "cooked_mutton",
+    "initial_release": "1.8",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Cooking",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Cooked Mutton",
+    "usage": [
+      "Food",
+      "Wolves"
+    ]
+  },
+  {
+    "chinese_title": "熟猪排",
+    "id": "cooked_porkchop",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Cooking",
+      "Trading",
+      "Villager gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Cooked Porkchop",
+    "usage": [
+      "Food",
+      "Wolves",
+      "Piglins"
+    ]
+  },
+  {
+    "chinese_title": "熟兔肉",
+    "id": "cooked_rabbit",
+    "initial_release": "1.8",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Cooking",
+      "Villagers"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Cooked Rabbit",
+    "usage": [
+      "Food",
+      "Crafting ingredient",
+      "Wolves"
+    ]
+  },
+  {
+    "chinese_title": "熟鲑鱼",
+    "id": "cooked_salmon",
+    "initial_release": "1.7.2",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Cooking",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Cooked Salmon",
+    "usage": [
+      "Food",
+      "Wolves"
+    ]
+  },
+  {
+    "chinese_title": "曲奇",
+    "id": "cookie",
+    "initial_release": "Beta 1.4",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Trading",
+      "Villager gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Cookie",
+    "usage": [
+      "Food",
+      "Parrots",
+      "Composting"
+    ]
+  },
+  {
+    "chinese_title": "染料",
+    "id": "dye",
+    "initial_release": "Beta 1.2",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Trading",
+      "Smelting",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table",
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Dye",
+    "usage": [
+      "Crafting ingredient",
+      "Loom ingredient",
+      "Trading",
+      "Dyeing armor",
+      "Dyeing collars",
+      "Dyeing sheep",
+      "Dyeing signs"
+    ]
+  },
+  {
+    "chinese_title": "调试棒",
+    "id": "debug_stick",
+    "initial_release": "1.13",
+    "inventory_categories": [
+      "operator_utilities"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Commands"
+    ],
+    "rarity": "epic",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "no",
+    "stackable": 1,
+    "title": "Debug Stick",
+    "usage": [
+      "Modify States"
+    ]
+  },
+  {
+    "chinese_title": "斧",
+    "id": "axe",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "tools_and_utilities",
+      "combat"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Upgrading",
+      "Generated loot",
+      "Mob loot",
+      "Trading",
+      "Villager gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "partial",
+    "stackable": 1,
+    "title": "Axe",
+    "usage": [
+      "Chopping",
+      "Stripping",
+      "Weapon",
+      "Repairing",
+      "Enchantments",
+      "Fuel",
+      "Smelting ingredient",
+      "Piglins"
+    ]
+  },
+  {
+    "chinese_title": "锄",
+    "id": "hoe",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Upgrading",
+      "Chest loot",
+      "Trading",
+      "Villager gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "partial",
+    "stackable": 1,
+    "title": "Hoe",
+    "usage": [
+      "Harvesting",
+      "Tilling",
+      "Weapon",
+      "Enchantments",
+      "Fuel",
+      "Smelting ingredient",
+      "Repairing",
+      "Piglins"
+    ]
+  },
+  {
+    "chinese_title": "马铠",
+    "id": "horse_armor",
+    "initial_release": "1.6.1",
+    "inventory_categories": [
+      "combat"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Chest loot",
+      "Crafting",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "partial",
+    "stackable": 1,
+    "title": "Horse Armor",
+    "usage": [
+      "Protection",
+      "Dyeing",
+      "Smelting ingredient",
+      "Piglins"
+    ]
+  },
+  {
+    "chinese_title": "镐",
+    "id": "pickaxe",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Upgrading",
+      "Chest loot",
+      "Mob loot",
+      "Trading",
+      "Villager gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "partial",
+    "stackable": 1,
+    "title": "Pickaxe",
+    "usage": [
+      "Mining",
+      "Weapon",
+      "Enchantments",
+      "Fuel",
+      "Smelting ingredient",
+      "Repairing",
+      "Piglins"
+    ]
+  },
+  {
+    "chinese_title": "锹",
+    "id": "shovel",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Upgrading",
+      "Chest loot",
+      "Mob loot",
+      "Trading",
+      "Villager gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "partial",
+    "stackable": 1,
+    "title": "Shovel",
+    "usage": [
+      "Digging",
+      "Dirt paths",
+      "Campfire",
+      "Weapon",
+      "Enchantments",
+      "Fuel",
+      "Smelting ingredient",
+      "Repairing",
+      "Piglins"
+    ]
+  },
+  {
+    "chinese_title": "剑",
+    "id": "sword",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "combat"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Upgrading",
+      "Chest loot",
+      "Mob loot",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "partial",
+    "stackable": 1,
+    "title": "Sword",
+    "usage": [
+      "Attacking",
+      "Damage",
+      "Sword breaking times",
+      "Enchantments",
+      "Fuel",
+      "Smelting ingredient",
+      "Repairing",
+      "Piglins"
+    ]
+  },
+  {
+    "chinese_title": "干海带",
+    "id": "dried_kelp",
+    "initial_release": "1.13",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Cooking"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table",
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Dried Kelp",
+    "usage": [
+      "Food",
+      "Crafting ingredient",
+      "Composting"
+    ]
+  },
+  {
+    "chinese_title": "鞘翅",
+    "id": "elytra",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Natural generation"
+    ],
+    "rarity": "epic",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "no",
+    "stackable": 1,
+    "title": "Elytra",
+    "usage": [
+      "Flying",
+      "Repairing",
+      "Enchantments"
+    ]
+  },
+  {
+    "chinese_title": "地图",
+    "id": "map",
+    "initial_release": "Beta 1.6",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Chest loot",
+      "Cartography table",
+      "Starting map",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Map",
+    "usage": [
+      "Mapping",
+      "Map content",
+      "Player marker and pointer",
+      "Zooming out",
+      "Cloning",
+      "Crafting ingredient",
+      "Marking points",
+      "Locking"
+    ]
+  },
+  {
+    "chinese_title": "附魔书",
+    "id": "enchanted_book",
+    "initial_release": "1.4.6",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "fishing",
+      "trading"
+    ],
+    "obtaining": [
+      "Chest loot",
+      "Fishing",
+      "Trading",
+      "Drops",
+      "Enchanting",
+      "Bartering"
+    ],
+    "rarity": "uncommon",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "partial",
+    "stackable": 1,
+    "title": "Enchanted Book",
+    "usage": [
+      "Enchanting",
+      "Disenchanting",
+      "Chiseled bookshelf"
+    ]
+  },
+  {
+    "chinese_title": "附魔金苹果",
+    "id": "enchanted_golden_apple",
+    "initial_release": "1.3.1",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Chest loot"
+    ],
+    "rarity": "rare",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "no",
+    "stackable": 64,
+    "title": "Enchanted Golden Apple",
+    "usage": [
+      "Horses",
+      "Crafting ingredient",
+      "Piglins"
+    ]
+  },
+  {
+    "chinese_title": "山羊角",
+    "id": "goat_horn",
+    "initial_release": "1.19",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot"
+    ],
+    "rarity": "uncommon",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Goat Horn",
+    "usage": [
+      "Sound the alarms!"
+    ]
+  },
+  {
+    "chinese_title": "玻璃瓶",
+    "id": "glass_bottle",
+    "initial_release": "1.0.0",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Crafting",
+      "Drinking",
+      "Mud",
+      "Cauldrons"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Glass Bottle",
+    "usage": [
+      "Collecting liquids",
+      "Trading",
+      "Crafting ingredients"
+    ]
+  },
+  {
+    "chinese_title": "荧光墨囊",
+    "id": "glow_ink_sac",
+    "initial_release": "1.17",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Glow Ink Sac",
+    "usage": [
+      "Crafting ingredient",
+      "Signs"
+    ]
+  },
+  {
+    "chinese_title": "金锭",
+    "id": "gold_ingot",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Smelting",
+      "Mob loot",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table",
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Gold Ingot",
+    "usage": [
+      "Crafting ingredient",
+      "Trading",
+      "Repairing",
+      "Bartering",
+      "Beacons",
+      "Smithing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "金苹果",
+    "id": "golden_apple",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Chest loot",
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Golden Apple",
+    "usage": [
+      "Food",
+      "Curing zombie villagers",
+      "Horses",
+      "Piglins"
+    ]
+  },
+  {
+    "chinese_title": "金胡萝卜",
+    "id": "golden_carrot",
+    "initial_release": "1.4.2",
+    "inventory_categories": [
+      "food_and_drinks",
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Chest loot",
+      "Crafting",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Golden Carrot",
+    "usage": [
+      "Food",
+      "Animal food",
+      "Brewing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "蜜脾",
+    "id": "honeycomb",
+    "initial_release": "1.15",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Harvesting",
+      "Generated loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Honeycomb",
+    "usage": [
+      "Signs",
+      "Waxing",
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "蜂蜜瓶",
+    "id": "honey_bottle",
+    "initial_release": "1.15",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Harvesting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 16,
+    "title": "Honey Bottle",
+    "usage": [
+      "Crafting ingredient",
+      "Food"
+    ]
+  },
+  {
+    "chinese_title": "墨囊",
+    "id": "ink_sac",
+    "initial_release": "Beta 1.2",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob",
+      "fishing"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Fishing"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Ink Sac",
+    "usage": [
+      "Crafting ingredient",
+      "Loom ingredient",
+      "Dye",
+      "Trading",
+      "Signs"
+    ]
+  },
+  {
+    "chinese_title": "铁锭",
+    "id": "iron_ingot",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Smelting",
+      "Mob loot",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table",
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Iron Ingot",
+    "usage": [
+      "Crafting ingredient",
+      "Trading",
+      "Repairing",
+      "Healing iron golems",
+      "Beacons",
+      "Smithing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "知识之书",
+    "id": "knowledge_book",
+    "initial_release": "1.12",
+    "inventory_categories": [
+      "none"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Commands"
+    ],
+    "rarity": "epic",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "no",
+    "stackable": 1,
+    "title": "Knowledge Book",
+    "usage": [
+      "Learn Recipes"
+    ]
+  },
+  {
+    "chinese_title": "青金石",
+    "id": "lapis_lazuli",
+    "initial_release": "Beta 1.2",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Mining",
+      "Chest loot",
+      "Crafting",
+      "Smelting",
+      "Trading",
+      "Villager gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table",
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Lapis Lazuli",
+    "usage": [
+      "Enchanting",
+      "Crafting ingredient",
+      "Loom ingredient",
+      "Dye",
+      "Smithing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "西瓜片",
+    "id": "melon_slice",
+    "initial_release": "Beta 1.8",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Block loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Melon Slice",
+    "usage": [
+      "Food",
+      "Crafting ingredient",
+      "Composting"
+    ]
+  },
+  {
+    "chinese_title": "奶桶",
+    "id": "milk_bucket",
+    "initial_release": "Alpha 1.0.8",
+    "inventory_categories": [
+      "tools_and_utilities",
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Harvesting",
+      "Mob loot",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Milk Bucket",
+    "usage": [
+      "Crafting ingredient",
+      "Food"
+    ]
+  },
+  {
+    "chinese_title": "蘑菇煲",
+    "id": "mushroom_stew",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Harvesting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Mushroom Stew",
+    "usage": [
+      "Food"
+    ]
+  },
+  {
+    "chinese_title": "音乐唱片",
+    "id": "music_disc",
+    "initial_release": "Alpha 1.0.14",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Crafting",
+      "Archaeology"
+    ],
+    "rarity": "mixed",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "partial",
+    "stackable": 1,
+    "title": "Music Disc",
+    "usage": [
+      "Play Music"
+    ]
+  },
+  {
+    "chinese_title": "命名牌",
+    "id": "name_tag",
+    "initial_release": "1.6.1",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "container",
+      "fishing",
+      "trading"
+    ],
+    "obtaining": [
+      "Chest loot",
+      "Fishing",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Name Tag",
+    "usage": [
+      "Limitations",
+      "Behavior",
+      "Easter eggs"
+    ]
+  },
+  {
+    "chinese_title": "毒马铃薯",
+    "id": "poisonous_potato",
+    "initial_release": "1.4.2",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Chest loot",
+      "Farming"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Poisonous Potato",
+    "usage": [
+      "Food"
+    ]
+  },
+  {
+    "chinese_title": "药水",
+    "id": "potion",
+    "initial_release": "1.0.0",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "fishing",
+      "trading"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Brewing",
+      "Bartering",
+      "Fishing"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "brewing_stand"
+    ],
+    "renewable": "partial",
+    "stackable": 1,
+    "title": "Potion",
+    "usage": [
+      "Modifiers",
+      "Base potions",
+      "Effect potions",
+      "Uncraftable potion",
+      "Joke potions",
+      "Undead mobs",
+      "Mud conversion",
+      "Filling cauldrons with Potions"
+    ]
+  },
+  {
+    "chinese_title": "河豚",
+    "id": "pufferfish",
+    "initial_release": "1.7.2",
+    "inventory_categories": [
+      "food_and_drinks",
+      "ingredients"
+    ],
+    "loot": [
+      "mob",
+      "fishing"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Fishing"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Pufferfish",
+    "usage": [
+      "Food",
+      "Brewing ingredient",
+      "Trading",
+      "Wolves"
+    ]
+  },
+  {
+    "chinese_title": "南瓜派",
+    "id": "pumpkin_pie",
+    "initial_release": "1.4.2",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Chest loot",
+      "Crafting",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Pumpkin Pie",
+    "usage": [
+      "Food",
+      "Composting"
+    ]
+  },
+  {
+    "chinese_title": "兔肉煲",
+    "id": "rabbit_stew",
+    "initial_release": "1.8",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Rabbit Stew",
+    "usage": [
+      "Food",
+      "Wolves"
+    ]
+  },
+  {
+    "chinese_title": "生牛肉",
+    "id": "beef",
+    "initial_release": "Beta 1.8",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Raw Beef",
+    "usage": [
+      "Food",
+      "Smelting ingredient",
+      "Wolves",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "生鸡肉",
+    "id": "chicken",
+    "initial_release": "Beta 1.8",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Cat gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Raw Chicken",
+    "usage": [
+      "Food",
+      "Smelting ingredient",
+      "Wolves",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "生鳕鱼",
+    "id": "cod",
+    "initial_release": "Alpha 1.2.0",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "fishing",
+      "trading"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Fishing",
+      "Villager gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Raw Cod",
+    "usage": [
+      "Smelting ingredient",
+      "Food",
+      "Cats",
+      "Dolphins",
+      "Trading",
+      "Wolves"
+    ]
+  },
+  {
+    "chinese_title": "生羊肉",
+    "id": "mutton",
+    "initial_release": "1.8",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Raw Mutton",
+    "usage": [
+      "Food",
+      "Smelting ingredient",
+      "Wolves",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "生猪排",
+    "id": "porkchop",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Raw Porkchop",
+    "usage": [
+      "Food",
+      "Smelting ingredient",
+      "Trading",
+      "Wolves",
+      "Piglins"
+    ]
+  },
+  {
+    "chinese_title": "生兔肉",
+    "id": "rabbit",
+    "initial_release": "1.8",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Raw Rabbit",
+    "usage": [
+      "Smelting ingredient",
+      "Wolves",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "生鲑鱼",
+    "id": "salmon",
+    "initial_release": "1.7.2",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "fishing",
+      "trading"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Fishing",
+      "Villager gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Raw Salmon",
+    "usage": [
+      "Smelting ingredient",
+      "Food",
+      "Cats",
+      "Dolphins",
+      "Trading",
+      "Wolves"
+    ]
+  },
+  {
+    "chinese_title": "腐肉",
+    "id": "rotten_flesh",
+    "initial_release": "Beta 1.8",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "fishing"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Fishing",
+      "Cat gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Rotten Flesh",
+    "usage": [
+      "Food",
+      "Wolves",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "鞍",
+    "id": "saddle",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "fishing",
+      "trading"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Fishing",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Saddle",
+    "usage": [
+      "Ride Mobs"
+    ]
+  },
+  {
+    "chinese_title": "剪刀",
+    "id": "shears",
+    "initial_release": "Beta 1.7",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Chest loot",
+      "Crafting",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Shears",
+    "usage": [
+      "Shearing",
+      "Breaking blocks",
+      "Enchantments",
+      "Wolf Armor"
+    ]
+  },
+  {
+    "chinese_title": "盾牌",
+    "id": "shield",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "combat"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Shield",
+    "usage": [
+      "Defense",
+      "Applying patterns",
+      "Repairing",
+      "Enchantments"
+    ]
+  },
+  {
+    "chinese_title": "蜘蛛眼",
+    "id": "spider_eye",
+    "initial_release": "1.0.0",
+    "inventory_categories": [
+      "food_and_drinks",
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Spider Eye",
+    "usage": [
+      "Food",
+      "Crafting ingredient",
+      "Brewing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "望远镜",
+    "id": "spyglass",
+    "initial_release": "1.17",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Spyglass",
+    "usage": [
+      "Zoom"
+    ]
+  },
+  {
+    "chinese_title": "牛排",
+    "id": "cooked_beef",
+    "initial_release": "Beta 1.8",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Cooking",
+      "Villager gifts",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Steak",
+    "usage": [
+      "Food",
+      "Wolves"
+    ]
+  },
+  {
+    "chinese_title": "糖",
+    "id": "sugar",
+    "initial_release": "Beta 1.2",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Sugar",
+    "usage": [
+      "Crafting ingredient",
+      "Brewing ingredient",
+      "Horses"
+    ]
+  },
+  {
+    "chinese_title": "谜之炖菜",
+    "id": "suspicious_stew",
+    "initial_release": "1.14",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Crafting",
+      "Harvesting",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Suspicious Stew",
+    "usage": [
+      "Food"
+    ]
+  },
+  {
+    "chinese_title": "不死图腾",
+    "id": "totem_of_undying",
+    "initial_release": "1.11",
+    "inventory_categories": [
+      "combat"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot"
+    ],
+    "rarity": "uncommon",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Totem of Undying",
+    "usage": [
+      "Revive Token"
+    ]
+  },
+  {
+    "chinese_title": "热带鱼",
+    "id": "tropical_fish",
+    "initial_release": "1.7.2",
+    "inventory_categories": [
+      "food_and_drinks"
+    ],
+    "loot": [
+      "mob",
+      "fishing"
+    ],
+    "obtaining": [
+      "Fishing",
+      "Mob loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Tropical Fish",
+    "usage": [
+      "Food",
+      "Trading",
+      "Wolves"
+    ]
+  },
+  {
+    "chinese_title": "诡异菌钓竿",
+    "id": "warped_fungus_on_a_stick",
+    "initial_release": "1.16",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Warped Fungus on a Stick",
+    "usage": [
+      "Enchantments"
+    ]
+  },
+  {
+    "chinese_title": "小麦",
+    "id": "wheat",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Crafting",
+      "Farming"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Wheat",
+    "usage": [
+      "Food",
+      "Crafting ingredient",
+      "Trading",
+      "Composting"
+    ]
+  },
+  {
+    "chinese_title": "成书",
+    "id": "written_book",
+    "initial_release": "1.3.1",
+    "inventory_categories": [
+      "none"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Signing a book and quill",
+      "Copying"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 16,
+    "title": "Written Book",
+    "usage": [
+      "Lecterns",
+      "Chiseled bookshelf"
+    ]
+  },
+  {
+    "chinese_title": "陶片",
+    "id": "pottery_sherd",
+    "initial_release": "1.20",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Breaking",
+      "Suspicious block loot",
+      "Identification"
+    ],
+    "rarity": "uncommon",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "no",
+    "stackable": 64,
+    "title": "Pottery Sherd",
+    "usage": [
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "旗帜图案",
+    "id": "banner_pattern",
+    "initial_release": "1.14",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Trading",
+      "Chest loot"
+    ],
+    "rarity": "mixed",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "partial",
+    "stackable": 1,
+    "title": "Banner Pattern",
+    "usage": [
+      "Loom ingredient"
+    ]
+  },
+  {
+    "chinese_title": "烈焰粉",
+    "id": "blaze_powder",
+    "initial_release": "1.0.0",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Blaze Powder",
+    "usage": [
+      "Crafting Ingredient",
+      "Brewing stand fuel",
+      "Brewing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "烈焰棒",
+    "id": "blaze_rod",
+    "initial_release": "1.0.0",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Blaze Rod",
+    "usage": [
+      "Crafting ingredient",
+      "Fuel"
+    ]
+  },
+  {
+    "chinese_title": "红砖",
+    "id": "brick",
+    "initial_release": "Alpha 1.0.11",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Mining",
+      "Chest loot",
+      "Smelting",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Brick",
+    "usage": [
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "木炭",
+    "id": "charcoal",
+    "initial_release": "Beta 1.2",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Mining",
+      "Smelting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Charcoal",
+    "usage": [
+      "Crafting ingredient",
+      "Fuel"
+    ]
+  },
+  {
+    "chinese_title": "黏土球",
+    "id": "clay_ball",
+    "initial_release": "Alpha 1.0.11",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Mining",
+      "Chest loot",
+      "Villager gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Clay Ball",
+    "usage": [
+      "Crafting ingredient",
+      "Smelting ingredient",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "时钟",
+    "id": "clock",
+    "initial_release": "Alpha 1.2.0",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Chest loot",
+      "Crafting",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Clock",
+    "usage": [
+      "Piglins"
+    ]
+  },
+  {
+    "chinese_title": "煤炭",
+    "id": "coal",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Mining",
+      "Mob loot",
+      "Chest loot",
+      "Crafting",
+      "Smelting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table",
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Coal",
+    "usage": [
+      "Crafting ingredient",
+      "Fuel",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "锻造模板",
+    "id": "armor_trim_smithing_template",
+    "initial_release": "1.20",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Generated loot",
+      "Mob Loot",
+      "Chest loot"
+    ],
+    "rarity": "mixed",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "no",
+    "stackable": 64,
+    "title": "Armor Trim",
+    "usage": [
+      "Crafting ingredient",
+      "Smithing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "铜锭",
+    "id": "copper_ingot",
+    "initial_release": "1.17",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Smelting",
+      "Mob loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table",
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Copper Ingot",
+    "usage": [
+      "Crafting ingredient",
+      "Smithing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "钻石",
+    "id": "diamond",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Mining",
+      "Generated loot",
+      "Crafting",
+      "Smelting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table",
+      "furnace"
+    ],
+    "renewable": "no",
+    "stackable": 64,
+    "title": "Diamond",
+    "usage": [
+      "Crafting ingredient",
+      "Trading",
+      "Repairing",
+      "Beacons",
+      "Smithing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "唱片残片",
+    "id": "disc_fragment",
+    "initial_release": "1.19",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Chest loot"
+    ],
+    "rarity": "uncommon",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "no",
+    "stackable": 64,
+    "title": "Disc Fragment",
+    "usage": [
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "龙息",
+    "id": "dragon_breath",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Harvesting"
+    ],
+    "rarity": "uncommon",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Dragon's Breath",
+    "usage": [
+      "Brewing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "回响碎片",
+    "id": "echo_shard",
+    "initial_release": "1.19",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Chest loot"
+    ],
+    "rarity": "uncommon",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "no",
+    "stackable": 64,
+    "title": "Echo Shard",
+    "usage": [
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "绿宝石",
+    "id": "emerald",
+    "initial_release": "1.3.1",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Mining",
+      "Crafting",
+      "Smelting",
+      "Trading",
+      "Mob loot",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table",
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Emerald",
+    "usage": [
+      "Trading",
+      "Crafting ingredient",
+      "Beacons",
+      "Smithing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "羽毛",
+    "id": "feather",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Cat gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Feather",
+    "usage": [
+      "Crafting ingredient",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "发酵蛛眼",
+    "id": "fermented_spider_eye",
+    "initial_release": "1.0.0",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Fermented Spider Eye",
+    "usage": [
+      "Brewing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "烟火之星",
+    "id": "firework_star",
+    "initial_release": "1.4.6",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "partial",
+    "stackable": 64,
+    "title": "Firework Star",
+    "usage": [
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "燧石",
+    "id": "flint",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Mining",
+      "Chest loot",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Flint",
+    "usage": [
+      "Crafting ingredient",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "恶魂之泪",
+    "id": "ghast_tear",
+    "initial_release": "1.0.0",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Ghast Tear",
+    "usage": [
+      "Brewing ingredient",
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "闪烁的西瓜片",
+    "id": "glistering_melon_slice",
+    "initial_release": "1.0.0",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Chest loot",
+      "Crafting",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Glistering Melon Slice",
+    "usage": [
+      "Brewing ingredient",
+      "Piglins"
+    ]
+  },
+  {
+    "chinese_title": "荧石粉",
+    "id": "glowstone_dust",
+    "initial_release": "Alpha 1.2.0",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mining",
+      "Mob loot",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Glowstone Dust",
+    "usage": [
+      "Crafting ingredient",
+      "Brewing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "金粒",
+    "id": "gold_nugget",
+    "initial_release": "1.0.0",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Smelting",
+      "Mob loot",
+      "Chest loot",
+      "Mining"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table",
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Gold Nugget",
+    "usage": [
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "火药",
+    "id": "gunpowder",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Gunpowder",
+    "usage": [
+      "Crafting ingredient",
+      "Brewing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "海洋之心",
+    "id": "heart_of_the_sea",
+    "initial_release": "1.13",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Chest loot"
+    ],
+    "rarity": "uncommon",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "no",
+    "stackable": 64,
+    "title": "Heart of the Sea",
+    "usage": [
+      "Crafting"
+    ]
+  },
+  {
+    "chinese_title": "铁粒",
+    "id": "iron_nugget",
+    "initial_release": "1.11.1",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Smelting",
+      "Bartering",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table",
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Iron Nugget",
+    "usage": [
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "皮革",
+    "id": "leather",
+    "initial_release": "Alpha 1.0.8",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "fishing",
+      "trading"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Crafting",
+      "Fishing",
+      "Bartering",
+      "Villager gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Leather",
+    "usage": [
+      "Crafting ingredient",
+      "Trading",
+      "Repairing"
+    ]
+  },
+  {
+    "chinese_title": "岩浆膏",
+    "id": "magma_cream",
+    "initial_release": "1.0.0",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Chest loot",
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Magma Cream",
+    "usage": [
+      "Brewing ingredient",
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "鹦鹉螺壳",
+    "id": "nautilus_shell",
+    "initial_release": "1.13",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob",
+      "fishing",
+      "trading"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Fishing",
+      "Trading"
+    ],
+    "rarity": "uncommon",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Nautilus Shell",
+    "usage": [
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "下界砖",
+    "id": "nether_brick",
+    "initial_release": "1.5",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "trading"
+    ],
+    "obtaining": [
+      "Smelting",
+      "Bartering"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Nether Brick",
+    "usage": [
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "下界石英",
+    "id": "quartz",
+    "initial_release": "1.5",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Mining",
+      "Chest loot",
+      "Smelting",
+      "Bartering"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Nether Quartz",
+    "usage": [
+      "Crafting ingredient",
+      "Trading",
+      "Smithing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "下界之星",
+    "id": "nether_star",
+    "initial_release": "1.4.2",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot"
+    ],
+    "rarity": "rare",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Nether Star",
+    "usage": [
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "下界合金锭",
+    "id": "netherite_ingot",
+    "initial_release": "1.16",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "no",
+    "stackable": 64,
+    "title": "Netherite Ingot",
+    "usage": [
+      "Crafting ingredient",
+      "Smithing ingredient",
+      "Repairing",
+      "Beacons"
+    ]
+  },
+  {
+    "chinese_title": "下界合金碎片",
+    "id": "netherite_scrap",
+    "initial_release": "1.16",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Smelting",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "furnace"
+    ],
+    "renewable": "no",
+    "stackable": 64,
+    "title": "Netherite Scrap",
+    "usage": [
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "下界合金升级",
+    "id": "netherite_upgrade_smithing_template",
+    "initial_release": "1.20",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Chest loot"
+    ],
+    "rarity": "uncommon",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "no",
+    "stackable": 64,
+    "title": "Netherite Upgrade",
+    "usage": [
+      "Crafting ingredient",
+      "Smithing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "纸",
+    "id": "paper",
+    "initial_release": "Alpha 1.0.11",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "trading"
+    ],
+    "obtaining": [
+      "Chest loot",
+      "Crafting",
+      "Villagers"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Paper",
+    "usage": [
+      "Crafting ingredient",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "幻翼膜",
+    "id": "phantom_membrane",
+    "initial_release": "1.13",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Cat gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Phantom Membrane",
+    "usage": [
+      "Repairing",
+      "Brewing ingredient"
+    ]
+  },
+  {
+    "chinese_title": "爆裂紫颂果",
+    "id": "popped_chorus_fruit",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Smelting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Popped Chorus Fruit",
+    "usage": [
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "海晶砂粒",
+    "id": "prismarine_crystals",
+    "initial_release": "1.8",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob"
+    ],
+    "obtaining": [
+      "Mining",
+      "Mob loot",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Prismarine Crystals",
+    "usage": [
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "海晶碎片",
+    "id": "prismarine_shard",
+    "initial_release": "1.8",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mob Loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Prismarine Shard",
+    "usage": [
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "兔子皮",
+    "id": "rabbit_hide",
+    "initial_release": "1.8",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Cat gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Rabbit Hide",
+    "usage": [
+      "Crafting ingredient",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "兔子脚",
+    "id": "rabbit_foot",
+    "initial_release": "1.8",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Cat gifts"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Rabbit's Foot",
+    "usage": [
+      "Brewing ingredient",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "粗铜",
+    "id": "raw_copper",
+    "initial_release": "1.17",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Mining",
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "no",
+    "stackable": 64,
+    "title": "Raw Copper",
+    "usage": [
+      "Crafting",
+      "Smelting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "粗金",
+    "id": "raw_gold",
+    "initial_release": "1.17",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Mining",
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "no",
+    "stackable": 64,
+    "title": "Raw Gold",
+    "usage": [
+      "Crafting",
+      "Smelting ingredient",
+      "Piglins"
+    ]
+  },
+  {
+    "chinese_title": "粗铁",
+    "id": "raw_iron",
+    "initial_release": "1.17",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Mining",
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "no",
+    "stackable": 64,
+    "title": "Raw Iron",
+    "usage": [
+      "Crafting",
+      "Smelting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "追溯指针",
+    "id": "recovery_compass",
+    "initial_release": "1.19",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "uncommon",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "no",
+    "stackable": 64,
+    "title": "Recovery Compass",
+    "usage": [
+      "Enchantments"
+    ]
+  },
+  {
+    "chinese_title": "海龟鳞甲",
+    "id": "turtle_scute",
+    "initial_release": "1.13",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Turtle Scute",
+    "usage": [
+      "Crafting ingredient",
+      "Repairing",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "潜影壳",
+    "id": "shulker_shell",
+    "initial_release": "1.11",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Shulker Shell",
+    "usage": [
+      "Crafting ingredient"
+    ]
+  },
+  {
+    "chinese_title": "黏液球",
+    "id": "slime_ball",
+    "initial_release": "Alpha 1.0.11",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob",
+      "trading"
+    ],
+    "obtaining": [
+      "Mob loot",
+      "Crafting",
+      "Trading"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Slimeball",
+    "usage": [
+      "Crafting ingredient",
+      "Breeding"
+    ]
+  },
+  {
+    "chinese_title": "木棍",
+    "id": "stick",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "container",
+      "mob",
+      "fishing"
+    ],
+    "obtaining": [
+      "Crafting",
+      "Fishing",
+      "Block loot",
+      "Entity loot",
+      "Chest loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Stick",
+    "usage": [
+      "Crafting ingredient",
+      "Fuel",
+      "Trading"
+    ]
+  },
+  {
+    "chinese_title": "刷怪蛋",
+    "id": "spawn_egg",
+    "initial_release": "1.1",
+    "inventory_categories": [
+      "spawn_eggs"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Creative mode"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "no",
+    "stackable": 64,
+    "title": "Spawn Egg",
+    "usage": [
+      "Spawning mobs",
+      "Dispensers",
+      "Baby mobs",
+      "Monster Spawners"
+    ]
+  },
+  {
+    "chinese_title": "犰狳鳞甲",
+    "id": "armadillo_scute",
+    "initial_release": "1.20.5",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "mob"
+    ],
+    "obtaining": [
+      "Mob loot"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "none"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Armadillo Scute",
+    "usage": [
+      "Crafting Ingredient"
+    ]
+  },
+  {
+    "chinese_title": "狼铠",
+    "id": "wolf_armor",
+    "initial_release": "1.20.5",
+    "inventory_categories": [
+      "combat"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Wolf Armor",
+    "usage": [
+      "Protection",
+      "Dyeing"
+    ]
+  },
+  {
+    "chinese_title": "挽具",
+    "id": "harness",
+    "initial_release": "1.21.6",
+    "inventory_categories": [
+      "tools_and_utilities"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [
+      "Crafting"
+    ],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table"
+    ],
+    "renewable": "yes",
+    "stackable": 1,
+    "title": "Harness",
+    "usage": [
+      "Ride Mobs"
+    ]
+  },
+  {
+    "chinese_title": "铜粒",
+    "id": "copper_nugget",
+    "initial_release": "1.21.9",
+    "inventory_categories": [
+      "ingredients"
+    ],
+    "loot": [
+      "none"
+    ],
+    "obtaining": [],
+    "rarity": "common",
+    "recipe": [
+      "crafting_table",
+      "furnace"
+    ],
+    "renewable": "yes",
+    "stackable": 64,
+    "title": "Copper Nugget",
+    "usage": []
+  }
+]

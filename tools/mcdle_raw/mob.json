@@ -1,0 +1,1556 @@
+[
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "悦灵",
+    "classification": [
+      "none"
+    ],
+    "health": 20,
+    "height": 0.6,
+    "id": "allay",
+    "initial_release": "1.19",
+    "spawn": [
+      "structure",
+      "duplication"
+    ],
+    "title": "Allay"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "犰狳",
+    "classification": [
+      "animal"
+    ],
+    "health": 12,
+    "height": 0.65,
+    "id": "armadillo",
+    "initial_release": "1.20.5",
+    "spawn": [
+      "biome",
+      "breeding"
+    ],
+    "title": "Armadillo"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "美西螈",
+    "classification": [
+      "animal",
+      "aquatic"
+    ],
+    "health": 14,
+    "height": 0.42,
+    "id": "axolotl",
+    "initial_release": "1.17",
+    "spawn": [
+      "biome",
+      "breeding"
+    ],
+    "title": "Axolotl"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "蝙蝠",
+    "classification": [
+      "animal"
+    ],
+    "health": 6,
+    "height": 0.9,
+    "id": "bat",
+    "initial_release": "1.4.2",
+    "spawn": [
+      "light_level"
+    ],
+    "title": "Bat"
+  },
+  {
+    "behavior": [
+      "neutral"
+    ],
+    "chinese_title": "蜜蜂",
+    "classification": [
+      "animal",
+      "arthropod"
+    ],
+    "health": 10,
+    "height": 0.6,
+    "id": "bee",
+    "initial_release": "1.15",
+    "spawn": [
+      "block",
+      "breeding"
+    ],
+    "title": "Bee"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "烈焰人",
+    "classification": [
+      "none"
+    ],
+    "health": 20,
+    "height": 1.8,
+    "id": "blaze",
+    "initial_release": "1.0.0",
+    "spawn": [
+      "structure",
+      "spawner"
+    ],
+    "title": "Blaze"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "沼骸",
+    "classification": [
+      "undead"
+    ],
+    "health": 16,
+    "height": 1.99,
+    "id": "bogged",
+    "initial_release": "1.21",
+    "spawn": [
+      "biome",
+      "spawner"
+    ],
+    "title": "Bogged"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "旋风人",
+    "classification": [
+      "none"
+    ],
+    "health": 30,
+    "height": 1.77,
+    "id": "breeze",
+    "initial_release": "1.21",
+    "spawn": [
+      "spawner"
+    ],
+    "title": "Breeze"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "骆驼",
+    "classification": [
+      "animal"
+    ],
+    "health": 32,
+    "height": 2.375,
+    "id": "camel",
+    "initial_release": "1.20",
+    "spawn": [
+      "structure",
+      "breeding",
+      "biome"
+    ],
+    "title": "Camel"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "猫",
+    "classification": [
+      "animal"
+    ],
+    "health": 10,
+    "height": 0.7,
+    "id": "cat",
+    "initial_release": "1.14",
+    "spawn": [
+      "structure",
+      "breeding"
+    ],
+    "title": "Cat"
+  },
+  {
+    "behavior": [
+      "hostile",
+      "neutral"
+    ],
+    "chinese_title": "洞穴蜘蛛",
+    "classification": [
+      "arthropod"
+    ],
+    "health": 12,
+    "height": 0.5,
+    "id": "cave_spider",
+    "initial_release": "Beta 1.8",
+    "spawn": [
+      "spawner"
+    ],
+    "title": "Cave Spider"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "鸡",
+    "classification": [
+      "animal"
+    ],
+    "health": 4,
+    "height": 0.7,
+    "id": "chicken",
+    "initial_release": "Alpha 1.0.14",
+    "spawn": [
+      "grass",
+      "jockey",
+      "projectile",
+      "breeding"
+    ],
+    "title": "Chicken"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "鳕鱼",
+    "classification": [
+      "animal",
+      "aquatic"
+    ],
+    "health": 3,
+    "height": 0.3,
+    "id": "cod",
+    "initial_release": "1.13",
+    "spawn": [
+      "biome"
+    ],
+    "title": "Cod"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "牛",
+    "classification": [
+      "animal"
+    ],
+    "health": 10,
+    "height": 1.4,
+    "id": "cow",
+    "initial_release": "Alpha 1.0.8",
+    "spawn": [
+      "grass",
+      "conversion",
+      "breeding",
+      "structure"
+    ],
+    "title": "Cow"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "嘎枝",
+    "classification": [
+      "none"
+    ],
+    "health": 1,
+    "height": 2.7,
+    "id": "creaking",
+    "initial_release": "1.21.4",
+    "spawn": [
+      "block",
+      "summon"
+    ],
+    "title": "Creaking"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "苦力怕",
+    "classification": [
+      "none"
+    ],
+    "health": 20,
+    "height": 1.7,
+    "id": "creeper",
+    "initial_release": "pre-alpha",
+    "spawn": [
+      "light_level"
+    ],
+    "title": "Creeper"
+  },
+  {
+    "behavior": [
+      "neutral",
+      "passive"
+    ],
+    "chinese_title": "海豚",
+    "classification": [
+      "animal",
+      "aquatic"
+    ],
+    "health": 10,
+    "height": 0.6,
+    "id": "dolphin",
+    "initial_release": "1.13",
+    "spawn": [
+      "biome"
+    ],
+    "title": "Dolphin"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "驴",
+    "classification": [
+      "animal"
+    ],
+    "health": 22,
+    "height": 1.5,
+    "id": "donkey",
+    "initial_release": "1.6.1",
+    "spawn": [
+      "biome",
+      "breeding"
+    ],
+    "title": "Donkey"
+  },
+  {
+    "behavior": [
+      "hostile",
+      "passive"
+    ],
+    "chinese_title": "溺尸",
+    "classification": [
+      "undead"
+    ],
+    "health": 20,
+    "height": 1.95,
+    "id": "drowned",
+    "initial_release": "1.13",
+    "spawn": [
+      "conversion",
+      "biome",
+      "jockey",
+      "structure",
+      "reinforcements"
+    ],
+    "title": "Drowned"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "远古守卫者",
+    "classification": [
+      "aquatic"
+    ],
+    "health": 80,
+    "height": 1.9975,
+    "id": "elder_guardian",
+    "initial_release": "1.8",
+    "spawn": [
+      "structure"
+    ],
+    "title": "Elder Guardian"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "末影龙",
+    "classification": [
+      "boss"
+    ],
+    "health": 200,
+    "height": 8,
+    "id": "ender_dragon",
+    "initial_release": "1.0.0",
+    "spawn": [
+      "structure",
+      "summon"
+    ],
+    "title": "Ender Dragon"
+  },
+  {
+    "behavior": [
+      "neutral"
+    ],
+    "chinese_title": "末影人",
+    "classification": [
+      "none"
+    ],
+    "health": 40,
+    "height": 2.9,
+    "id": "enderman",
+    "initial_release": "Beta 1.8",
+    "spawn": [
+      "light_level",
+      "biome"
+    ],
+    "title": "Enderman"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "末影螨",
+    "classification": [
+      "arthropod"
+    ],
+    "health": 8,
+    "height": 0.3,
+    "id": "endermite",
+    "initial_release": "1.8",
+    "spawn": [
+      "projectile"
+    ],
+    "title": "Endermite"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "唤魔者",
+    "classification": [
+      "illager"
+    ],
+    "health": 24,
+    "height": 1.95,
+    "id": "evoker",
+    "initial_release": "1.11",
+    "spawn": [
+      "structure",
+      "raids",
+      "jockey"
+    ],
+    "title": "Evoker"
+  },
+  {
+    "behavior": [
+      "passive",
+      "neutral"
+    ],
+    "chinese_title": "狐狸",
+    "classification": [
+      "animal"
+    ],
+    "health": 10,
+    "height": 0.7,
+    "id": "fox",
+    "initial_release": "1.14",
+    "spawn": [
+      "biome",
+      "breeding"
+    ],
+    "title": "Fox"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "青蛙",
+    "classification": [
+      "animal"
+    ],
+    "health": 10,
+    "height": 0.5,
+    "id": "frog",
+    "initial_release": "1.19",
+    "spawn": [
+      "biome",
+      "conversion"
+    ],
+    "title": "Frog"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "恶魂",
+    "classification": [
+      "none"
+    ],
+    "health": 10,
+    "height": 4,
+    "id": "ghast",
+    "initial_release": "Alpha 1.2.0",
+    "spawn": [
+      "biome"
+    ],
+    "title": "Ghast"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "快乐恶魂",
+    "classification": [
+      "animal"
+    ],
+    "health": 20,
+    "height": 4,
+    "id": "happy_ghast",
+    "initial_release": "1.21.6",
+    "spawn": [
+      "block"
+    ],
+    "title": "Happy Ghast"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "巨人",
+    "classification": [
+      "none"
+    ],
+    "health": 100,
+    "height": 12,
+    "id": "giant",
+    "initial_release": "pre-alpha",
+    "spawn": [
+      "light_level",
+      "command"
+    ],
+    "title": "Giant"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "发光鱿鱼",
+    "classification": [
+      "animal",
+      "aquatic"
+    ],
+    "health": 10,
+    "height": 0.8,
+    "id": "glow_squid",
+    "initial_release": "1.17",
+    "spawn": [
+      "light_level"
+    ],
+    "title": "Glow Squid"
+  },
+  {
+    "behavior": [
+      "neutral"
+    ],
+    "chinese_title": "山羊",
+    "classification": [
+      "animal"
+    ],
+    "health": 10,
+    "height": 1.3,
+    "id": "goat",
+    "initial_release": "1.17",
+    "spawn": [
+      "biome",
+      "breeding"
+    ],
+    "title": "Goat"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "守卫者",
+    "classification": [
+      "aquatic"
+    ],
+    "health": 30,
+    "height": 0.85,
+    "id": "guardian",
+    "initial_release": "1.8",
+    "spawn": [
+      "structure"
+    ],
+    "title": "Guardian"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "马",
+    "classification": [
+      "animal"
+    ],
+    "health": 22,
+    "height": 1.6,
+    "id": "horse",
+    "initial_release": "1.6.1",
+    "spawn": [
+      "biome",
+      "structure",
+      "breeding"
+    ],
+    "title": "Horse"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "疣猪兽",
+    "classification": [
+      "animal"
+    ],
+    "health": 40,
+    "height": 1.4,
+    "id": "hoglin",
+    "initial_release": "1.16",
+    "spawn": [
+      "biome",
+      "structure",
+      "breeding"
+    ],
+    "title": "Hoglin"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "尸壳",
+    "classification": [
+      "undead"
+    ],
+    "health": 20,
+    "height": 1.95,
+    "id": "husk",
+    "initial_release": "1.10",
+    "spawn": [
+      "biome",
+      "jockey",
+      "spawner",
+      "light_level",
+      "reinforcements"
+    ],
+    "title": "Husk"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "幻术师",
+    "classification": [
+      "illager"
+    ],
+    "health": 32,
+    "height": 1.95,
+    "id": "illusioner",
+    "initial_release": "1.12",
+    "spawn": [
+      "command"
+    ],
+    "title": "Illusioner"
+  },
+  {
+    "behavior": [
+      "neutral",
+      "passive"
+    ],
+    "chinese_title": "铁傀儡",
+    "classification": [
+      "golem"
+    ],
+    "health": 100,
+    "height": 2.7,
+    "id": "iron_golem",
+    "initial_release": "1.2.1",
+    "spawn": [
+      "structure",
+      "summon"
+    ],
+    "title": "Iron Golem"
+  },
+  {
+    "behavior": [
+      "passive",
+      "hostile"
+    ],
+    "chinese_title": "兔子",
+    "classification": [
+      "animal"
+    ],
+    "health": 3,
+    "height": 0.5,
+    "id": "rabbit",
+    "initial_release": "1.8",
+    "spawn": [
+      "biome",
+      "breeding"
+    ],
+    "title": "Rabbit"
+  },
+  {
+    "behavior": [
+      "neutral"
+    ],
+    "chinese_title": "羊驼",
+    "classification": [
+      "animal"
+    ],
+    "health": 22,
+    "height": 1.87,
+    "id": "llama",
+    "initial_release": "1.11",
+    "spawn": [
+      "biome",
+      "breeding",
+      "overworld"
+    ],
+    "title": "Llama"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "岩浆怪",
+    "classification": [
+      "none"
+    ],
+    "health": 16,
+    "height": 2.04,
+    "id": "magma_cube",
+    "initial_release": "1.0.0",
+    "spawn": [
+      "biome",
+      "spawner",
+      "structure"
+    ],
+    "title": "Magma Cube"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "哞菇",
+    "classification": [
+      "animal"
+    ],
+    "health": 10,
+    "height": 1.4,
+    "id": "mooshroom",
+    "initial_release": "1.0.0",
+    "spawn": [
+      "biome",
+      "breeding"
+    ],
+    "title": "Mooshroom"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "骡",
+    "classification": [
+      "animal"
+    ],
+    "health": 22,
+    "height": 1.6,
+    "id": "mule",
+    "initial_release": "1.6.1",
+    "spawn": [
+      "breeding"
+    ],
+    "title": "Mule"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "豹猫",
+    "classification": [
+      "animal"
+    ],
+    "health": 10,
+    "height": 0.7,
+    "id": "ocelot",
+    "initial_release": "1.2.1",
+    "spawn": [
+      "biome",
+      "breeding"
+    ],
+    "title": "Ocelot"
+  },
+  {
+    "behavior": [
+      "neutral"
+    ],
+    "chinese_title": "熊猫",
+    "classification": [
+      "animal"
+    ],
+    "health": 20,
+    "height": 1.25,
+    "id": "panda",
+    "initial_release": "1.14",
+    "spawn": [
+      "biome",
+      "breeding"
+    ],
+    "title": "Panda"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "鹦鹉",
+    "classification": [
+      "animal"
+    ],
+    "health": 6,
+    "height": 0.9,
+    "id": "parrot",
+    "initial_release": "1.12",
+    "spawn": [
+      "biome"
+    ],
+    "title": "Parrot"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "幻翼",
+    "classification": [
+      "undead"
+    ],
+    "health": 20,
+    "height": 0.5,
+    "id": "phantom",
+    "initial_release": "1.13",
+    "spawn": [
+      "summon",
+      "light_level"
+    ],
+    "title": "Phantom"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "猪",
+    "classification": [
+      "animal"
+    ],
+    "health": 10,
+    "height": 0.9,
+    "id": "pig",
+    "initial_release": "pre-alpha",
+    "spawn": [
+      "grass",
+      "breeding",
+      "structure"
+    ],
+    "title": "Pig"
+  },
+  {
+    "behavior": [
+      "neutral",
+      "passive"
+    ],
+    "chinese_title": "猪灵",
+    "classification": [
+      "none"
+    ],
+    "health": 16,
+    "height": 1.95,
+    "id": "piglin",
+    "initial_release": "1.16",
+    "spawn": [
+      "biome",
+      "structure"
+    ],
+    "title": "Piglin"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "猪灵蛮兵",
+    "classification": [
+      "none"
+    ],
+    "health": 50,
+    "height": 1.95,
+    "id": "piglin_brute",
+    "initial_release": "1.16.2",
+    "spawn": [
+      "structure"
+    ],
+    "title": "Piglin Brute"
+  },
+  {
+    "behavior": [
+      "hostile",
+      "passive"
+    ],
+    "chinese_title": "掠夺者",
+    "classification": [
+      "illager"
+    ],
+    "health": 24,
+    "height": 1.95,
+    "id": "pillager",
+    "initial_release": "1.14",
+    "spawn": [
+      "overworld",
+      "structure",
+      "raids",
+      "jockey"
+    ],
+    "title": "Pillager"
+  },
+  {
+    "behavior": [
+      "neutral",
+      "passive"
+    ],
+    "chinese_title": "北极熊",
+    "classification": [
+      "animal"
+    ],
+    "health": 30,
+    "height": 1.4,
+    "id": "polar_bear",
+    "initial_release": "1.10",
+    "spawn": [
+      "biome"
+    ],
+    "title": "Polar Bear"
+  },
+  {
+    "behavior": [
+      "passive",
+      "defensive"
+    ],
+    "chinese_title": "河豚",
+    "classification": [
+      "animal",
+      "aquatic"
+    ],
+    "health": 3,
+    "height": 0.7,
+    "id": "pufferfish",
+    "initial_release": "1.13",
+    "spawn": [
+      "biome"
+    ],
+    "title": "Pufferfish"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "劫掠兽",
+    "classification": [
+      "none"
+    ],
+    "health": 100,
+    "height": 2.2,
+    "id": "ravager",
+    "initial_release": "1.14",
+    "spawn": [
+      "raids"
+    ],
+    "title": "Ravager"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "鲑鱼",
+    "classification": [
+      "animal",
+      "aquatic"
+    ],
+    "health": 3,
+    "height": 0.4,
+    "id": "salmon",
+    "initial_release": "1.13",
+    "spawn": [
+      "biome"
+    ],
+    "title": "Salmon"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "绵羊",
+    "classification": [
+      "animal"
+    ],
+    "health": 8,
+    "height": 1.3,
+    "id": "sheep",
+    "initial_release": "pre-alpha",
+    "spawn": [
+      "grass",
+      "breeding",
+      "structure"
+    ],
+    "title": "Sheep"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "潜影贝",
+    "classification": [
+      "none"
+    ],
+    "health": 30,
+    "height": 1,
+    "id": "shulker",
+    "initial_release": "1.9",
+    "spawn": [
+      "structure",
+      "duplication"
+    ],
+    "title": "Shulker"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "蠹虫",
+    "classification": [
+      "arthropod"
+    ],
+    "health": 8,
+    "height": 0.3,
+    "id": "silverfish",
+    "initial_release": "Beta 1.8",
+    "spawn": [
+      "block",
+      "spawner",
+      "magic"
+    ],
+    "title": "Silverfish"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "骷髅",
+    "classification": [
+      "undead"
+    ],
+    "health": 20,
+    "height": 1.99,
+    "id": "skeleton",
+    "initial_release": "pre-alpha",
+    "spawn": [
+      "light_level",
+      "biome",
+      "spawner",
+      "lightning",
+      "jockey",
+      "structure"
+    ],
+    "title": "Skeleton"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "骷髅马",
+    "classification": [
+      "undead",
+      "animal"
+    ],
+    "health": 15,
+    "height": 1.6,
+    "id": "skeleton_horse",
+    "initial_release": "1.6.1",
+    "spawn": [
+      "lightning"
+    ],
+    "title": "Skeleton Horse"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "史莱姆",
+    "classification": [
+      "none"
+    ],
+    "health": 16,
+    "height": 2.04,
+    "id": "slime",
+    "initial_release": "Alpha 1.0.11",
+    "spawn": [
+      "biome",
+      "magic",
+      "spawner"
+    ],
+    "title": "Slime"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "雪傀儡",
+    "classification": [
+      "golem"
+    ],
+    "health": 4,
+    "height": 1.9,
+    "id": "snow_golem",
+    "initial_release": "1.0.0",
+    "spawn": [
+      "summon"
+    ],
+    "title": "Snow Golem"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "嗅探兽",
+    "classification": [
+      "animal"
+    ],
+    "health": 14,
+    "height": 1.75,
+    "id": "sniffer",
+    "initial_release": "1.20",
+    "spawn": [
+      "breeding",
+      "hatching"
+    ],
+    "title": "Sniffer"
+  },
+  {
+    "behavior": [
+      "neutral",
+      "hostile"
+    ],
+    "chinese_title": "蜘蛛",
+    "classification": [
+      "arthropod"
+    ],
+    "health": 16,
+    "height": 0.9,
+    "id": "spider",
+    "initial_release": "pre-alpha",
+    "spawn": [
+      "light_level",
+      "spawner",
+      "jockey"
+    ],
+    "title": "Spider"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "鱿鱼",
+    "classification": [
+      "animal",
+      "aquatic"
+    ],
+    "health": 10,
+    "height": 0.8,
+    "id": "squid",
+    "initial_release": "Beta 1.2",
+    "spawn": [
+      "biome"
+    ],
+    "title": "Squid"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "流浪者",
+    "classification": [
+      "undead"
+    ],
+    "health": 20,
+    "height": 1.99,
+    "id": "stray",
+    "initial_release": "1.10",
+    "spawn": [
+      "light_level",
+      "biome",
+      "conversion",
+      "spawner"
+    ],
+    "title": "Stray"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "炽足兽",
+    "classification": [
+      "animal"
+    ],
+    "health": 20,
+    "height": 1.7,
+    "id": "strider",
+    "initial_release": "1.16",
+    "spawn": [
+      "biome",
+      "breeding",
+      "jockey"
+    ],
+    "title": "Strider"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "蝌蚪",
+    "classification": [
+      "animal",
+      "aquatic"
+    ],
+    "health": 6,
+    "height": 0.3,
+    "id": "tadpole",
+    "initial_release": "1.19",
+    "spawn": [
+      "hatching"
+    ],
+    "title": "Tadpole"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "热带鱼",
+    "classification": [
+      "animal",
+      "aquatic"
+    ],
+    "health": 3,
+    "height": 0.4,
+    "id": "tropical_fish",
+    "initial_release": "1.13",
+    "spawn": [
+      "biome"
+    ],
+    "title": "Tropical Fish"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "海龟",
+    "classification": [
+      "animal",
+      "aquatic"
+    ],
+    "health": 30,
+    "height": 0.4,
+    "id": "turtle",
+    "initial_release": "1.13",
+    "spawn": [
+      "biome",
+      "breeding",
+      "hatching"
+    ],
+    "title": "Turtle"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "恼鬼",
+    "classification": [
+      "none"
+    ],
+    "health": 14,
+    "height": 0.8,
+    "id": "vex",
+    "initial_release": "1.11",
+    "spawn": [
+      "summon"
+    ],
+    "title": "Vex"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "村民",
+    "classification": [
+      "none"
+    ],
+    "health": 20,
+    "height": 1.95,
+    "id": "villager",
+    "initial_release": "1.0.0",
+    "spawn": [
+      "structure",
+      "breeding",
+      "conversion"
+    ],
+    "title": "Villager"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "卫道士",
+    "classification": [
+      "illager"
+    ],
+    "health": 24,
+    "height": 1.95,
+    "id": "vindicator",
+    "initial_release": "1.11",
+    "spawn": [
+      "structure",
+      "raids",
+      "jockey"
+    ],
+    "title": "Vindicator"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "流浪商人",
+    "classification": [
+      "none"
+    ],
+    "health": 20,
+    "height": 1.95,
+    "id": "wandering_trader",
+    "initial_release": "1.14",
+    "spawn": [
+      "overworld"
+    ],
+    "title": "Wandering Trader"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "监守者",
+    "classification": [
+      "none"
+    ],
+    "health": 500,
+    "height": 2.9,
+    "id": "warden",
+    "initial_release": "1.19",
+    "spawn": [
+      "block",
+      "summon"
+    ],
+    "title": "Warden"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "女巫",
+    "classification": [
+      "none"
+    ],
+    "health": 26,
+    "height": 1.95,
+    "id": "witch",
+    "initial_release": "1.4.2",
+    "spawn": [
+      "light_level",
+      "structure",
+      "raids",
+      "conversion",
+      "lightning"
+    ],
+    "title": "Witch"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "凋灵",
+    "classification": [
+      "undead",
+      "boss"
+    ],
+    "health": 300,
+    "height": 3.5,
+    "id": "wither",
+    "initial_release": "1.4.2",
+    "spawn": [
+      "summon"
+    ],
+    "title": "Wither"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "凋灵骷髅",
+    "classification": [
+      "undead"
+    ],
+    "health": 20,
+    "height": 2.4,
+    "id": "wither_skeleton",
+    "initial_release": "1.4.2",
+    "spawn": [
+      "structure"
+    ],
+    "title": "Wither Skeleton"
+  },
+  {
+    "behavior": [
+      "neutral",
+      "passive"
+    ],
+    "chinese_title": "狼",
+    "classification": [
+      "animal"
+    ],
+    "health": 8,
+    "height": 0.85,
+    "id": "wolf",
+    "initial_release": "Beta 1.4",
+    "spawn": [
+      "biome",
+      "breeding"
+    ],
+    "title": "Wolf"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "僵尸疣猪兽",
+    "classification": [
+      "undead"
+    ],
+    "health": 40,
+    "height": 1.4,
+    "id": "zoglin",
+    "initial_release": "1.16",
+    "spawn": [
+      "conversion"
+    ],
+    "title": "Zoglin"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "僵尸",
+    "classification": [
+      "undead"
+    ],
+    "health": 20,
+    "height": 1.95,
+    "id": "zombie",
+    "initial_release": "pre-alpha",
+    "spawn": [
+      "light_level",
+      "conversion",
+      "spawner",
+      "jockey",
+      "reinforcements",
+      "sieges"
+    ],
+    "title": "Zombie"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "僵尸马",
+    "classification": [
+      "undead",
+      "animal"
+    ],
+    "health": 15,
+    "height": 1.6,
+    "id": "zombie_horse",
+    "initial_release": "1.6.1",
+    "spawn": [
+      "command"
+    ],
+    "title": "Zombie Horse"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "僵尸村民",
+    "classification": [
+      "undead"
+    ],
+    "health": 20,
+    "height": 1.95,
+    "id": "zombie_villager",
+    "initial_release": "1.4.2",
+    "spawn": [
+      "light_level",
+      "conversion",
+      "structure",
+      "jockey",
+      "reinforcements"
+    ],
+    "title": "Zombie Villager"
+  },
+  {
+    "behavior": [
+      "neutral"
+    ],
+    "chinese_title": "僵尸猪灵",
+    "classification": [
+      "undead"
+    ],
+    "health": 20,
+    "height": 1.95,
+    "id": "zombified_piglin",
+    "initial_release": "Alpha 1.2.0",
+    "spawn": [
+      "biome",
+      "structure",
+      "conversion",
+      "lightning",
+      "jockey",
+      "reinforcements",
+      "block"
+    ],
+    "title": "Zombified Piglin"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "铜傀儡",
+    "classification": [
+      "golem"
+    ],
+    "health": 12,
+    "height": 0.98,
+    "id": "copper_golem",
+    "initial_release": "1.21.9",
+    "spawn": [
+      "summon"
+    ],
+    "title": "Copper Golem"
+  }
+]

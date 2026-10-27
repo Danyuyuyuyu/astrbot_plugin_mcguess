@@ -1,0 +1,48 @@
+{
+  "max_attempts": {
+    "type": "int",
+    "default": 8,
+    "description": "每局最多猜测次数（建议 5-12）。",
+    "obvious_hint": true
+  },
+  "hint_limit": {
+    "type": "int",
+    "default": 3,
+    "description": "每局免费提示次数；设为 0 关闭提示。"
+  },
+  "render_cards": {
+    "type": "bool",
+    "default": true,
+    "description": "用图片卡片展示猜测反馈与帮助；渲染失败会自动回退为纯文本。"
+  },
+  "render_timeout_seconds": {
+    "type": "float",
+    "default": 6.0,
+    "description": "图片卡片渲染超时（秒）。AstrBot 默认使用远程 t2i 渲染服务，超时或失败会改用纯文本并暂停图片卡片 5 分钟。"
+  },
+  "free_text_guess": {
+    "type": "bool",
+    "default": true,
+    "description": "对局中直接发送词条名即算一次猜测（群聊仍需 @机器人 或唤醒前缀）。"
+  },
+  "llm_tool_enabled": {
+    "type": "bool",
+    "default": true,
+    "description": "注册 LLM 工具 mc_guess，支持“帮我猜个方块”“还剩几次”等自然语言；需要模型支持 function calling。"
+  },
+  "llm_tool_cards_only": {
+    "type": "bool",
+    "default": true,
+    "description": "LLM 调用时只发送卡片，不让模型再补充一段文字（少一次模型请求，回复更快）。"
+  },
+  "require_finish_in_group": {
+    "type": "bool",
+    "default": true,
+    "description": "群聊中已有进行中的对局时，必须先猜中/用完次数/放弃才能开新局；私聊不受限制。"
+  },
+  "idle_timeout_minutes": {
+    "type": "int",
+    "default": 30,
+    "description": "对局闲置多少分钟后自动结束；0 表示不限制。"
+  }
+}

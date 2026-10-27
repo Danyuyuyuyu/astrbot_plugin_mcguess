@@ -1,0 +1,1448 @@
+{
+  "schema": 1,
+  "note": "人工策展数据：难度分级、别名、不可作为答案的词条、译名修正。由 build_catalog.py 读取；不要写自动可推导的内容。",
+  "block": {
+    "name_fixes": {
+      "cave_vines": "洞穴藤蔓",
+      "flower": "花",
+      "glass": "玻璃",
+      "glass_pane": "玻璃板",
+      "iron_trapdoor": "铁活板门",
+      "melon_stem": "西瓜茎",
+      "nether_bricks": "下界砖块",
+      "pitcher_crop": "瓶子草作物",
+      "polished_blackstone": "磨制黑石",
+      "prismarine": "海晶石",
+      "pumpkin": "南瓜",
+      "pumpkin_stem": "南瓜茎",
+      "sand": "沙子",
+      "sandstone": "砂岩",
+      "sign": "告示牌",
+      "stone_bricks": "石砖",
+      "suspicious_gravel": "可疑的沙砾",
+      "sweet_berry_bush": "甜浆果丛",
+      "test_instance_block": "测试实例方块",
+      "tripwire": "绊线",
+      "wall": "墙",
+      "wheat": "小麦"
+    },
+    "name_en_fixes": {
+      "melon_stem": "Melon Stem",
+      "pale_moss_block": "Pale Moss Block",
+      "pale_moss_carpet": "Pale Moss Carpet",
+      "pumpkin_stem": "Pumpkin Stem",
+      "short_grass": "Short Grass",
+      "suspicious_gravel": "Suspicious Gravel",
+      "sweet_berry_bush": "Sweet Berry Bush",
+      "tripwire": "Tripwire",
+      "wheat": "Wheat",
+      "wildflowers": "Wildflowers"
+    },
+    "tier1": [
+      "anvil",
+      "barrel",
+      "beacon",
+      "bed",
+      "bookshelf",
+      "bricks",
+      "button",
+      "cactus",
+      "campfire",
+      "cauldron",
+      "chest",
+      "clay",
+      "coal_block",
+      "coal_ore",
+      "cobblestone",
+      "cobweb",
+      "crafting_table",
+      "diamond_block",
+      "diamond_ore",
+      "dirt",
+      "dispenser",
+      "door",
+      "emerald_ore",
+      "enchanting_table",
+      "end_stone",
+      "ender_chest",
+      "fence",
+      "furnace",
+      "glass",
+      "glowstone",
+      "gold_block",
+      "gold_ore",
+      "grass_block",
+      "gravel",
+      "hay_block",
+      "hopper",
+      "ice",
+      "iron_block",
+      "iron_ore",
+      "jack_o_lantern",
+      "ladder",
+      "lapis_ore",
+      "leaves",
+      "lever",
+      "log",
+      "melon",
+      "netherrack",
+      "obsidian",
+      "piston",
+      "planks",
+      "pressure_plate",
+      "pumpkin",
+      "redstone_ore",
+      "redstone_torch",
+      "redstone_wire",
+      "repeater",
+      "sand",
+      "sandstone",
+      "sapling",
+      "shulker_box",
+      "sign",
+      "slab",
+      "snow",
+      "snow_block",
+      "soul_sand",
+      "sponge",
+      "stairs",
+      "stone",
+      "stone_bricks",
+      "sugar_cane",
+      "tnt",
+      "torch",
+      "trapdoor",
+      "wool",
+      "wood"
+    ],
+    "tier2": [
+      "activator_rail",
+      "amethyst_block",
+      "amethyst_cluster",
+      "ancient_debris",
+      "andesite",
+      "azalea",
+      "bamboo",
+      "bamboo_block",
+      "banner",
+      "barrier",
+      "basalt",
+      "bedrock",
+      "bee_nest",
+      "beehive",
+      "beetroots",
+      "bell",
+      "big_dripleaf",
+      "blackstone",
+      "blast_furnace",
+      "blue_ice",
+      "bone_block",
+      "brewing_stand",
+      "cake",
+      "calcite",
+      "candle",
+      "carpet",
+      "carrots",
+      "cartography_table",
+      "cave_vines",
+      "chain",
+      "chiseled_bookshelf",
+      "chorus_flower",
+      "chorus_plant",
+      "coarse_dirt",
+      "cobbled_deepslate",
+      "cocoa",
+      "command_block",
+      "comparator",
+      "composter",
+      "concrete",
+      "concrete_powder",
+      "conduit",
+      "copper_block",
+      "copper_ore",
+      "coral",
+      "coral_block",
+      "coral_fan",
+      "crying_obsidian",
+      "daylight_detector",
+      "dead_bush",
+      "deepslate",
+      "detector_rail",
+      "diorite",
+      "dirt_path",
+      "dragon_egg",
+      "dried_kelp_block",
+      "dripstone_block",
+      "dropper",
+      "emerald_block",
+      "end_portal_frame",
+      "end_rod",
+      "end_stone_bricks",
+      "farmland",
+      "fence_gate",
+      "fern",
+      "fire",
+      "fletching_table",
+      "flower",
+      "flower_pot",
+      "froglight",
+      "glass_pane",
+      "glazed_terracotta",
+      "glow_lichen",
+      "granite",
+      "grindstone",
+      "head",
+      "honey_block",
+      "honeycomb_block",
+      "iron_bars",
+      "iron_door",
+      "iron_trapdoor",
+      "jukebox",
+      "kelp",
+      "lantern",
+      "lapis_block",
+      "lectern",
+      "lily_pad",
+      "lightning_rod",
+      "lodestone",
+      "loom",
+      "magma_block",
+      "moss_block",
+      "moss_carpet",
+      "mossy_cobblestone",
+      "mud",
+      "mushroom",
+      "mushroom_block",
+      "mycelium",
+      "nether_bricks",
+      "nether_fungus",
+      "nether_gold_ore",
+      "nether_quartz_ore",
+      "nether_wart",
+      "nether_wart_block",
+      "netherite_block",
+      "note_block",
+      "nylium",
+      "observer",
+      "packed_ice",
+      "podzol",
+      "pointed_dripstone",
+      "polished_blackstone",
+      "potatoes",
+      "powder_snow",
+      "powered_rail",
+      "prismarine",
+      "purpur_block",
+      "quartz_block",
+      "rail",
+      "raw_copper_block",
+      "raw_gold_block",
+      "raw_iron_block",
+      "redstone_block",
+      "redstone_lamp",
+      "respawn_anchor",
+      "rooted_dirt",
+      "roots",
+      "scaffolding",
+      "sculk_sensor",
+      "sea_lantern",
+      "sea_pickle",
+      "seagrass",
+      "short_grass",
+      "shroomlight",
+      "slime_block",
+      "smithing_table",
+      "smoker",
+      "smooth_quartz",
+      "smooth_stone",
+      "soul_soil",
+      "spawner",
+      "spore_blossom",
+      "stonecutter",
+      "sweet_berry_bush",
+      "target",
+      "terracotta",
+      "tinted_glass",
+      "trapped_chest",
+      "tripwire_hook",
+      "tuff",
+      "twisting_vines",
+      "vault",
+      "vine",
+      "warped_wart_block",
+      "weeping_vines",
+      "wheat",
+      "wither_rose",
+      "wall",
+      "sculk"
+    ],
+    "unanswerable": [
+      "barrier",
+      "bedrock",
+      "command_block",
+      "end_portal_frame",
+      "fire",
+      "infested_block",
+      "jigsaw",
+      "light",
+      "petrified_oak_slab",
+      "reinforced_deepslate",
+      "spawner",
+      "structure_block",
+      "structure_void",
+      "test_block",
+      "test_instance_block",
+      "trial_spawner",
+      "vault"
+    ],
+    "aliases": {
+      "ancient_debris": [
+        "远古残骸"
+      ],
+      "andesite": [
+        "安山岩块"
+      ],
+      "barrier": [
+        "空气墙"
+      ],
+      "basalt": [
+        "玄武岩块"
+      ],
+      "bedrock": [
+        "不可破坏方块"
+      ],
+      "bookshelf": [
+        "书柜"
+      ],
+      "bricks": [
+        "砖块"
+      ],
+      "button": [
+        "按键"
+      ],
+      "campfire": [
+        "篝火"
+      ],
+      "carrots": [
+        "萝卜"
+      ],
+      "cauldron": [
+        "锅"
+      ],
+      "cave_vines": [
+        "发光藤蔓"
+      ],
+      "chain": [
+        "链条"
+      ],
+      "chiseled_bookshelf": [
+        "雕刻书架"
+      ],
+      "clay": [
+        "粘土"
+      ],
+      "coal_block": [
+        "煤块"
+      ],
+      "coal_ore": [
+        "煤矿"
+      ],
+      "cobbled_deepslate": [
+        "深层板岩圆石"
+      ],
+      "cobblestone": [
+        "鹅卵石"
+      ],
+      "cocoa": [
+        "可可"
+      ],
+      "copper_chain": [
+        "铜锁链"
+      ],
+      "copper_chest": [
+        "铜箱"
+      ],
+      "copper_golem_statue": [
+        "铜傀儡雕像"
+      ],
+      "copper_ore": [
+        "铜矿"
+      ],
+      "crafting_table": [
+        "合成台"
+      ],
+      "crying_obsidian": [
+        "哭泣黑曜石"
+      ],
+      "daylight_detector": [
+        "阳光感应器",
+        "日照探测器"
+      ],
+      "dead_bush": [
+        "枯灌木"
+      ],
+      "deepslate": [
+        "深层板岩"
+      ],
+      "decorated_pot": [
+        "陶罐"
+      ],
+      "diamond_ore": [
+        "钻石矿"
+      ],
+      "diorite": [
+        "闪长岩"
+      ],
+      "dirt": [
+        "土"
+      ],
+      "dirt_path": [
+        "土路"
+      ],
+      "dragon_egg": [
+        "龙蛋"
+      ],
+      "dripstone_block": [
+        "滴水石"
+      ],
+      "dry_grass": [
+        "枯草"
+      ],
+      "emerald_ore": [
+        "绿宝石矿"
+      ],
+      "end_portal_frame": [
+        "末地门框"
+      ],
+      "end_stone": [
+        "末影石"
+      ],
+      "fern": [
+        "蕨类"
+      ],
+      "firefly_bush": [
+        "萤火虫灌木"
+      ],
+      "furnace": [
+        "炉子"
+      ],
+      "glass_pane": [
+        "玻璃片"
+      ],
+      "glowstone": [
+        "萤石"
+      ],
+      "gold_block": [
+        "金砖"
+      ],
+      "gold_ore": [
+        "金矿"
+      ],
+      "granite": [
+        "花岗岩块"
+      ],
+      "grass_block": [
+        "草地"
+      ],
+      "gravel": [
+        "砂砾"
+      ],
+      "grindstone": [
+        "磨刀石"
+      ],
+      "head": [
+        "头颅"
+      ],
+      "iron_bars": [
+        "铁栅栏"
+      ],
+      "iron_chain": [
+        "铁锁链"
+      ],
+      "iron_ore": [
+        "铁矿"
+      ],
+      "iron_trapdoor": [
+        "铁地板门"
+      ],
+      "jack_o_lantern": [
+        "南瓜灯笼"
+      ],
+      "jukebox": [
+        "点唱机"
+      ],
+      "ladder": [
+        "梯"
+      ],
+      "lapis_ore": [
+        "青金石矿"
+      ],
+      "leaf_litter": [
+        "落叶"
+      ],
+      "leaves": [
+        "叶子"
+      ],
+      "lectern": [
+        "演讲台"
+      ],
+      "lever": [
+        "开关"
+      ],
+      "lily_pad": [
+        "荷叶"
+      ],
+      "mangrove_propagule": [
+        "红树苗"
+      ],
+      "mud": [
+        "泥"
+      ],
+      "moss_carpet": [
+        "苔藓地毯"
+      ],
+      "mossy_cobblestone": [
+        "苔石"
+      ],
+      "mud_bricks": [
+        "泥巴砖"
+      ],
+      "muddy_mangrove_roots": [
+        "沾泥红树根"
+      ],
+      "mycelium": [
+        "菌丝"
+      ],
+      "nether_bricks": [
+        "地狱砖块"
+      ],
+      "nether_gold_ore": [
+        "下界金矿",
+        "地狱金矿"
+      ],
+      "nether_quartz_ore": [
+        "下界石英矿",
+        "石英矿"
+      ],
+      "nether_wart": [
+        "地狱疣"
+      ],
+      "nether_wart_block": [
+        "地狱疣块"
+      ],
+      "netherrack": [
+        "地狱岩"
+      ],
+      "note_block": [
+        "音符块"
+      ],
+      "packed_ice": [
+        "压实冰"
+      ],
+      "packed_mud": [
+        "压实泥"
+      ],
+      "pale_moss_block": [
+        "苍白苔藓"
+      ],
+      "pale_moss_carpet": [
+        "苍白苔藓地毯"
+      ],
+      "pink_petals": [
+        "花瓣"
+      ],
+      "planks": [
+        "木板"
+      ],
+      "polished_blackstone": [
+        "磨制黑石"
+      ],
+      "pressure_plate": [
+        "踩踏板"
+      ],
+      "pumpkin_stem": [
+        "南瓜藤"
+      ],
+      "purpur_block": [
+        "紫颂块"
+      ],
+      "redstone_block": [
+        "红石块"
+      ],
+      "redstone_ore": [
+        "红石矿"
+      ],
+      "redstone_wire": [
+        "红石"
+      ],
+      "repeater": [
+        "中继器"
+      ],
+      "resin_block": [
+        "树脂块"
+      ],
+      "resin_bricks": [
+        "树脂砖"
+      ],
+      "resin_clump": [
+        "树脂"
+      ],
+      "sand": [
+        "沙"
+      ],
+      "sandstone": [
+        "沙岩"
+      ],
+      "short_grass": [
+        "草"
+      ],
+      "sign": [
+        "木牌",
+        "牌子"
+      ],
+      "slime_block": [
+        "粘液块"
+      ],
+      "smooth_stone": [
+        "平滑石"
+      ],
+      "smithing_table": [
+        "铁匠台"
+      ],
+      "spawner": [
+        "刷怪箱"
+      ],
+      "stone_bricks": [
+        "石砖块"
+      ],
+      "sugar_cane": [
+        "甘蔗"
+      ],
+      "suspicious_gravel": [
+        "可疑的方块"
+      ],
+      "sweet_berry_bush": [
+        "甜浆果"
+      ],
+      "terracotta": [
+        "陶土"
+      ],
+      "glazed_terracotta": [
+        "上釉陶瓦"
+      ],
+      "concrete": [
+        "水泥"
+      ],
+      "concrete_powder": [
+        "水泥粉"
+      ],
+      "tnt": [
+        "炸药"
+      ],
+      "torch": [
+        "火把"
+      ],
+      "trapdoor": [
+        "地板门"
+      ],
+      "tripwire": [
+        "绊绳"
+      ],
+      "vine": [
+        "藤"
+      ],
+      "wall": [
+        "安山岩墙"
+      ],
+      "wildflowers": [
+        "野花"
+      ],
+      "wither_rose": [
+        "凋零玫瑰"
+      ],
+      "wood": [
+        "木块"
+      ],
+      "wool": [
+        "羊毛块"
+      ],
+      "melon_stem": [
+        "西瓜藤"
+      ],
+      "cactus_flower": [
+        "仙人掌花"
+      ],
+      "bamboo_mosaic": [
+        "竹块马赛克"
+      ],
+      "calibrated_sculk_sensor": [
+        "校频感测体"
+      ],
+      "sculk_vein": [
+        "幽匿藤"
+      ],
+      "heavy_core": [
+        "重型核心"
+      ],
+      "beetroots": [
+        "甜菜"
+      ],
+      "potatoes": [
+        "土豆"
+      ],
+      "wheat": [
+        "麦子"
+      ],
+      "comparator": [
+        "比较器"
+      ],
+      "fence": [
+        "围栏"
+      ],
+      "fence_gate": [
+        "围栏门"
+      ],
+      "slab": [
+        "半砖"
+      ],
+      "stairs": [
+        "阶梯"
+      ],
+      "obsidian": [
+        "黑耀石"
+      ],
+      "hay_block": [
+        "干草块"
+      ]
+    }
+  },
+  "item": {
+    "tier1": [
+      "amethyst_shard",
+      "apple",
+      "arrow",
+      "axe",
+      "blaze_powder",
+      "blaze_rod",
+      "boat",
+      "bone",
+      "bone_meal",
+      "book",
+      "boots",
+      "bow",
+      "bowl",
+      "bread",
+      "bucket",
+      "carrot",
+      "charcoal",
+      "chestplate",
+      "chicken",
+      "clock",
+      "coal",
+      "compass",
+      "cooked_beef",
+      "cooked_chicken",
+      "cooked_porkchop",
+      "cookie",
+      "diamond",
+      "dye",
+      "egg",
+      "elytra",
+      "emerald",
+      "enchanted_book",
+      "enchanted_golden_apple",
+      "ender_eye",
+      "ender_pearl",
+      "feather",
+      "fishing_rod",
+      "flint",
+      "flint_and_steel",
+      "glass_bottle",
+      "glowstone_dust",
+      "gold_ingot",
+      "golden_apple",
+      "gunpowder",
+      "helmet",
+      "hoe",
+      "honey_bottle",
+      "honeycomb",
+      "iron_ingot",
+      "item_frame",
+      "lapis_lazuli",
+      "lava_bucket",
+      "lead",
+      "leather",
+      "leggings",
+      "map",
+      "milk_bucket",
+      "minecart",
+      "mushroom_stew",
+      "name_tag",
+      "nether_star",
+      "netherite_ingot",
+      "painting",
+      "paper",
+      "pickaxe",
+      "porkchop",
+      "potato",
+      "potion",
+      "redstone",
+      "rotten_flesh",
+      "saddle",
+      "shears",
+      "shield",
+      "shovel",
+      "slime_ball",
+      "snowball",
+      "spider_eye",
+      "stick",
+      "string",
+      "sugar",
+      "sword",
+      "totem_of_undying",
+      "trident",
+      "water_bucket",
+      "wheat",
+      "wheat_seeds",
+      "beef"
+    ],
+    "tier2": [
+      "armadillo_scute",
+      "armor_stand",
+      "armor_trim_smithing_template",
+      "baked_potato",
+      "banner_pattern",
+      "beetroot",
+      "beetroot_seeds",
+      "beetroot_soup",
+      "brick",
+      "brush",
+      "bundle",
+      "carrot_on_a_stick",
+      "chest_boat",
+      "chest_minecart",
+      "chorus_fruit",
+      "clay_ball",
+      "cocoa_beans",
+      "cod",
+      "cooked_cod",
+      "cooked_mutton",
+      "cooked_rabbit",
+      "cooked_salmon",
+      "copper_ingot",
+      "crossbow",
+      "disc_fragment",
+      "dragon_breath",
+      "dried_kelp",
+      "echo_shard",
+      "end_crystal",
+      "experience_bottle",
+      "fire_charge",
+      "firework_rocket",
+      "firework_star",
+      "furnace_minecart",
+      "ghast_tear",
+      "glistering_melon_slice",
+      "glow_berries",
+      "glow_ink_sac",
+      "goat_horn",
+      "gold_nugget",
+      "golden_carrot",
+      "harness",
+      "heart_of_the_sea",
+      "hopper_minecart",
+      "horse_armor",
+      "ink_sac",
+      "iron_nugget",
+      "kelp",
+      "lingering_potion",
+      "mace",
+      "magma_cream",
+      "melon_seeds",
+      "melon_slice",
+      "music_disc",
+      "mutton",
+      "nautilus_shell",
+      "nether_brick",
+      "nether_wart",
+      "netherite_scrap",
+      "netherite_upgrade_smithing_template",
+      "ominous_bottle",
+      "phantom_membrane",
+      "poisonous_potato",
+      "pottery_sherd",
+      "powder_snow_bucket",
+      "prismarine_crystals",
+      "prismarine_shard",
+      "pufferfish",
+      "pumpkin_pie",
+      "pumpkin_seeds",
+      "quartz",
+      "rabbit",
+      "rabbit_foot",
+      "rabbit_hide",
+      "rabbit_stew",
+      "raw_copper",
+      "raw_gold",
+      "raw_iron",
+      "recovery_compass",
+      "salmon",
+      "shulker_shell",
+      "spawn_egg",
+      "splash_potion",
+      "spyglass",
+      "suspicious_stew",
+      "sweet_berries",
+      "tipped_arrow",
+      "tnt_minecart",
+      "trial_key",
+      "tropical_fish",
+      "turtle_scute",
+      "wind_charge",
+      "wolf_armor",
+      "writable_book",
+      "written_book",
+      "breeze_rod",
+      "resin_brick",
+      "fermented_spider_eye",
+      "aquatic_mob_bucket",
+      "warped_fungus_on_a_stick"
+    ],
+    "unanswerable": [
+      "command_block_minecart",
+      "debug_stick",
+      "knowledge_book",
+      "spawn_egg"
+    ],
+    "aliases": {
+      "apple": [
+        "苹果"
+      ],
+      "armor_trim_smithing_template": [
+        "盔甲纹饰锻造模板",
+        "纹饰模板"
+      ],
+      "arrow": [
+        "箭矢"
+      ],
+      "axe": [
+        "斧头"
+      ],
+      "baked_potato": [
+        "烤土豆"
+      ],
+      "beef": [
+        "牛肉"
+      ],
+      "beetroot": [
+        "甜菜"
+      ],
+      "beetroot_seeds": [
+        "甜菜种"
+      ],
+      "beetroot_soup": [
+        "甜菜根汤"
+      ],
+      "blaze_powder": [
+        "火焰粉"
+      ],
+      "blaze_rod": [
+        "火焰棒"
+      ],
+      "boat": [
+        "小船"
+      ],
+      "brick": [
+        "砖"
+      ],
+      "bucket": [
+        "桶"
+      ],
+      "carrot": [
+        "萝卜"
+      ],
+      "chicken": [
+        "鸡肉"
+      ],
+      "clay_ball": [
+        "粘土球"
+      ],
+      "clock": [
+        "表",
+        "手表"
+      ],
+      "coal": [
+        "煤"
+      ],
+      "cocoa_beans": [
+        "可可"
+      ],
+      "cod": [
+        "鳕鱼"
+      ],
+      "compass": [
+        "罗盘"
+      ],
+      "cookie": [
+        "饼干"
+      ],
+      "cooked_beef": [
+        "熟牛肉"
+      ],
+      "cooked_porkchop": [
+        "熟猪肉"
+      ],
+      "copper_ingot": [
+        "铜"
+      ],
+      "crossbow": [
+        "十字弓"
+      ],
+      "elytra": [
+        "翅膀"
+      ],
+      "enchanted_golden_apple": [
+        "附魔苹果",
+        "神苹果"
+      ],
+      "experience_bottle": [
+        "经验瓶"
+      ],
+      "fermented_spider_eye": [
+        "发酵蜘蛛眼"
+      ],
+      "firework_rocket": [
+        "烟花"
+      ],
+      "firework_star": [
+        "烟花之星"
+      ],
+      "fishing_rod": [
+        "鱼竿"
+      ],
+      "furnace_minecart": [
+        "熔炉矿车"
+      ],
+      "glistering_melon_slice": [
+        "金西瓜片"
+      ],
+      "glowstone_dust": [
+        "萤石粉"
+      ],
+      "goat_horn": [
+        "羊角"
+      ],
+      "gold_ingot": [
+        "金"
+      ],
+      "golden_carrot": [
+        "金萝卜"
+      ],
+      "horse_armor": [
+        "马甲"
+      ],
+      "ink_sac": [
+        "墨汁"
+      ],
+      "glow_ink_sac": [
+        "荧光墨汁"
+      ],
+      "iron_ingot": [
+        "铁"
+      ],
+      "item_frame": [
+        "物品框",
+        "展示框"
+      ],
+      "lead": [
+        "栓绳"
+      ],
+      "leather": [
+        "皮"
+      ],
+      "lava_bucket": [
+        "岩浆桶"
+      ],
+      "lingering_potion": [
+        "滞留型药水"
+      ],
+      "melon_seeds": [
+        "西瓜籽"
+      ],
+      "melon_slice": [
+        "西瓜"
+      ],
+      "milk_bucket": [
+        "牛奶"
+      ],
+      "minecart": [
+        "矿车"
+      ],
+      "mushroom_stew": [
+        "蘑菇汤"
+      ],
+      "music_disc": [
+        "唱片"
+      ],
+      "name_tag": [
+        "名牌"
+      ],
+      "nether_brick": [
+        "地狱砖"
+      ],
+      "nether_star": [
+        "下界星"
+      ],
+      "nether_wart": [
+        "地狱疣"
+      ],
+      "netherite_ingot": [
+        "下界合金"
+      ],
+      "netherite_scrap": [
+        "下界合金碎屑"
+      ],
+      "pickaxe": [
+        "镐子"
+      ],
+      "poisonous_potato": [
+        "毒土豆"
+      ],
+      "potato": [
+        "土豆"
+      ],
+      "potion": [
+        "药"
+      ],
+      "pottery_sherd": [
+        "陶器碎片"
+      ],
+      "pumpkin_pie": [
+        "南瓜饼"
+      ],
+      "pumpkin_seeds": [
+        "南瓜籽"
+      ],
+      "quartz": [
+        "石英"
+      ],
+      "rabbit": [
+        "兔肉"
+      ],
+      "rabbit_foot": [
+        "兔脚"
+      ],
+      "rabbit_hide": [
+        "兔皮"
+      ],
+      "rabbit_stew": [
+        "兔肉汤"
+      ],
+      "rotten_flesh": [
+        "腐肉"
+      ],
+      "saddle": [
+        "马鞍"
+      ],
+      "salmon": [
+        "三文鱼"
+      ],
+      "cooked_salmon": [
+        "熟三文鱼"
+      ],
+      "shears": [
+        "剪刀"
+      ],
+      "shovel": [
+        "铲子",
+        "铁锹"
+      ],
+      "slime_ball": [
+        "粘液球"
+      ],
+      "spawn_egg": [
+        "生成蛋"
+      ],
+      "spider_eye": [
+        "蜘蛛眼"
+      ],
+      "splash_potion": [
+        "喷溅型药水"
+      ],
+      "stick": [
+        "棍子"
+      ],
+      "string": [
+        "丝线"
+      ],
+      "suspicious_stew": [
+        "迷之炖菜"
+      ],
+      "sweet_berries": [
+        "甜莓"
+      ],
+      "glow_berries": [
+        "发光莓"
+      ],
+      "totem_of_undying": [
+        "图腾"
+      ],
+      "trident": [
+        "三叉戟"
+      ],
+      "turtle_scute": [
+        "海龟壳"
+      ],
+      "water_bucket": [
+        "水"
+      ],
+      "wheat": [
+        "麦子"
+      ],
+      "wheat_seeds": [
+        "麦种"
+      ],
+      "writable_book": [
+        "书和羽毛笔"
+      ],
+      "written_book": [
+        "写好的书"
+      ],
+      "chest_boat": [
+        "箱船"
+      ],
+      "end_crystal": [
+        "末影水晶"
+      ],
+      "disc_fragment": [
+        "唱片碎片"
+      ],
+      "netherite_upgrade_smithing_template": [
+        "下界合金升级模板",
+        "下界合金锻造模板"
+      ],
+      "prismarine_crystals": [
+        "海晶沙粒"
+      ],
+      "spyglass": [
+        "单筒望远镜"
+      ],
+      "hoe": [
+        "锄头"
+      ],
+      "egg": [
+        "蛋"
+      ]
+    }
+  },
+  "mob": {
+    "tier1": [
+      "axolotl",
+      "bat",
+      "bee",
+      "blaze",
+      "cat",
+      "cave_spider",
+      "chicken",
+      "cow",
+      "creeper",
+      "dolphin",
+      "drowned",
+      "elder_guardian",
+      "ender_dragon",
+      "enderman",
+      "fox",
+      "frog",
+      "ghast",
+      "guardian",
+      "hoglin",
+      "horse",
+      "husk",
+      "iron_golem",
+      "llama",
+      "magma_cube",
+      "parrot",
+      "phantom",
+      "pig",
+      "piglin",
+      "pillager",
+      "panda",
+      "polar_bear",
+      "rabbit",
+      "sheep",
+      "shulker",
+      "skeleton",
+      "slime",
+      "snow_golem",
+      "spider",
+      "squid",
+      "stray",
+      "strider",
+      "turtle",
+      "villager",
+      "warden",
+      "wither",
+      "wither_skeleton",
+      "wolf",
+      "zombie",
+      "zombie_villager",
+      "zombified_piglin",
+      "witch"
+    ],
+    "tier2": [
+      "allay",
+      "armadillo",
+      "breeze",
+      "camel",
+      "cod",
+      "donkey",
+      "evoker",
+      "glow_squid",
+      "goat",
+      "mooshroom",
+      "mule",
+      "ocelot",
+      "piglin_brute",
+      "pufferfish",
+      "ravager",
+      "salmon",
+      "silverfish",
+      "skeleton_horse",
+      "sniffer",
+      "tadpole",
+      "tropical_fish",
+      "vex",
+      "vindicator",
+      "wandering_trader",
+      "zoglin"
+    ],
+    "unanswerable": [
+      "giant",
+      "illusioner",
+      "zombie_horse"
+    ],
+    "aliases": {
+      "allay": [
+        "小帮手"
+      ],
+      "armadillo": [
+        "犰狳"
+      ],
+      "axolotl": [
+        "六角恐龙"
+      ],
+      "cave_spider": [
+        "毒蜘蛛"
+      ],
+      "creeper": [
+        "爬行者"
+      ],
+      "drowned": [
+        "溺水僵尸"
+      ],
+      "elder_guardian": [
+        "远古守卫"
+      ],
+      "ender_dragon": [
+        "末地龙"
+      ],
+      "enderman": [
+        "小黑"
+      ],
+      "endermite": [
+        "末影虫"
+      ],
+      "evoker": [
+        "召唤者",
+        "唤魔师"
+      ],
+      "glow_squid": [
+        "发光鱿鱼"
+      ],
+      "hoglin": [
+        "疣猪"
+      ],
+      "husk": [
+        "沙漠僵尸"
+      ],
+      "iron_golem": [
+        "铁巨人"
+      ],
+      "magma_cube": [
+        "岩浆史莱姆"
+      ],
+      "mooshroom": [
+        "蘑菇牛"
+      ],
+      "ocelot": [
+        "山猫"
+      ],
+      "phantom": [
+        "幻影"
+      ],
+      "piglin_brute": [
+        "猪灵蛮兵"
+      ],
+      "ravager": [
+        "劫掠兽"
+      ],
+      "skeleton": [
+        "小白"
+      ],
+      "skeleton_horse": [
+        "骷髅马"
+      ],
+      "silverfish": [
+        "银鱼"
+      ],
+      "snow_golem": [
+        "雪人"
+      ],
+      "stray": [
+        "流浪骷髅"
+      ],
+      "vex": [
+        "恼鬼"
+      ],
+      "villager": [
+        "NPC"
+      ],
+      "vindicator": [
+        "卫道士"
+      ],
+      "wandering_trader": [
+        "旅行商人"
+      ],
+      "warden": [
+        "循声守卫"
+      ],
+      "witch": [
+        "巫婆"
+      ],
+      "wither": [
+        "凋零"
+      ],
+      "wither_skeleton": [
+        "凋零骷髅"
+      ],
+      "wolf": [
+        "狗"
+      ],
+      "zoglin": [
+        "僵尸疣猪"
+      ],
+      "zombie": [
+        "丧尸"
+      ],
+      "zombified_piglin": [
+        "僵尸猪人"
+      ],
+      "zombie_horse": [
+        "僵尸马"
+      ],
+      "giant": [
+        "巨人"
+      ]
+    }
+  }
+}

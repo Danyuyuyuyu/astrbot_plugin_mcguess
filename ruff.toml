@@ -1,0 +1,7 @@
+line-length = 120
+target-version = "py310"
+exclude = ["pytest-cache-files-*", ".pytest_cache", ".ruff_cache", "tests/_tmp"]
+
+[lint]
+select = ["E", "F", "W"]
+ignore = ["E501", "E741", "E402"]
