@@ -29,7 +29,7 @@ class GameService:
         self,
         data_dir: Path,
         *,
-        max_attempts: int = 8,
+        max_attempts: int = 25,
         hint_limit: int = 3,
         idle_timeout_minutes: int = 30,
     ) -> None:

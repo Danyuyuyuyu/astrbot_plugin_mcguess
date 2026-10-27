@@ -1,8 +1,8 @@
 {
   "max_attempts": {
     "type": "int",
-    "default": 8,
-    "description": "每局最多猜测次数（建议 5-12）。",
+    "default": 25,
+    "description": "每局最多猜测次数（3-50，建议 15-25）。",
     "obvious_hint": true
   },
   "hint_limit": {

@@ -33,6 +33,10 @@ def _text(value: Any) -> str:
     return escape("" if value is None else str(value), quote=True)
 
 
+_MODE_CLASSES = {"方块": "mode-block", "物品": "mode-item", "生物": "mode-mob"}
+_DEFAULT_MODE_CLASS = "mode-block"
+
+
 def _int(value: Any, default: int) -> int:
     """Best-effort int conversion; never raises on model/user supplied data."""
     try:
@@ -153,55 +157,69 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 26px;
-  padding: 22px 30px 20px;
+  gap: 28px;
+  padding: 18px 30px 17px;
   background: linear-gradient(180deg, #242e34 0%, #1a2228 100%);
   border-bottom: 3px solid #04070a;
 }
-.eyebrow { margin-bottom: 8px; color: #8fa896; font-size: 15px; letter-spacing: .18em; }
-.mode { display: flex; align-items: center; gap: 18px; min-width: 0; }
+.eyebrow { margin-bottom: 6px; color: #8fa896; font-size: 14px; letter-spacing: .18em; }
+.mode { display: flex; align-items: center; gap: 17px; min-width: 0; }
+.mode-copy { min-width: 0; }
 .mode-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 74px;
-  height: 74px;
-  font-size: 42px;
+  flex: none;
+  width: 66px;
+  height: 66px;
+  font-size: 36px;
   line-height: 1;
   background: linear-gradient(180deg, #38473a 0%, #263228 100%);
   border: 3px solid #050907;
   box-shadow: inset 0 0 0 3px #4d6049;
 }
+.mode-line { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; }
 .mode-name {
   color: #f4f9ef;
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 800;
   line-height: 1.12;
   letter-spacing: .05em;
   word-break: break-word;
   text-shadow: 0 3px 0 rgba(0, 0, 0, .55);
 }
-.meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 11px; }
 .chip {
-  padding: 5px 13px;
+  padding: 4px 12px;
   color: #cfe0c8;
-  font-size: 16px;
+  font-size: 15px;
   background: #26332b;
   border: 2px solid #0a0f0b;
   box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .38);
 }
 .chip.diff { color: #ffe9a8; background: #3d3115; }
-.counter {
-  flex: none;
-  min-width: 152px;
-  padding: 11px 18px 12px;
-  text-align: center;
-  background: #1e2d1a;
-  border: 3px solid #070c06;
-  box-shadow: inset 0 0 0 3px #3f5c39, 0 6px 0 rgba(0, 0, 0, .42);
+.progress { flex: none; width: 270px; padding-top: 2px; }
+.progress-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; }
+.progress-head small { color: #a9c39d; font-size: 14px; letter-spacing: .12em; }
+.progress-count { display: flex; align-items: baseline; gap: 4px; color: #b9f08d; }
+.progress-count strong { font-size: 30px; font-weight: 800; line-height: 1; }
+.progress-count em { color: #8fa896; font-size: 15px; font-style: normal; }
+.progress-track {
+  height: 14px;
+  margin-top: 8px;
+  background: #0c120d;
+  border: 2px solid #04070a;
+  box-shadow: inset 0 0 0 2px #26332b;
 }
-.counter small { display: block; color: #a9c39d; font-size: 14px; letter-spacing: .16em; }
-.counter strong { display: block; color: #b9f08d; font-size: 40px; font-weight: 800; line-height: 1.1; }
+.progress-track i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #4f9a36, #86d457);
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .25);
+}
+.mode-item .mode-icon { background: linear-gradient(180deg, #3d3524, #282217); box-shadow: inset 0 0 0 3px #6d5a2f; }
+.mode-item .progress-track i { background: linear-gradient(90deg, #9a7326, #e6c05a); }
+.mode-mob .mode-icon { background: linear-gradient(180deg, #3d2826, #281a18); box-shadow: inset 0 0 0 3px #6d3a33; }
+.mode-mob .progress-track i { background: linear-gradient(90deg, #8f3e33, #e1735f); }
 .guessbar {
   display: flex;
   align-items: baseline;
@@ -409,9 +427,11 @@ def build_guess_card_html(view: dict[str, Any]) -> str:
     icon = _text(view.get("category_icon"))
     category = _text(view.get("category_label") or "猜谜")
     difficulty = _text(view.get("difficulty_label") or "普通")
-    attempt = _text(view.get("attempt", 0))
-    max_attempts = _text(view.get("max_attempts", 0))
-    remaining = _text(view.get("remaining", 0))
+    attempt_value = max(0, _int(view.get("attempt"), 0))
+    max_value = max(0, _int(view.get("max_attempts"), 0))
+    remaining_value = max(0, _int(view.get("remaining"), 0))
+    percent = 0 if max_value <= 0 else max(0, min(100, round(remaining_value / max_value * 100)))
+    mode_class = _MODE_CLASSES.get(category, _DEFAULT_MODE_CLASS)
     status_text = _text(view.get("status_text"))
     guess_name = _text(view.get("guess_name"))
     guess_name_en = _text(view.get("guess_name_en"))
@@ -434,22 +454,27 @@ def build_guess_card_html(view: dict[str, Any]) -> str:
         )
 
     status_html = status_text or "继续猜猜看吧"
-    body = f"""<section class="board">
+    body = f"""<section class="board {mode_class}">
   <div class="grass"></div>
   <div class="dirt"></div>
   <header class="titlebar">
     <div class="mode">
       <div class="mode-icon">{icon}</div>
-      <div>
+      <div class="mode-copy">
         <p class="eyebrow">MINECRAFT 猜谜 · MCGUESS</p>
-        <h1 class="mode-name">{category}</h1>
-        <div class="meta">
+        <div class="mode-line">
+          <h1 class="mode-name">{category}</h1>
           <span class="chip diff">难度 {difficulty}</span>
-          <span class="chip">第 {attempt}/{max_attempts} 次</span>
         </div>
       </div>
     </div>
-    <div class="counter"><small>剩余次数</small><strong>{remaining}</strong></div>
+    <div class="progress">
+      <div class="progress-head">
+        <small>第 {attempt_value} 次</small>
+        <span class="progress-count"><em>剩余</em><strong>{remaining_value}</strong><em>/ {max_value}</em></span>
+      </div>
+      <div class="progress-track"><i style="width: {percent}%"></i></div>
+    </div>
   </header>
   {guessbar}
   <main class="grid" style="--cols: {columns}">{grid}</main>

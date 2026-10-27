@@ -158,7 +158,7 @@ class MCGuessPlugin(Star):
         super().__init__(context)
         self.config = config or {}
         self.data_dir = StarTools.get_data_dir(PLUGIN_NAME)
-        self.max_attempts = self._int_config("max_attempts", 8, 3, 20)
+        self.max_attempts = self._int_config("max_attempts", 25, 3, 50)
         hint_limit = self._int_config("hint_limit", 3, 0, 10)
         idle_timeout = self._int_config("idle_timeout_minutes", 30, 0, 24 * 60)
         self.games = GameService(

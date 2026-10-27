@@ -207,7 +207,7 @@ def apply_guess(
     answer_entry: dict[str, Any],
     fields: list[dict[str, Any]],
     *,
-    max_attempts: int = 8,
+    max_attempts: int = 25,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     """Apply one guess and return the persisted state plus the result row."""
     status = str(state.get("status") or "playing")

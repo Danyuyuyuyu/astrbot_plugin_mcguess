@@ -56,12 +56,12 @@ def _view(**overrides) -> dict:
         "category_icon": "🧱",
         "difficulty_label": "普通",
         "attempt": 3,
-        "max_attempts": 8,
-        "remaining": 5,
+        "max_attempts": 25,
+        "remaining": 22,
         "guess_name": "金块",
         "guess_name_en": "Gold Block",
         "feedback": _feedback(),
-        "status_text": "还剩 5 次",
+        "status_text": "还剩 22 次",
         "columns": 4,
     }
     kwargs.update(overrides)
@@ -91,10 +91,10 @@ def test_view_metadata_and_defaults():
     assert view["category_label"] == "方块"
     assert view["category_icon"] == "🧱"
     assert view["difficulty_label"] == "普通"
-    assert (view["attempt"], view["max_attempts"], view["remaining"]) == (3, 8, 5)
+    assert (view["attempt"], view["max_attempts"], view["remaining"]) == (3, 25, 22)
     assert view["guess_name"] == "金块"
     assert view["guess_name_en"] == "Gold Block"
-    assert view["status_text"] == "还剩 5 次"
+    assert view["status_text"] == "还剩 22 次"
     assert view["columns"] == 4
     # The view is plain JSON-serializable data.
     json.dumps(view, ensure_ascii=False)
@@ -130,11 +130,26 @@ def test_html_contains_header_details():
     assert "MINECRAFT 猜谜 · MCGUESS" in html
     assert "🧱" in html
     assert "难度 普通" in html
-    assert "第 3/8 次" in html
-    assert "剩余次数" in html
-    assert "<strong>5</strong>" in html
+    assert "第 3 次" in html
+    assert "剩余" in html
+    assert "<strong>22</strong>" in html
+    assert "/ 25" in html
+    assert "width: 88%" in html  # 22/25 remaining
     assert "本次猜测" in html and "金块" in html and "Gold Block" in html
-    assert "还剩 5 次" in html
+    assert "还剩 22 次" in html
+
+
+def test_header_progress_bar_is_clamped():
+    assert "width: 100%" in _html(remaining=999)
+    assert "width: 0%" in _html(remaining=-5)
+    assert "width: 0%" in _html(max_attempts=0, remaining=0)
+
+
+def test_header_mode_accent_classes():
+    assert 'class="board mode-block"' in _html()
+    assert 'class="board mode-item"' in _html(category_label="物品", category_icon="🎒")
+    assert 'class="board mode-mob"' in _html(category_label="生物", category_icon="🐷")
+    assert 'class="board mode-block"' in _html(category_label="未知类别")
 
 
 def test_html_grid_columns_follow_view():
@@ -201,8 +216,8 @@ def test_empty_feedback_renders_empty_state():
     assert "本次还没有可展示的属性反馈" in html
     assert "猜中一个名字后" in html
     assert '<article class="tile ' not in html
-    assert "还剩 5 次" in html
-    assert "剩余次数" in html
+    assert "还剩 22 次" in html
+    assert "剩余" in html
     assert "完全相同" in html  # legend still present
 
 
@@ -219,7 +234,7 @@ def test_card_is_self_contained_without_external_resources():
 def test_html_without_guess_name_hides_guessbar():
     html = _html(guess_name="", guess_name_en="")
     assert "本次猜测" not in html
-    assert "第 3/8 次" in html
+    assert "第 3 次" in html
 
 
 def _help_view() -> dict:
@@ -232,7 +247,7 @@ def _help_view() -> dict:
             {"command": "/猜方 状态", "description": "查看进度", "tag": "查看进度"},
             {"command": "/猜方 放弃", "description": "公布答案", "tag": "结束本局"},
         ],
-        "footer": "每局最多 8 次猜测。🟩 完全相同　🟨 接近　⬜ 不匹配",
+        "footer": "每局最多 25 次猜测。🟩 完全相同　🟨 接近　⬜ 不匹配",
     }
 
 
@@ -245,7 +260,7 @@ def test_help_card_renders_title_commands_and_footer():
     assert "/猜方 开始 [方块|物品|生物] [简单|普通|困难]" in html
     assert ">开始游戏<" in html
     assert "提交一次猜测" in html
-    assert "每局最多 8 次猜测" in html
+    assert "每局最多 25 次猜测" in html
 
 
 def test_help_card_empty_commands():
@@ -265,7 +280,7 @@ def test_help_card_does_not_fabricate_empty_tags():
 
 def test_help_card_footer_is_not_duplicated_with_default_legend():
     html = build_help_card_html(_help_view())
-    assert html.count("每局最多 8 次猜测") == 1
+    assert html.count("每局最多 25 次猜测") == 1
     assert "<b>完全相同</b>" not in html
     assert 'class="legend"' in html
 
