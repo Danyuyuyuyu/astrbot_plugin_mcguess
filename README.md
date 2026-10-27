@@ -1,72 +1,88 @@
-# 我的世界·猜谜（astrbot_plugin_mcguess）
+# 我的世界·猜谜（MCGuess）
 
-在聊天里玩《我的世界》猜谜：根据属性反馈，推理出隐藏的**方块**、**物品**或**生物**。
+[![AstrBot](https://img.shields.io/badge/AstrBot-%E2%89%A54.16-6DB33F)](https://github.com/AstrBotDevs/AstrBot)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-玩法类似 Wordle：每次猜一个名字，机器人把它的属性与答案逐项比较，用 🟩 / 🟨 / ⬜ 和 ⬆⬇ 提示你离答案还有多远。
+在聊天里玩《我的世界》猜谜：每次猜一个**方块 / 物品 / 生物**，按属性对比逐步锁定答案。支持群聊协作、免费提示、排行榜、自然语言和本地渲染的卡片。
 
-```
-第 3/25 次 · 方块 · 你猜：金块（Gold Block）
-🟩 硬度：3
-⬜ 爆炸抗性：6 ⬇
-🟨 工具：镐
-⬜ 发光性：无
-⬜ 透明性：否
-🟩 是否为完整方块：是
-⬜ 可燃性：否
-⬜ 火焰传播性：否
-🟨 堆叠数量：64
-🟩 可再生性：是
-⬜ 初始版本：Alpha 1.0.1 ⬇
-还剩 5 次 · 发送 `/mc猜 提示` 可获得提示
-```
+![猜方块卡片](docs/images/guess-card.jpg)
+
+## 特性
+
+- **Wordle 式反馈**：11 项属性逐项对比，相同 / 接近 / 不同，数值还会提示「答案更大 / 更小」。
+- **全群协作**：所有人的猜测共享线索，`/mc猜 状态` 自动汇总每个属性的已知范围。
+- **免命令直猜**：对局中直接发名字即可；群聊默认免 @（整句精确词条名或「我猜X」）。
+- **25 次机会**、每局 3 次免费提示，难度分简单 / 普通 / 困难。
+- **排行榜**：按群统计猜中次数、最快猜中、参与局数。
+- **自然语言**：LLM 工具支持「帮我猜个方块」「还剩几次」「给个提示」。
+- **本地渲染**：Playwright 本地截图，热态约 0.1 秒；失败自动回退远端 / 纯文本。
+- 词库 296 方块 / 195 物品 / 84 生物，含中英文别名，运行时零联网。
 
 ## 指令
 
 | 指令 | 说明 |
 | --- | --- |
-| `/mc猜 开始 方块 [简单\|普通\|困难]` | 开一局猜方块；`物品`、`生物` 同理。 |
-| `/猜方块`、`/猜物品`、`/猜生物` | 直接开对应类别的一局（可带难度）。 |
-| `/mc猜 猜 <名字>` | 提交一次猜测。 |
-| 直接发名字 | 对局中免命令直猜。群聊默认**免 @**：整句话正好是词条名（或「我猜X」）才算，状态/提示/放弃仍需 @；私聊直接发。 |
-| `/mc猜 提示` | 免费提示，每局默认 3 次，每次揭示答案的一条属性。 |
-| `/mc猜 状态` | 「已知线索」卡片：把全群所有猜测与提示合并推理成每个属性的已知范围，并附猜测记录。 |
-| `/mc猜 放弃` | 结束本局并公布答案。 |
-| `/mc猜 排行` | 本群排行榜（也可用 `排行榜`、`rank`）：猜中次数、最快猜中、参与局数、猜测次数。 |
-| `/mc猜 帮助` | 显示指令说明（默认渲染成图片卡片）。 |
+| `/mc猜 开始 [方块\|物品\|生物] [简单\|普通\|困难]` | 开一局 |
+| `/猜方块`、`/猜物品`、`/猜生物` | 直接开对应类别（可带难度） |
+| `/mc猜 猜 <名字>`；或对局中直接发名字 | 提交猜测 |
+| `/mc猜 提示` | 免费提示（每局 3 次） |
+| `/mc猜 状态` | 已知线索 + 猜测记录 |
+| `/mc猜 放弃` | 结束并公布答案 |
+| `/mc猜 排行` | 本群排行榜 |
+| `/mc猜 帮助` | 玩法说明卡片 |
 
-对局中也可以说自然语言（`帮我猜个方块`、`还剩几次`、`给个提示`、`放弃`），由 LLM 工具 `mc_guess` 接管。
+## 卡片预览
 
-## 卡片渲染
+| 线索卡（状态 / 放弃） | 排行卡 |
+| --- | --- |
+| ![线索卡](docs/images/status-card.jpg) | ![排行卡](docs/images/rank-card.jpg) |
 
-每次猜测、`状态`、`放弃` 和帮助默认都会生成图片卡片（800 px 宽，适合手机直接看）：
+<img src="docs/images/help-card.jpg" width="560" alt="帮助卡">
 
-- **猜测卡**：谁猜了什么、属性命中数、每个属性的对比结果；不匹配的属性下方附「线索」——综合全群历史猜测得出的范围（如 `3.5 < ? < 49.5`、`晚于 Beta 1.7`、`≠ 斧头、铲子`），能唯一推断时直接标「已确定」。
-- **猜测记录**：最近 6 次猜测，带猜测者和 Wordle 式小方格，后来的群友一眼能接上进度。
-- **猜中卡**：省掉全绿的属性格，只保留答案、猜中者、参与人数和完整记录。
-- **线索卡**（`状态` / `放弃`）：每个属性一格，汇总当前已知信息；放弃时同时公布答案。
-- 状态同时用形状（✓ ≈ ✕）和颜色表达，图标全部是内联 SVG，不依赖 emoji 字体。
+## 安装
 
-渲染按三层策略执行，任何一层失败都不会影响对局：
+把本目录放进 AstrBot 的 `data/plugins/astrbot_plugin_mcguess/`，在 WebUI 重载插件；AstrBot 会按 `requirements.txt` 安装 `playwright`。
 
-1. **本地 Playwright**（默认，`render_backend=auto`）：插件内常驻一个无头 Chromium，直接对卡片 HTML 截图，不经过公网，热态通常 **0.2–0.8 秒**。
-2. **远端 html_render**：本地不可用/失败时，回退到 AstrBot 自带的 `html_render`（公共 t2i 服务），带超时与熔断。
-3. **纯文本**：两层都失败时，使用文字反馈（信息与卡片完全一致）。
+要让本地渲染生效，再装一次 Chromium（不装也能用，会自动回退远端 / 文本）：
 
-同一个后端连续失败后会暂停 60 秒再重试；检测到页面异常会自动重建页面，浏览器断开则下次重新启动。
+```bash
+.venv/bin/python -m playwright install chromium
+```
 
-在 24 核 Linux 验证机上实测：**冷启动约 1.1 秒，之后每次约 0.1 秒**（同一张卡片走远端 t2i 需要 1–10 秒）。图片默认 JPEG q80、1.5 倍缩放（800 px 卡片输出约 1200 px），约 100 KB。
+## 配置
 
-如果 `playwright` 包版本与已下载的浏览器构建不匹配（venv 升级后常见），插件会自动在 `ms-playwright` 缓存里寻找最新的 Chromium 可执行文件；找不到才回退远端。
+配置文件：`data/config/astrbot_plugin_mcguess_config.json`（也可在 WebUI 修改）。
 
-本地渲染需要：
+| 配置 | 默认 | 说明 |
+| --- | --- | --- |
+| `max_attempts` | `25` | 每局机会数（3-50） |
+| `hint_limit` | `3` | 免费提示次数，`0` 关闭 |
+| `render_cards` | `true` | 图片卡片开关 |
+| `render_backend` | `auto` | `auto` / `local` / `remote` |
+| `render_scale` | `1.5` | 本地渲染倍率（0.5-2.0） |
+| `group_guess_without_at` | `true` | 群聊免 @ 直猜 |
+| `llm_tool_enabled` | `true` | 注册 LLM 工具 `mc_guess` |
+| `idle_timeout_minutes` | `30` | 闲置自动结束，`0` 不限制 |
 
-- Python 依赖 `playwright`（见 `requirements.txt`，安装插件时 AstrBot 会处理）；
-- Chromium 浏览器：在 AstrBot 的虚拟环境执行一次 `playwright install chromium`，或把 `browser_path` 指向已有的 Chromium 可执行文件；
-- 中文字体（Linux 服务器一般装 `fonts-noto-cjk` 即可）。
+<details>
+<summary>全部配置项</summary>
 
-如果机器上没有浏览器或字体，插件会自动回退到远端渲染，再回退到文本，不会报错中断。
+| 配置 | 默认 | 说明 |
+| --- | --- | --- |
+| `card_image_format` | `jpeg` | 卡片格式：`jpeg` 体积小、`png` 最锐利 |
+| `card_image_quality` | `80` | JPEG 质量（30-95） |
+| `browser_path` | 空 | Chromium 路径；留空用 `playwright install` 的浏览器 |
+| `local_render_timeout_seconds` | `20.0` | 本地渲染超时（含首次启动浏览器） |
+| `remote_render_fallback` | `true` | 本地失败时回退远端 html_render |
+| `render_timeout_seconds` | `15.0` | 远端回退渲染超时 |
+| `free_text_guess` | `true` | 对局中直接发名字即算猜测 |
+| `llm_tool_cards_only` | `true` | LLM 调用时只发卡片，不再请求模型补文字 |
+| `require_finish_in_group` | `true` | 群聊中上一局未结束时不允许开新局 |
 
-## 反馈含义
+</details>
+
+<details>
+<summary>反馈含义、属性维度与词库</summary>
 
 | 符号 | 含义 |
 | --- | --- |
@@ -75,11 +91,9 @@
 | ⬜ | 不一致 |
 | ⬆ / ⬇ | 数值类属性：答案比猜测更大 / 更小 |
 
-- 多值属性（获得方式、用途、生成方式、生物分类等）按集合比较：完全相同 🟩、有交集 🟨（会标出命中的项）、无交集 ⬜。
-- 数值属性带容差：硬度 ±0.5、爆炸抗性相对 25%、生命值 ±2、体型高度 ±0.1；堆叠数量要求精确。
-- 「初始版本」按版本先后比较，⬆ 表示答案加入游戏更晚；同一大版本（如 `1.16` 与 `1.16.2`、`Alpha 1.0.x`）判为 🟨 接近。字段配置 `"family_close": false` 可关闭。
-
-## 属性维度
+- 多值属性（获得方式、用途、生成方式、生物分类等）按集合比较，有交集标 🟨 并列出命中项。
+- 数值带容差：硬度 ±0.5、爆炸抗性相对 25%、生命值 ±2、体型高度 ±0.1；堆叠数量要求精确。
+- 「初始版本」按先后比较，同一大版本（`1.16` 与 `1.16.2`、`Alpha 1.0.x`）判 🟨。
 
 | 类别 | 维度 |
 | --- | --- |
@@ -87,9 +101,7 @@
 | 物品 | 稀有度、堆叠数量、可再生性、获得方式、用途、库存类别、合成方式、掉落方式、初始版本 |
 | 生物 | 生命值、体型高度、行为、生成方式、分类、初始版本 |
 
-## 词库规模
-
-随插件分发，运行时零联网（对应 Minecraft 1.21.9 内容）：
+词库随插件分发（Minecraft 1.21.9，运行时零联网）：
 
 | 类别 | 词条 | 简单池 | 普通池 | 困难池 |
 | --- | --- | --- | --- | --- |
@@ -97,72 +109,12 @@
 | 物品 | 195 | 87 | 186 | 191 |
 | 生物 | 84 | 51 | 76 | 81 |
 
-另有 267 条别名（中英文、常见口语/错写），50 个版本用于「初始版本」比较；24 个技术/不可获得词条只能被猜、不会成为答案。
+另有 267 条别名（中英文、常见口语/错写）与 50 个版本；24 个技术/不可获得词条只能被猜、不会成为答案。
 
-## 难度
+</details>
 
-| 难度 | 答案池 |
-| --- | --- |
-| 简单 | 只出玩家必知的常见词条 |
-| 普通（默认） | 常见 + 一般词条 |
-| 困难 | 全量可作答案的词条（含冷门、新版本内容） |
-
-技术方块（屏障、结构方块、命令方块等）与不可获得物品不会被选为答案，但可以被猜。
-
-## 配置项
-
-配置文件：`data/config/astrbot_plugin_mcguess_config.json`（也可在 WebUI 中修改）。
-
-| 配置 | 默认 | 说明 |
-| --- | --- | --- |
-| `max_attempts` | `25` | 每局最多猜测次数（3-50） |
-| `hint_limit` | `3` | 每局免费提示次数，`0` 关闭 |
-| `render_cards` | `true` | 用图片卡片展示反馈与帮助；渲染失败自动回退纯文本 |
-| `render_backend` | `auto` | `auto`=优先本地、失败回退远端；`local`=只用本地；`remote`=只用 AstrBot 的 html_render |
-| `card_image_format` | `jpeg` | 卡片格式：`jpeg` 体积小发送快、`png` 文字最锐利 |
-| `card_image_quality` | `80` | JPEG 质量（30-95） |
-| `render_scale` | `1.5` | 本地渲染缩放（0.5-2.0），调小可减小图片体积 |
-| `browser_path` | 空 | Chromium 路径；留空用 `playwright install` 的浏览器 |
-| `local_render_timeout_seconds` | `20.0` | 本地渲染超时（含首次启动浏览器） |
-| `remote_render_fallback` | `true` | 本地失败时是否回退远端 html_render |
-| `render_timeout_seconds` | `15.0` | 远端回退渲染的超时 |
-| `free_text_guess` | `true` | 对局中直接发名字即算一次猜测 |
-| `group_guess_without_at` | `true` | 群聊对局中不 @ 也能直接猜（仅精确词条名或「我猜X」；重复的名字静默忽略） |
-| `llm_tool_enabled` | `true` | 注册 LLM 工具 `mc_guess` |
-| `llm_tool_cards_only` | `true` | LLM 调用时只发卡片，不再额外请求一次模型补充文字 |
-| `require_finish_in_group` | `true` | 群聊中上一局未结束时不允许开新局 |
-| `idle_timeout_minutes` | `30` | 对局闲置多少分钟后自动结束，`0` 不限制 |
-
-## 数据与来源
-
-- 词库随插件分发，**运行时零联网**：`data/catalog.json` 由 `tools/build_catalog.py` 从整理好的 Minecraft 数据离线生成。
-- 词条中文名、枚举译名与属性整理自 [Minecraft Wiki](https://minecraft.wiki/)（CC BY-NC-SA 系），初始数据参考了 [koishi-plugin-mcdle](https://github.com/araea/koishi-plugin-mcdle)（MIT OR Apache-2.0）的公开词库，并做了去重、分级与清洗。
-- 本项目与 Mojang / Microsoft 无关，是非官方的玩家同人作品；词条数值可能随游戏版本变化，欢迎提交修正。
-- 由于数据来源含 CC BY-NC-SA 内容，**请勿将本项目或词库用于商业用途**。
-
-## 安装
-
-把本目录放进 AstrBot 的 `data/plugins/astrbot_plugin_mcguess/`，在 WebUI 里重载插件。AstrBot 会按 `requirements.txt` 安装 `playwright`。
-
-要让**本地渲染**生效，还需要在 AstrBot 的 Python 环境里给 Playwright 装一次浏览器：
-
-```bash
-# 在 AstrBot 项目目录下
-.venv/bin/python -m playwright install chromium
-# 如果系统缺依赖：.venv/bin/python -m playwright install-deps chromium
-```
-
-也可以不装浏览器，把 `render_backend` 设为 `remote`，或让它自动回退到 AstrBot 的 `html_render`。
-
-图表卡片能否发送还取决于平台是否支持图片消息；渲染层失败时插件会自动改用纯文本，不影响对局。
-
-## 兼容性
-
-- AstrBot `>=4.16,<5`（在 4.29.3 上开发与验证）
-- 平台：aiocqhttp、Telegram、Discord 等 AstrBot 支持的平台（图片卡片、@ 唤醒等能力取决于平台适配器）
-- Python 3.10+
-
-## 开发
+<details>
+<summary>开发、模块与已知限制</summary>
 
 ```bash
 # 在仓库根目录（本插件的上一级）运行
@@ -173,28 +125,35 @@ python -m ruff check astrbot_plugin_mcguess
 python astrbot_plugin_mcguess/tools/build_catalog.py
 ```
 
-模块划分：
-
 | 文件 | 职责 |
 | --- | --- |
 | `main.py` | 插件入口：命令解析、自由文本、LLM 工具、卡片/文本回复 |
-| `core.py` | 纯玩法逻辑：属性比较、回合状态机、提示生成、线索汇总（无 AstrBot 依赖） |
+| `core.py` | 纯玩法逻辑：属性比较、回合状态机、提示生成、线索汇总 |
 | `catalog.py` | 词库加载、校验、中英文/别名解析 |
-| `game_service.py` | 每会话对局持久化（JSON 原子写、会话级锁、线程内文件 I/O）、超时与排行榜统计 |
-| `card_renderer.py` | HTML 卡片模板（无第三方依赖） |
-| `card_views.py` | 把存档中的对局转换成卡片数据：历史记录、线索汇总（无 AstrBot 依赖） |
-| `renderer.py` | 本地 Playwright 渲染器：浏览器生命周期、截图（无 AstrBot 依赖） |
-| `render_service.py` | 渲染调度：后端选择、超时、熔断、远端回退（无 AstrBot 依赖） |
-| `llm_tool.py` | LLM 工具的参数校验与 JSON 结果 |
+| `game_service.py` | 每会话对局持久化、超时、排行榜统计 |
+| `card_renderer.py` | HTML 卡片模板（stdlib only） |
+| `card_views.py` | 把存档对局转换成卡片数据 |
+| `renderer.py` | 本地 Playwright 渲染：浏览器生命周期与截图 |
+| `render_service.py` | 渲染调度：后端选择、超时、熔断、远端回退 |
+| `llm_tool.py` | LLM 工具参数校验与 JSON 结果 |
 
-## 已知限制
-
-- 群聊免 @ 直猜依赖插件的全消息监听：如果在 AstrBot 里对该群禁用了本插件，或其它插件先 `stop_event`，免 @ 猜测不会生效，@机器人 仍可用。
-- 排行榜按群（会话）统计，以发送者 ID 识别玩家，改昵称不会丢记录；v1.4.0 之前完成的对局不计入。
-- 词库按「概念级词条」组织（如「门」「原木」），不区分具体变种（橡木门/云杉门），这是为了控制难度与覆盖。
-- 本地渲染首次使用需要启动 Chromium（约 1–2 秒），之后复用同一页面；未安装浏览器或字体时会自动回退远端/文本。
+- 群聊免 @ 直猜依赖全消息监听；若该群禁用了本插件或其它插件先 `stop_event`，请改用 @机器人。
+- 排行榜按群统计，用发送者 ID 识别玩家，改昵称不丢记录；v1.4.0 之前完成的对局不计入。
+- 词库按「概念级词条」组织（如「门」「原木」），不区分具体变种。
+- 本地渲染首次使用需启动 Chromium（约 1–2 秒），之后复用；未安装浏览器或字体时自动回退。
 - 图片卡片能否发送取决于平台是否支持图片消息。
 
-## 许可证
+</details>
 
-代码以 MIT 许可证发布，见 [LICENSE](LICENSE)。词库数据的来源与许可限制见上文「数据与来源」。
+## 兼容性
+
+- AstrBot `>=4.16,<5`（在 4.29.3 上验证），Python 3.10+
+- 平台：aiocqhttp / Telegram / Discord 等（图片与 @ 能力取决于平台适配器）
+
+## 数据与许可
+
+- 词条数据整理自 [Minecraft Wiki](https://minecraft.wiki/)（CC BY-NC-SA 系），初始数据参考 [koishi-plugin-mcdle](https://github.com/araea/koishi-plugin-mcdle)（MIT OR Apache-2.0）。
+- 本项目与 Mojang / Microsoft 无关，是非官方同人作品；**因数据含 CC BY-NC-SA 内容，请勿用于商业用途**。
+- 代码以 MIT 许可证发布，见 [LICENSE](LICENSE)。
+
+更新日志见 [CHANGELOG.md](CHANGELOG.md)。
