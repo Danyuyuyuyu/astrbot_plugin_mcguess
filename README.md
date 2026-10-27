@@ -35,6 +35,28 @@
 
 对局中也可以说自然语言（`帮我猜个方块`、`还剩几次`、`给个提示`、`放弃`），由 LLM 工具 `mc_guess` 接管。
 
+## 卡片渲染
+
+猜中和帮助默认会生成图片卡片。渲染按三层策略执行，任何一层失败都不会影响对局：
+
+1. **本地 Playwright**（默认，`render_backend=auto`）：插件内常驻一个无头 Chromium，直接对卡片 HTML 截图，不经过公网，热态通常 **0.2–0.8 秒**。
+2. **远端 html_render**：本地不可用/失败时，回退到 AstrBot 自带的 `html_render`（公共 t2i 服务），带超时与熔断。
+3. **纯文本**：两层都失败时，使用文字反馈（信息与卡片完全一致）。
+
+同一个后端连续失败后会暂停 60 秒再重试；检测到页面异常会自动重建页面，浏览器断开则下次重新启动。
+
+在 24 核 Linux 验证机上实测：**冷启动约 1.1 秒，之后每次约 0.1 秒**（同一张卡片走远端 t2i 需要 1–10 秒）。图片默认 JPEG q80，约 100 KB。
+
+如果 `playwright` 包版本与已下载的浏览器构建不匹配（venv 升级后常见），插件会自动在 `ms-playwright` 缓存里寻找最新的 Chromium 可执行文件；找不到才回退远端。
+
+本地渲染需要：
+
+- Python 依赖 `playwright`（见 `requirements.txt`，安装插件时 AstrBot 会处理）；
+- Chromium 浏览器：在 AstrBot 的虚拟环境执行一次 `playwright install chromium`，或把 `browser_path` 指向已有的 Chromium 可执行文件；
+- 中文字体（Linux 服务器一般装 `fonts-noto-cjk` 即可）。
+
+如果机器上没有浏览器或字体，插件会自动回退到远端渲染，再回退到文本，不会报错中断。
+
 ## 反馈含义
 
 | 符号 | 含义 |
@@ -87,7 +109,14 @@
 | `max_attempts` | `8` | 每局最多猜测次数 |
 | `hint_limit` | `3` | 每局免费提示次数，`0` 关闭 |
 | `render_cards` | `true` | 用图片卡片展示反馈与帮助；渲染失败自动回退纯文本 |
-| `render_timeout_seconds` | `6.0` | 卡片渲染超时（秒）；超时/失败后暂停图片卡片 5 分钟 |
+| `render_backend` | `auto` | `auto`=优先本地、失败回退远端；`local`=只用本地；`remote`=只用 AstrBot 的 html_render |
+| `card_image_format` | `jpeg` | 卡片格式：`jpeg` 体积小发送快、`png` 文字最锐利 |
+| `card_image_quality` | `80` | JPEG 质量（30-95） |
+| `render_scale` | `1.0` | 本地渲染缩放（0.5-2.0），调小可减小图片体积 |
+| `browser_path` | 空 | Chromium 路径；留空用 `playwright install` 的浏览器 |
+| `local_render_timeout_seconds` | `20.0` | 本地渲染超时（含首次启动浏览器） |
+| `remote_render_fallback` | `true` | 本地失败时是否回退远端 html_render |
+| `render_timeout_seconds` | `15.0` | 远端回退渲染的超时 |
 | `free_text_guess` | `true` | 对局中直接发名字即算一次猜测 |
 | `llm_tool_enabled` | `true` | 注册 LLM 工具 `mc_guess` |
 | `llm_tool_cards_only` | `true` | LLM 调用时只发卡片，不再额外请求一次模型补充文字 |
@@ -103,9 +132,19 @@
 
 ## 安装
 
-把本目录放进 AstrBot 的 `data/plugins/astrbot_plugin_mcguess/`，在 WebUI 里重载插件即可。无需安装额外 Python 依赖（只用标准库）。
+把本目录放进 AstrBot 的 `data/plugins/astrbot_plugin_mcguess/`，在 WebUI 里重载插件。AstrBot 会按 `requirements.txt` 安装 `playwright`。
 
-图片卡片依赖 AstrBot 自带的 `html_render` 渲染服务；如果服务器没有可用的浏览器渲染环境，插件会自动改用纯文本，不影响对局。
+要让**本地渲染**生效，还需要在 AstrBot 的 Python 环境里给 Playwright 装一次浏览器：
+
+```bash
+# 在 AstrBot 项目目录下
+.venv/bin/python -m playwright install chromium
+# 如果系统缺依赖：.venv/bin/python -m playwright install-deps chromium
+```
+
+也可以不装浏览器，把 `render_backend` 设为 `remote`，或让它自动回退到 AstrBot 的 `html_render`。
+
+图表卡片能否发送还取决于平台是否支持图片消息；渲染层失败时插件会自动改用纯文本，不影响对局。
 
 ## 兼容性
 
@@ -133,13 +172,16 @@ python astrbot_plugin_mcguess/tools/build_catalog.py
 | `catalog.py` | 词库加载、校验、中英文/别名解析 |
 | `game_service.py` | 每会话对局持久化（JSON 原子写）与超时 |
 | `card_renderer.py` | HTML 卡片模板（无第三方依赖） |
+| `renderer.py` | 本地 Playwright 渲染器：浏览器生命周期、截图（无 AstrBot 依赖） |
+| `render_service.py` | 渲染调度：后端选择、超时、熔断、远端回退（无 AstrBot 依赖） |
 | `llm_tool.py` | LLM 工具的参数校验与 JSON 结果 |
 
 ## 已知限制
 
 - 群聊里免命令直猜需要 @机器人 或唤醒前缀：这是 AstrBot 的唤醒机制，插件无法绕过。
 - 词库按「概念级词条」组织（如「门」「原木」），不区分具体变种（橡木门/云杉门），这是为了控制难度与覆盖。
-- 图片卡片能否发送取决于 AstrBot 渲染服务和平台是否支持图片消息。
+- 本地渲染首次使用需要启动 Chromium（约 1–2 秒），之后复用同一页面；未安装浏览器或字体时会自动回退远端/文本。
+- 图片卡片能否发送取决于平台是否支持图片消息。
 
 ## 许可证
 

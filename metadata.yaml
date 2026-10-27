@@ -1,8 +1,8 @@
 name: astrbot_plugin_mcguess
 display_name: 我的世界·猜谜
-desc: 在聊天中玩《我的世界》猜谜：按属性推理猜出方块、物品或生物，支持难度、提示、图片卡片与自然语言。
+desc: 在聊天中玩《我的世界》猜谜：按属性推理猜出方块、物品或生物，支持难度、提示、本地渲染的图片卡片与自然语言。
 short_desc: MC 猜方块/物品/生物
-version: 1.0.0
+version: 1.1.0
 author: ZhenXun
 repo: https://github.com/ZhenXun/astrbot_plugin_mcguess
 astrbot_version: ">=4.16,<5"

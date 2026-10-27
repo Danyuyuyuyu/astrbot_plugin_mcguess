@@ -10,8 +10,10 @@ import pytest
 
 pytest.importorskip("astrbot")
 
+from astrbot.core.message.components import Image as ImageComponent  # noqa: E402
 from astrbot_plugin_mcguess import main as plugin_main  # noqa: E402
 from astrbot_plugin_mcguess.game_service import GameService  # noqa: E402
+from astrbot_plugin_mcguess.render_service import RenderedCard  # noqa: E402
 
 
 class FakeEvent:
@@ -42,11 +44,33 @@ class FakeEvent:
     def image_result(self, url: str):
         return ("image", url)
 
+    def chain_result(self, chain):
+        return ("chain", chain)
+
     async def send(self, result) -> None:
         self.sent.append(result)
 
 
-def make_plugin(tmp_dir, catalogue, *, config=None, html_render=None):
+class FakeRendering:
+    """Stand-in for CardRenderService: returns a fixed card (or None)."""
+
+    def __init__(self, card: RenderedCard | None = None) -> None:
+        self.card = card
+        self.calls = 0
+        self.closed = False
+
+    async def render(self, html: str):
+        self.calls += 1
+        return self.card
+
+    async def close(self) -> None:
+        self.closed = True
+
+    def describe(self) -> str:
+        return "fake rendering"
+
+
+def make_plugin(tmp_dir, catalogue, *, config=None, rendering=None):
     plugin = object.__new__(plugin_main.MCGuessPlugin)
     plugin.config = {
         "render_cards": False,
@@ -60,10 +84,7 @@ def make_plugin(tmp_dir, catalogue, *, config=None, html_render=None):
     plugin.games = GameService(tmp_dir, max_attempts=8, hint_limit=3, idle_timeout_minutes=30)
     plugin.catalogue = catalogue
     plugin._last_tool_use = {}
-    plugin._render_failures = 0
-    plugin._render_block_until = 0.0
-    if html_render is not None:
-        plugin.html_render = html_render
+    plugin.rendering = rendering or FakeRendering()
     return plugin
 
 
@@ -273,31 +294,44 @@ def test_free_text_can_be_disabled(tmp_dir, catalogue):
 
 
 # ---- card rendering + fallback ---------------------------------------------
-def test_cards_are_used_when_renderer_works(tmp_dir, catalogue):
-    async def fake_html_render(tmpl, data, return_url=True, options=None, umo=None):
-        assert "<html" in tmpl.lower()
-        return "http://example.invalid/card.png"
-
+def test_local_card_bytes_are_sent_as_image_chain(tmp_dir, catalogue):
     async def scenario():
-        plugin = make_plugin(tmp_dir, catalogue, config={"render_cards": True}, html_render=fake_html_render)
+        rendering = FakeRendering(RenderedCard(backend="local", image=b"CARD-BYTES"))
+        plugin = make_plugin(tmp_dir, catalogue, config={"render_cards": True}, rendering=rendering)
         event = FakeEvent("/mc猜 开始 方块 简单")
         await collect(plugin.mc_guess(event))
         state = await plugin.games.current(event.unified_msg_origin)
         answer = answer_of(catalogue, state)
 
         results = await collect(plugin.mc_guess(FakeEvent(f"/mc猜 猜 {answer['name']}")))
-        assert results[0][0] == "image"
-        assert results[0][1] == "http://example.invalid/card.png"
+        assert results[0][0] == "chain"
+        chain = results[0][1]
+        assert len(chain) == 1 and isinstance(chain[0], ImageComponent)
+        assert chain[0].file.startswith("base64://")
+        assert rendering.calls == 1
+
+    run(scenario())
+
+
+def test_remote_card_url_is_sent_as_image(tmp_dir, catalogue):
+    async def scenario():
+        rendering = FakeRendering(RenderedCard(backend="remote", image_url="http://example.invalid/card.png"))
+        plugin = make_plugin(tmp_dir, catalogue, config={"render_cards": True}, rendering=rendering)
+        event = FakeEvent("/mc猜 开始 方块 简单")
+        await collect(plugin.mc_guess(event))
+        state = await plugin.games.current(event.unified_msg_origin)
+        answer = answer_of(catalogue, state)
+
+        results = await collect(plugin.mc_guess(FakeEvent(f"/mc猜 猜 {answer['name']}")))
+        assert results[0] == ("image", "http://example.invalid/card.png")
 
     run(scenario())
 
 
 def test_card_failure_falls_back_to_text(tmp_dir, catalogue):
-    async def broken_html_render(*args, **kwargs):
-        raise RuntimeError("no browser")
-
     async def scenario():
-        plugin = make_plugin(tmp_dir, catalogue, config={"render_cards": True}, html_render=broken_html_render)
+        rendering = FakeRendering(None)
+        plugin = make_plugin(tmp_dir, catalogue, config={"render_cards": True}, rendering=rendering)
         event = FakeEvent("/mc猜 开始 方块 简单")
         await collect(plugin.mc_guess(event))
         state = await plugin.games.current(event.unified_msg_origin)
@@ -306,49 +340,51 @@ def test_card_failure_falls_back_to_text(tmp_dir, catalogue):
         results = await collect(plugin.mc_guess(FakeEvent(f"/mc猜 猜 {answer['name']}")))
         assert results[0][0] == "text"
         assert "猜中了" in results[0][1]
-        assert plugin._render_block_until > 0  # breaker opened after the failure
+        assert rendering.calls == 1
 
     run(scenario())
 
 
-def test_slow_renderer_times_out_and_breaker_skips_next_render(tmp_dir, catalogue):
-    calls = {"count": 0}
-
-    async def slow_renderer(tmpl, data, return_url=True, options=None, umo=None):
-        calls["count"] += 1
-        await asyncio.sleep(0.3)
-        return "http://example.invalid/slow.png"
-
-    def pick_wrong(state, exclude=()):
-        category = catalogue.category(state["category"])
-        pool = {entry["id"] for entry in category.answer_pool(state["difficulty"])}
-        for entry in category.entries:
-            if entry["id"] in pool and entry["id"] != state["answerId"] and entry["id"] not in exclude:
-                return entry
-        raise AssertionError("catalogue needs another guessable entry")
-
+def test_help_card_uses_rendering_service(tmp_dir, catalogue):
     async def scenario():
-        plugin = make_plugin(
-            tmp_dir,
-            catalogue,
-            config={"render_cards": True, "render_timeout_seconds": 0.05},
-            html_render=slow_renderer,
-        )
+        rendering = FakeRendering(RenderedCard(backend="local", image=b"HELP-CARD"))
+        plugin = make_plugin(tmp_dir, catalogue, config={"render_cards": True}, rendering=rendering)
+        results = await collect(plugin.mc_guess(FakeEvent("/mc猜 帮助")))
+        assert results[0][0] == "chain"
+        assert isinstance(results[0][1][0], ImageComponent)
+        assert rendering.calls == 1
+
+    run(scenario())
+
+
+def test_render_cards_disabled_never_calls_renderer(tmp_dir, catalogue):
+    async def scenario():
+        rendering = FakeRendering(RenderedCard(backend="local", image=b"X"))
+        plugin = make_plugin(tmp_dir, catalogue, config={"render_cards": False}, rendering=rendering)
         event = FakeEvent("/mc猜 开始 方块 简单")
         await collect(plugin.mc_guess(event))
         state = await plugin.games.current(event.unified_msg_origin)
+        answer = answer_of(catalogue, state)
+        results = await collect(plugin.mc_guess(FakeEvent(f"/mc猜 猜 {answer['name']}")))
+        assert results[0][0] == "text"
+        assert rendering.calls == 0
 
-        first = pick_wrong(state)
-        reply = await collect(plugin.mc_guess(FakeEvent(f"/mc猜 猜 {first['name']}")))
-        assert reply[0][0] == "text"
-        assert calls["count"] == 1
-        assert plugin._render_block_until > 0
+    run(scenario())
 
+
+def test_llm_tool_sends_card_and_ends_turn(tmp_dir, catalogue):
+    async def scenario():
+        rendering = FakeRendering(RenderedCard(backend="local", image=b"CARD"))
+        plugin = make_plugin(tmp_dir, catalogue, config={"render_cards": True}, rendering=rendering)
+        await plugin.mc_guess_tool(FakeEvent("开始"), action="开始", category="方块", difficulty="简单")
+
+        event = FakeEvent("猜")
         state = await plugin.games.current(event.unified_msg_origin)
-        second = pick_wrong(state, exclude={first["id"]})
-        reply = await collect(plugin.mc_guess(FakeEvent(f"/mc猜 猜 {second['name']}")))
-        assert reply[0][0] == "text"
-        assert calls["count"] == 1  # breaker short-circuited the second render
+        answer = answer_of(catalogue, state)
+        guess_event = FakeEvent(answer["name"])
+        result = await plugin.mc_guess_tool(guess_event, action="猜", name=answer["name"])
+        assert result is None  # card sent + cards-only: no extra model call
+        assert guess_event.sent and guess_event.sent[0][0] == "chain"
 
     run(scenario())
 

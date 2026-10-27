@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import asyncio
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -12,21 +11,21 @@ from astrbot.api import AstrBotConfig, logger
 from astrbot.api.event import AstrMessageEvent, filter
 from astrbot.api.event.filter import EventMessageType
 from astrbot.api.star import Context, Star, StarTools
+from astrbot.core.message.components import Image as ImageComponent
 from astrbot.core.provider.register import llm_tools
 
 from . import core, llm_tool
 from .card_renderer import build_guess_card_html, build_help_card_html, make_guess_card_view
 from .catalog import CatalogError, Catalogue
 from .game_service import EXPIRED, GAVE_UP, LOST, PLAYING, WON, GameService
+from .render_service import BACKEND_AUTO, CardRenderService, RenderSettings, RenderedCard
+from .renderer import LocalCardRenderer, LocalRenderSettings
 
 PLUGIN_NAME = "astrbot_plugin_mcguess"
 CATALOG_FILE = Path(__file__).parent / "data" / "catalog.json"
 
 FREE_TEXT_MAX_LENGTH = 16
 FOLLOW_UP_SECONDS = 600
-RENDER_BLOCK_SECONDS = 300
-RENDER_TIMEOUT_DEFAULT = 6.0
-RENDER_FAILURE_THRESHOLD = 1
 
 CATEGORY_WORDS = {
     "方块": "block",
@@ -116,8 +115,12 @@ class ActionResult:
     """One user-facing reply: text always, plus an optional rendered card image."""
 
     text: str
+    image: bytes | None = None
     image_url: str | None = None
     error: bool = False
+
+    def has_image(self) -> bool:
+        return bool(self.image or self.image_url)
 
 
 def _mark_doc(text: str):
@@ -165,8 +168,12 @@ class MCGuessPlugin(Star):
             idle_timeout_minutes=idle_timeout,
         )
         self._last_tool_use: dict[str, float] = {}
-        self._render_failures = 0
-        self._render_block_until = 0.0
+        self.rendering = CardRenderService(
+            self._build_render_settings(),
+            local=self._build_local_renderer(),
+            remote=self._remote_render,
+            logger=self.logger,
+        )
         self.catalogue: Catalogue | None = None
         try:
             self.catalogue = Catalogue.load(CATALOG_FILE)
@@ -175,6 +182,7 @@ class MCGuessPlugin(Star):
 
     async def initialize(self) -> None:
         self._verify_llm_tools()
+        logger.info("MC 猜谜卡片渲染：%s", self.rendering.describe())
         if self.catalogue is None:
             logger.error("MC 猜谜题库不可用，请检查 %s", CATALOG_FILE)
             return
@@ -183,6 +191,10 @@ class MCGuessPlugin(Star):
             for key in self.catalogue.category_keys()
         )
         logger.info("MC 猜谜题库已加载：%s", counts)
+
+    async def terminate(self) -> None:
+        """Release the local Chromium process when the plugin is unloaded."""
+        await self.rendering.close()
 
     def _verify_llm_tools(self) -> None:
         tool = llm_tools.get_func(llm_tool.NAME)
@@ -206,6 +218,44 @@ class MCGuessPlugin(Star):
         except (TypeError, ValueError):
             return default
         return max(minimum, min(maximum, value))
+
+    def _float_config(self, key: str, default: float, minimum: float, maximum: float) -> float:
+        try:
+            value = float(self._config(key, default))
+        except (TypeError, ValueError):
+            return default
+        return max(minimum, min(maximum, value))
+
+    # ---- card rendering wiring -----------------------------------------
+    def _build_render_settings(self) -> RenderSettings:
+        return RenderSettings(
+            backend=str(self._config("render_backend", BACKEND_AUTO)),
+            remote_fallback=self._bool_config("remote_render_fallback", True),
+            local_timeout=self._float_config("local_render_timeout_seconds", 20.0, 2.0, 120.0),
+            remote_timeout=self._float_config("render_timeout_seconds", 15.0, 2.0, 120.0),
+        )
+
+    def _build_local_renderer(self) -> LocalCardRenderer | None:
+        if not LocalCardRenderer.is_supported():
+            logger.warning("未安装 playwright，本地卡片渲染不可用，将回退到 AstrBot 的 html_render。")
+            return None
+        settings = LocalRenderSettings(
+            image_format=str(self._config("card_image_format", "jpeg")),
+            quality=self._int_config("card_image_quality", 80, 30, 95),
+            scale=self._float_config("render_scale", 1.0, 0.5, 2.0),
+            browser_path=str(self._config("browser_path", "") or ""),
+        )
+        return LocalCardRenderer(settings, logger=self.logger)
+
+    async def _remote_render(self, html: str) -> str:
+        """Remote fallback: AstrBot's html_render (t2i service), returns an image URL."""
+        image_format = str(self._config("card_image_format", "jpeg")).strip().lower()
+        if image_format not in ("jpeg", "png"):
+            image_format = "jpeg"
+        options: dict[str, Any] = {"full_page": True, "animations": "disabled", "type": image_format}
+        if image_format == "jpeg":
+            options["quality"] = self._int_config("card_image_quality", 80, 30, 95)
+        return await self.html_render(html, {}, options=options)
 
     # ---- session / event helpers ---------------------------------------
     @staticmethod
@@ -303,38 +353,21 @@ class MCGuessPlugin(Star):
             return ActionResult(str(exc), error=True)
 
     # ---- rendering ------------------------------------------------------
-    async def _render_card(self, html: str) -> str | None:
-        """Render HTML through AstrBot's t2i service, with timeout and a breaker.
+    async def _render_card(self, html: str) -> RenderedCard | None:
+        """Render one card, preferring the local browser and degrading to text.
 
-        AstrBot 4.x sends custom HTML to a remote t2i endpoint and has no local
-        fallback and no timeout, so a dead endpoint could block a guess for
-        minutes. We cap the wait and stop trying for a while after a failure.
+        All timeout / breaker / fallback policy lives in ``CardRenderService``;
+        this method only honours the ``render_cards`` switch.
         """
-        if time.monotonic() < self._render_block_until:
+        if not self._bool_config("render_cards", True):
             return None
-        try:
-            timeout = float(self._config("render_timeout_seconds", RENDER_TIMEOUT_DEFAULT))
-        except (TypeError, ValueError):
-            timeout = RENDER_TIMEOUT_DEFAULT
-        try:
-            url = await asyncio.wait_for(
-                self.html_render(
-                    html,
-                    {},
-                    options={"type": "png", "full_page": True, "animations": "disabled"},
-                ),
-                timeout=max(0.05, timeout),
-            )
-        except Exception as exc:  # noqa: BLE001 - cards are optional
-            self._render_failures += 1
-            logger.warning("MC 猜谜卡片渲染失败，本次改用文本：%s", exc)
-            if self._render_failures >= RENDER_FAILURE_THRESHOLD:
-                self._render_block_until = time.monotonic() + RENDER_BLOCK_SECONDS
-                logger.warning("MC 猜谜卡片渲染失败，暂停图片卡片 %s 秒。", RENDER_BLOCK_SECONDS)
-            return None
-        self._render_failures = 0
-        self._render_block_until = 0.0
-        return url
+        return await self.rendering.render(html)
+
+    @staticmethod
+    def _with_card(text: str, card: RenderedCard | None) -> ActionResult:
+        if card is None:
+            return ActionResult(text)
+        return ActionResult(text=text, image=card.image, image_url=card.image_url)
 
     # ---- actions --------------------------------------------------------
     async def _action_start(
@@ -477,9 +510,9 @@ class MCGuessPlugin(Star):
                     "footer": "🟩 完全一致　🟨 部分符合或接近　⬜ 不符　⬆⬇ 答案数值更大/更小",
                 }
             )
-            url = await self._render_card(html)
-            if url:
-                return ActionResult(text=self._help_text(), image_url=url)
+            card = await self._render_card(html)
+            if card is not None:
+                return self._with_card(self._help_text(), card)
         return ActionResult(self._help_text())
 
     # ---- reply building -------------------------------------------------
@@ -533,13 +566,11 @@ class MCGuessPlugin(Star):
             columns=4 if category.key != "mob" else 3,
         )
         try:
-            url = await self._render_card(build_guess_card_html(view))
+            card = await self._render_card(build_guess_card_html(view))
         except Exception as exc:  # noqa: BLE001 - fall back to plain text
             logger.warning("MC 猜谜卡片构建失败，改用文本：%s", exc)
             return ActionResult(text)
-        if url:
-            return ActionResult(text=text, image_url=url)
-        return ActionResult(text)
+        return self._with_card(text, card)
 
     def _ended_text(self, state: dict[str, Any], answer: dict[str, Any] | None) -> str:
         name = str((answer or {}).get("name") or "未知")
@@ -556,6 +587,8 @@ class MCGuessPlugin(Star):
 
     @staticmethod
     def _emit(event: AstrMessageEvent, result: ActionResult):
+        if result.image:
+            return event.chain_result([ImageComponent.fromBytes(result.image)])
         if result.image_url:
             return event.image_result(result.image_url)
         return event.plain_result(result.text)
@@ -628,13 +661,19 @@ class MCGuessPlugin(Star):
             result = await self._dispatch_tool(event, request)
         except CatalogError as exc:
             return llm_tool.error(str(exc))
-        if result.image_url:
-            await event.send(event.image_result(result.image_url))
+        if result.has_image():
+            await event.send(self._image_chain(event, result))
             if self._bool_config("llm_tool_cards_only", True):
                 return None  # 卡片就是回答：结束本轮，不再多一次 LLM 请求
         if result.error:
             return llm_tool.error(result.text)
-        return llm_tool.result(result.text, card_sent=bool(result.image_url))
+        return llm_tool.result(result.text, card_sent=result.has_image())
+
+    @staticmethod
+    def _image_chain(event: AstrMessageEvent, result: ActionResult):
+        if result.image:
+            return event.chain_result([ImageComponent.fromBytes(result.image)])
+        return event.image_result(result.image_url)
 
     async def _dispatch_tool(self, event: AstrMessageEvent, request: llm_tool.Request) -> ActionResult:
         if request.action == "help":

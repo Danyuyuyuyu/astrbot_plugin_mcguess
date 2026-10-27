@@ -15,10 +15,47 @@
     "default": true,
     "description": "用图片卡片展示猜测反馈与帮助；渲染失败会自动回退为纯文本。"
   },
+  "render_backend": {
+    "type": "string",
+    "default": "auto",
+    "options": ["auto", "local", "remote"],
+    "description": "卡片渲染后端：auto=优先本地 Playwright、失败回退远端；local=只用本地；remote=沿用 AstrBot 的 html_render（远端 t2i）。"
+  },
+  "card_image_format": {
+    "type": "string",
+    "default": "jpeg",
+    "options": ["jpeg", "png"],
+    "description": "卡片图片格式。jpeg 体积小、发送快；png 文字最锐利但体积大。"
+  },
+  "card_image_quality": {
+    "type": "int",
+    "default": 80,
+    "description": "JPEG 质量（30-95），仅 card_image_format=jpeg 时生效。"
+  },
+  "render_scale": {
+    "type": "float",
+    "default": 1.0,
+    "description": "本地渲染缩放（0.5-2.0）。1.0 为原始像素；调小可减小图片体积，调大更清晰但更慢。"
+  },
+  "browser_path": {
+    "type": "string",
+    "default": "",
+    "description": "Chromium 可执行文件路径；留空使用 playwright install 下载的浏览器。"
+  },
+  "local_render_timeout_seconds": {
+    "type": "float",
+    "default": 20.0,
+    "description": "本地渲染超时（秒），包含首次启动 Chromium 的时间。"
+  },
+  "remote_render_fallback": {
+    "type": "bool",
+    "default": true,
+    "description": "本地渲染失败时是否回退到 AstrBot 的 html_render（远端 t2i）。"
+  },
   "render_timeout_seconds": {
     "type": "float",
-    "default": 6.0,
-    "description": "图片卡片渲染超时（秒）。AstrBot 默认使用远程 t2i 渲染服务，超时或失败会改用纯文本并暂停图片卡片 5 分钟。"
+    "default": 15.0,
+    "description": "远端回退渲染的超时（秒）。AstrBot 默认使用公共 t2i 服务，网络波动时可能需要更长时间。"
   },
   "free_text_guess": {
     "type": "bool",
