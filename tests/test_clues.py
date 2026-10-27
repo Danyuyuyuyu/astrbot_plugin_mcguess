@@ -31,6 +31,17 @@ def test_number_bounds_use_direction_and_tolerance(real):
     assert clues["blast_resistance"]["state"] == "known"
 
 
+def test_number_clue_bounds_are_rounded_for_display():
+    field = {"key": "blast", "label": "爆炸抗性", "kind": "number", "tolerance_ratio": 0.25}
+    # 0.5 (miss, up) -> lower bound 0.5/0.75; 6 (miss, down) -> upper bound 6*0.75
+    clue = core.summarize_clues(
+        [field],
+        [{"attrs": {"blast": 0.5}}, {"attrs": {"blast": 6}}],
+        {"attrs": {"blast": 3}},
+    )[0]
+    assert clue["text"] == "0.67 < ? < 4.5"
+
+
 def test_no_guesses_means_no_clues(real):
     block = real.category("block")
     clues = _clues(block, "铁块", [])

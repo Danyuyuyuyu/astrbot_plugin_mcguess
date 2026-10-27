@@ -392,6 +392,28 @@ def _close_threshold(guess: float, field: dict[str, Any], direction: str) -> flo
     return threshold
 
 
+def _format_bound(field: dict[str, Any], value: float) -> str:
+    """Format a tolerance-derived clue bound without float noise (0.67, not 0.666667)."""
+    number = _number(value)
+    if number is None:
+        return format_value(field, value)
+    precision = field.get("precision")
+    if isinstance(precision, int) and not isinstance(precision, bool):
+        decimals = max(0, min(6, precision))
+    else:
+        tolerance = _number(field.get("tolerance"))
+        if tolerance is not None and tolerance > 0:
+            text = f"{tolerance:.6f}".rstrip("0")
+            decimals = len(text.split(".")[1]) if "." in text else 0
+        else:
+            decimals = 2  # relative tolerance (or unknown): two decimals is enough for a clue
+    text = f"{number:.{decimals}f}"
+    if "." in text:
+        text = text.rstrip("0").rstrip(".")
+    unit = str(field.get("unit") or "")
+    return f"{text}{unit}" if unit else text
+
+
 def _number_clue(field: dict[str, Any], observations: list[tuple[Any, dict[str, Any]]]) -> dict[str, Any]:
     low: tuple[float, bool] | None = None
     high: tuple[float, bool] | None = None
@@ -421,10 +443,10 @@ def _number_clue(field: dict[str, Any], observations: list[tuple[Any, dict[str, 
         return {"state": CLUE_KNOWN, "text": f"= {format_value(field, low[0])}"}
     parts: list[str] = []
     if low is not None:
-        parts.append(f"{format_value(field, low[0])} {'≤' if low[1] else '<'}")
+        parts.append(f"{_format_bound(field, low[0])} {'≤' if low[1] else '<'}")
     parts.append("?")
     if high is not None:
-        parts.append(f"{'≤' if high[1] else '<'} {format_value(field, high[0])}")
+        parts.append(f"{'≤' if high[1] else '<'} {_format_bound(field, high[0])}")
     return {"state": CLUE_PARTIAL, "text": " ".join(parts)}
 
 
