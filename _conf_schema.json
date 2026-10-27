@@ -18,13 +18,20 @@
   "render_backend": {
     "type": "string",
     "default": "auto",
-    "options": ["auto", "local", "remote"],
+    "options": [
+      "auto",
+      "local",
+      "remote"
+    ],
     "description": "卡片渲染后端：auto=优先本地 Playwright、失败回退远端；local=只用本地；remote=沿用 AstrBot 的 html_render（远端 t2i）。"
   },
   "card_image_format": {
     "type": "string",
     "default": "jpeg",
-    "options": ["jpeg", "png"],
+    "options": [
+      "jpeg",
+      "png"
+    ],
     "description": "卡片图片格式。jpeg 体积小、发送快；png 文字最锐利但体积大。"
   },
   "card_image_quality": {
@@ -34,8 +41,8 @@
   },
   "render_scale": {
     "type": "float",
-    "default": 1.0,
-    "description": "本地渲染缩放（0.5-2.0）。1.0 为原始像素；调小可减小图片体积，调大更清晰但更慢。"
+    "default": 1.5,
+    "description": "本地渲染缩放（0.5-2.0）。卡片 800 px 宽，默认 1.5 倍输出约 1200 px，手机上更清晰；调小可减小图片体积。"
   },
   "browser_path": {
     "type": "string",
@@ -60,7 +67,12 @@
   "free_text_guess": {
     "type": "bool",
     "default": true,
-    "description": "对局中直接发送词条名即算一次猜测（群聊仍需 @机器人 或唤醒前缀）。"
+    "description": "对局中直接发送词条名即算一次猜测（私聊或 @机器人 时生效；群聊免 @ 见下一项）。"
+  },
+  "group_guess_without_at": {
+    "type": "bool",
+    "default": true,
+    "description": "群聊对局进行中，不 @机器人 也能直接猜：整句话必须正好是词条名（或「我猜X」），状态/提示/放弃等仍需 @；重复的名字静默忽略。"
   },
   "llm_tool_enabled": {
     "type": "bool",

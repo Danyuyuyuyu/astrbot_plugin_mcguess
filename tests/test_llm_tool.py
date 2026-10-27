@@ -42,7 +42,7 @@ def test_schema_is_complete_json_schema():
     for field, spec in properties.items():
         assert spec["type"] == "string", field
         assert spec["description"].strip(), field
-    assert properties["action"]["enum"] == ["开始", "猜", "状态", "提示", "放弃", "帮助"]
+    assert properties["action"]["enum"] == ["开始", "猜", "状态", "提示", "放弃", "排行", "帮助"]
     assert properties["category"]["enum"] == ["方块", "物品", "生物"]
     assert properties["difficulty"]["enum"] == ["简单", "普通", "困难"]
     assert str(MAX_NAME_LENGTH) in properties["name"]["description"]
@@ -74,7 +74,7 @@ def test_action_whitespace_is_tolerated():
 
 @pytest.mark.parametrize(
     ("word", "expected"),
-    [("状态", "status"), ("提示", "hint"), ("放弃", "giveup"), ("帮助", "help")],
+    [("状态", "status"), ("提示", "hint"), ("放弃", "giveup"), ("排行", "rank"), ("帮助", "help")],
 )
 def test_simple_actions(word, expected):
     request = parse_args({"action": word})

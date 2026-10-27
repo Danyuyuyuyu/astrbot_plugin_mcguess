@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any
 
 RENDER_FORMATS = ("jpeg", "png")
-DEFAULT_VIEWPORT_WIDTH = 1120
+DEFAULT_VIEWPORT_WIDTH = 800  # matches card_renderer.CARD_WIDTH
 DEFAULT_VIEWPORT_HEIGHT = 240
 DEFAULT_PAGE_TIMEOUT = 20.0
 MIN_QUALITY = 30

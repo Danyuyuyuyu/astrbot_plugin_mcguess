@@ -22,6 +22,9 @@ ACTIONS = {
     "提示": "hint",
     "放弃": "giveup",
     "帮助": "help",
+    "排行": "rank",
+    "排行榜": "rank",
+    "rank": "rank",
     "start": "start",
     "guess": "guess",
     "status": "status",
@@ -52,7 +55,7 @@ MAX_NAME_LENGTH = 32
 
 DESCRIPTION = (
     "玩《我的世界猜谜》（MCGuess）：开始一局、按名字猜方块/物品/生物、查看进度、要提示、放弃看答案、查看玩法。"
-    "用户说“开始猜方块/物品/生物”“我猜金块”“还剩几次”“给个提示”“放弃”“怎么玩”时调用。"
+    "用户说“开始猜方块/物品/生物”“我猜金块”“还剩几次”“给个提示”“放弃”“排行榜”“怎么玩”时调用。"
     "返回 JSON：status、text（可直接转述给用户的要点）、next（下一步建议）；"
     "不要编造猜测结果或属性反馈，结果以 text 为准。"
 )
@@ -63,8 +66,8 @@ SCHEMA = {
     "properties": {
         "action": {
             "type": "string",
-            "enum": ["开始", "猜", "状态", "提示", "放弃", "帮助"],
-            "description": "开始=新开一局；猜=提交一次名字；状态=查看本局进度；提示=要一条线索；放弃=结束并公布答案；帮助=玩法与指令说明",
+            "enum": ["开始", "猜", "状态", "提示", "放弃", "排行", "帮助"],
+            "description": "开始=新开一局；猜=提交一次名字；状态=查看本局进度；提示=要一条线索；放弃=结束并公布答案；排行=本群排行榜；帮助=玩法与指令说明",
         },
         "category": {
             "type": "string",
@@ -87,7 +90,7 @@ SCHEMA = {
 
 NEXT = "继续猜就直接说下一个名字；看进度说“状态”；卡住了说“提示”；结束说“放弃”；新开一局说“开始”。"
 
-_ACTION_HINT = "开始 / 猜 / 状态 / 提示 / 放弃 / 帮助"
+_ACTION_HINT = "开始 / 猜 / 状态 / 提示 / 放弃 / 排行 / 帮助"
 
 
 class InvalidArgs(ValueError):
@@ -126,7 +129,7 @@ def parse_args(args: dict[str, Any]) -> Request:
 
     action = _lookup(ACTIONS, _text(args, "action"))
     if not action:
-        raise InvalidArgs("action 只能是：" + _ACTION_HINT + "，或英文 start/guess/status/hint/giveup/help")
+        raise InvalidArgs("action 只能是：" + _ACTION_HINT + "，或英文 start/guess/status/hint/giveup/rank/help")
 
     if action == "start":
         category = _validated(args, "category", CATEGORIES, "方块 / 物品 / 生物", "block/item/mob")

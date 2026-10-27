@@ -15,7 +15,8 @@ from astrbot.core.message.components import Image as ImageComponent
 from astrbot.core.provider.register import llm_tools
 
 from . import core, llm_tool
-from .card_renderer import build_guess_card_html, build_help_card_html, make_guess_card_view
+from . import card_views
+from .card_renderer import build_guess_card_html, build_help_card_html, build_rank_card_html, build_status_card_html
 from .catalog import CatalogError, Catalogue
 from .game_service import EXPIRED, GAVE_UP, LOST, PLAYING, WON, GameService
 from .render_service import BACKEND_AUTO, CardRenderService, RenderSettings, RenderedCard
@@ -84,6 +85,12 @@ COMMAND_ACTIONS = {
     "结束": "giveup",
     "giveup": "giveup",
     "quit": "giveup",
+    "排行": "rank",
+    "排行榜": "rank",
+    "排名": "rank",
+    "榜": "rank",
+    "rank": "rank",
+    "top": "rank",
 }
 
 COMMAND_WORDS = {
@@ -101,6 +108,8 @@ COMMAND_WORDS = {
 SHORTCUT_WORDS = {"状态": "status", "进度": "status", "提示": "hint", "放弃": "giveup"}
 
 GUESS_PREFIXES = ("我猜是", "我猜", "猜是", "猜一下", "是", "猜")
+# Without @ only explicit guesses count: "是X" is too common in normal chat.
+QUIET_GUESS_PREFIXES = ("我猜是", "我猜", "猜是", "猜一下", "猜")
 
 PLAYING_SYSTEM_PROMPT = (
     "\n\n【MC 猜谜】当前会话有一局《我的世界》猜谜正在进行。"
@@ -242,7 +251,7 @@ class MCGuessPlugin(Star):
         settings = LocalRenderSettings(
             image_format=str(self._config("card_image_format", "jpeg")),
             quality=self._int_config("card_image_quality", 80, 30, 95),
-            scale=self._float_config("render_scale", 1.0, 0.5, 2.0),
+            scale=self._float_config("render_scale", 1.5, 0.5, 2.0),
             browser_path=str(self._config("browser_path", "") or ""),
         )
         return LocalCardRenderer(settings, logger=self.logger)
@@ -264,6 +273,39 @@ class MCGuessPlugin(Star):
         if umo:
             return umo
         return str(getattr(getattr(event, "message_obj", None), "session_id", "") or "")
+
+    @staticmethod
+    def _player_name(event: AstrMessageEvent) -> str:
+        """Display name of the sender, used to credit guesses on the card."""
+        try:
+            name = event.get_sender_name()
+        except Exception:  # noqa: BLE001 - optional on some adapters / test doubles
+            name = ""
+        if not name:
+            sender = getattr(getattr(event, "message_obj", None), "sender", None)
+            name = getattr(sender, "nickname", "") or getattr(sender, "user_id", "")
+        return str(name or "").strip()
+
+    @staticmethod
+    def _player_id(event: AstrMessageEvent) -> str:
+        """Stable sender id for the leaderboard (nicknames change, ids do not)."""
+        try:
+            sender_id = event.get_sender_id()
+        except Exception:  # noqa: BLE001
+            sender_id = ""
+        if not sender_id:
+            sender = getattr(getattr(event, "message_obj", None), "sender", None)
+            sender_id = getattr(sender, "user_id", "")
+        return str(sender_id or "").strip()
+
+    def _note_tool_use(self, session_id: str) -> None:
+        """Remember the last LLM tool call per session; forget sessions idle past the follow-up window."""
+        now = time.monotonic()
+        self._last_tool_use[session_id] = now
+        if len(self._last_tool_use) > 64:
+            cutoff = now - FOLLOW_UP_SECONDS
+            for key in [key for key, used in self._last_tool_use.items() if used < cutoff]:
+                del self._last_tool_use[key]
 
     @staticmethod
     def _is_group(event: AstrMessageEvent) -> bool:
@@ -344,6 +386,8 @@ class MCGuessPlugin(Star):
             return await self._action_hint(event)
         if action == "giveup":
             return await self._action_give_up(event)
+        if action == "rank":
+            return await self._action_rank(event)
         return await self._action_help()
 
     async def _safe_start(self, event: AstrMessageEvent, category_key: str, arguments: str) -> ActionResult:
@@ -445,7 +489,13 @@ class MCGuessPlugin(Star):
                     error=True,
                 )
         try:
-            updated, row, answer = await self.games.guess(self._session_id(event), guess, catalogue)
+            updated, row, answer = await self.games.guess(
+                self._session_id(event),
+                guess,
+                catalogue,
+                player=self._player_name(event),
+                player_id=self._player_id(event),
+            )
         except ValueError as exc:
             return ActionResult(str(exc), error=True)
         return await self._guess_reply(catalogue, updated, row, guess, answer)
@@ -468,12 +518,28 @@ class MCGuessPlugin(Star):
             names.append(entry["name"] if entry else entry_id)
         hints = list(state.get("hints") or [])
         guessed_text = "、".join(names) if names else "暂无"
-        return ActionResult(
+        text = (
             f"📋 {category.label}局 · {DIFFICULTY_LABELS.get(difficulty, difficulty)}\n"
             f"进度：{len(guesses)}/{self.max_attempts}，剩余 {max(0, self.max_attempts - len(guesses))} 次\n"
             f"已用提示：{len(hints)}/{self.games.hint_limit}\n"
             f"已猜：{guessed_text}"
         )
+        answer = self.games.answer_of(state, catalogue)
+        return await self._status_card(text, state, category, answer)
+
+    async def _status_card(self, text: str, state: dict[str, Any], category, answer) -> ActionResult:
+        """Clue-board card for status / give-up; plain text when cards are off or fail."""
+        if answer is None or not self._bool_config("render_cards", True):
+            return ActionResult(text)
+        try:
+            view = card_views.status_view(
+                state, category, answer, max_attempts=self.max_attempts, hint_limit=self.games.hint_limit
+            )
+            card = await self._render_card(build_status_card_html(view))
+        except Exception as exc:  # noqa: BLE001 - fall back to plain text
+            logger.warning("MC 猜谜线索卡片构建失败，改用文本：%s", exc)
+            return ActionResult(text)
+        return self._with_card(text, card)
 
     async def _action_hint(self, event: AstrMessageEvent) -> ActionResult:
         catalogue = self._require_catalogue()
@@ -493,11 +559,32 @@ class MCGuessPlugin(Star):
             return ActionResult(str(exc), error=True)
         category = catalogue.category(str(state.get("category")))
         guesses = len(state.get("guesses") or [])
-        return ActionResult(
+        text = (
             f"🏳️ 本局结束。答案是：{answer['name']}"
             + (f"（{answer['name_en']}）" if answer.get("name_en") else "")
             + f"\n类别：{category.label} · 共猜 {guesses} 次"
         )
+        return await self._status_card(text, state, category, answer)
+
+    async def _action_rank(self, event: AstrMessageEvent) -> ActionResult:
+        board = await self.games.leaderboard(self._session_id(event))
+        players = board["players"]
+        if players:
+            lines = [f"🏆 本群猜谜排行（共 {board['rounds']} 局）"]
+            for row in players:
+                best = f"，最快 {row['best']} 次" if row["best"] else ""
+                lines.append(f"{row['rank']}. {row['name']}：猜中 {row['wins']} 次{best}，参与 {row['rounds']} 局")
+            text = "\n".join(lines)
+        else:
+            text = "本群还没有完成的对局，玩一局就能上榜。"
+        if not self._bool_config("render_cards", True):
+            return ActionResult(text)
+        try:
+            card = await self._render_card(build_rank_card_html({"title": "本群猜谜排行榜", **board}))
+        except Exception as exc:  # noqa: BLE001 - fall back to plain text
+            logger.warning("MC 猜谜排行卡片构建失败，改用文本：%s", exc)
+            return ActionResult(text)
+        return self._with_card(text, card)
 
     async def _action_help(self) -> ActionResult:
         commands = self._help_commands()
@@ -525,7 +612,6 @@ class MCGuessPlugin(Star):
         answer: dict[str, Any],
     ) -> ActionResult:
         category = catalogue.category(str(state.get("category")))
-        difficulty = str(state.get("difficulty") or "normal")
         attempts = len(state.get("guesses") or [])
         remaining = max(0, self.max_attempts - attempts)
         if row["correct"]:
@@ -552,20 +638,17 @@ class MCGuessPlugin(Star):
 
         if not self._bool_config("render_cards", True):
             return ActionResult(text)
-        view = make_guess_card_view(
-            category_label=category.label,
-            category_icon=category.icon,
-            difficulty_label=DIFFICULTY_LABELS.get(difficulty, difficulty),
-            attempt=int(row["attempt"]),
-            max_attempts=self.max_attempts,
-            remaining=remaining,
-            guess_name=str(guess.get("name") or ""),
-            guess_name_en=str(guess.get("name_en") or ""),
-            feedback=row["feedback"],
-            status_text=status_text,
-            columns=4 if category.key != "mob" else 3,
-        )
         try:
+            view = card_views.guess_view(
+                state,
+                category,
+                row,
+                guess,
+                answer,
+                max_attempts=self.max_attempts,
+                hint_limit=self.games.hint_limit,
+                status_text=status_text,
+            )
             card = await self._render_card(build_guess_card_html(view))
         except Exception as exc:  # noqa: BLE001 - fall back to plain text
             logger.warning("MC 猜谜卡片构建失败，改用文本：%s", exc)
@@ -607,7 +690,9 @@ class MCGuessPlugin(Star):
         head = text.split(maxsplit=1)[0].casefold()
         if head in COMMAND_WORDS:
             return
-        if self._is_group(event) and not getattr(event, "is_at_or_wake_command", False):
+        woken = bool(getattr(event, "is_at_or_wake_command", False))
+        quiet = self._is_group(event) and not woken
+        if quiet and not self._bool_config("group_guess_without_at", True):
             return  # 群聊里避免把普通聊天误当成猜测
         try:
             catalogue = self._require_catalogue()
@@ -619,7 +704,8 @@ class MCGuessPlugin(Star):
             return
         category = catalogue.category(str(state.get("category")))
 
-        shortcut = SHORTCUT_WORDS.get(text)
+        # Without @ only exact names count; shortcuts like 放弃 still need @ so chatter can't end a round.
+        shortcut = None if quiet else SHORTCUT_WORDS.get(text)
         if shortcut == "status":
             yield self._emit(event, await self._action_status(event))
             return
@@ -632,7 +718,7 @@ class MCGuessPlugin(Star):
 
         guess = category.match_exact(text)
         if guess is None:
-            for prefix in GUESS_PREFIXES:
+            for prefix in QUIET_GUESS_PREFIXES if quiet else GUESS_PREFIXES:
                 if text.startswith(prefix) and len(text) > len(prefix):
                     guess = category.match_exact(text[len(prefix) :].strip())
                     if guess is not None:
@@ -640,10 +726,21 @@ class MCGuessPlugin(Star):
         if guess is None:
             return  # 不是词条名：交给 LLM / 其它插件处理
         try:
-            updated, row, answer = await self.games.guess(session_id, guess, catalogue)
+            updated, row, answer = await self.games.guess(
+                session_id,
+                guess,
+                catalogue,
+                player=self._player_name(event),
+                player_id=self._player_id(event),
+            )
         except ValueError as exc:
-            yield event.plain_result(str(exc))
+            if not quiet:  # 未 @ 时重复的名字多半是闲聊，静默忽略
+                yield event.plain_result(str(exc))
             return
+        if quiet:
+            stop = getattr(event, "stop_event", None)
+            if callable(stop):
+                stop()  # 已作为猜测处理，不再交给其它插件
         yield self._emit(event, await self._guess_reply(catalogue, updated, row, guess, answer))
 
     # ---- LLM tool --------------------------------------------------------
@@ -651,7 +748,7 @@ class MCGuessPlugin(Star):
     @filter.llm_tool(name=llm_tool.NAME)
     @_mark_doc(llm_tool.DESCRIPTION)
     async def mc_guess_tool(self, event: AstrMessageEvent, **args):
-        self._last_tool_use[self._session_id(event)] = time.monotonic()
+        self._note_tool_use(self._session_id(event))
         try:
             request = llm_tool.parse_args(args)
         except llm_tool.InvalidArgs as exc:
@@ -695,6 +792,8 @@ class MCGuessPlugin(Star):
             return await self._action_hint(event)
         if request.action == "giveup":
             return await self._action_give_up(event)
+        if request.action == "rank":
+            return await self._action_rank(event)
         return await self._action_help()
 
     @filter.on_llm_request()
@@ -741,7 +840,7 @@ class MCGuessPlugin(Star):
             },
             {
                 "command": "/mc猜 猜 <名字>",
-                "description": "提交一次猜测；对局中也可以直接发名字（群里需 @机器人）。",
+                "description": "提交一次猜测；对局中也可以直接发名字，群里免 @。",
                 "tag": "",
             },
             {
@@ -751,12 +850,17 @@ class MCGuessPlugin(Star):
             },
             {
                 "command": "/mc猜 状态",
-                "description": "查看类别、难度、已猜列表与剩余次数。",
+                "description": "查看全部已知线索与猜测记录（汇总所有人的猜测）。",
                 "tag": "",
             },
             {
                 "command": "/mc猜 放弃",
                 "description": "结束当前对局并公布答案。",
+                "tag": "",
+            },
+            {
+                "command": "/mc猜 排行",
+                "description": "本群排行榜：猜中次数、最快猜中、参与局数。",
                 "tag": "",
             },
             {
@@ -773,6 +877,6 @@ class MCGuessPlugin(Star):
             f"2. 每局最多 {self.max_attempts} 次；每次猜一个名字，机器人按属性给反馈。\n"
             "3. 🟩 完全一致　🟨 部分符合/数值接近　⬜ 不符　⬆⬇ 答案更大/更小。\n"
             f"4. 每局有 {self.games.hint_limit} 次免费提示：`/mc猜 提示`。\n"
-            "5. 对局中可直接发名字（群里需 @机器人 或唤醒前缀）；`/mc猜 状态`、`/mc猜 放弃`。\n"
+            "5. 对局中可直接发名字（群里可免 @，也可用「我猜X」）；`/mc猜 状态`、`/mc猜 放弃`、`/mc猜 排行`。\n"
             "名字支持中文名、英文名、ID 和常见别名。"
         )

@@ -34,6 +34,7 @@ class FakeEvent:
         self.is_at_or_wake_command = at
         self._private = private
         self.sent = []
+        self.stopped = False
 
     def is_private_chat(self) -> bool:
         return self._private
@@ -46,6 +47,9 @@ class FakeEvent:
 
     def chain_result(self, chain):
         return ("chain", chain)
+
+    def stop_event(self) -> None:
+        self.stopped = True
 
     async def send(self, result) -> None:
         self.sent.append(result)
@@ -239,7 +243,7 @@ def test_free_text_guesses_when_awake(tmp_dir, catalogue):
 
 def test_free_text_ignored_without_wake_in_group(tmp_dir, catalogue):
     async def scenario():
-        plugin = make_plugin(tmp_dir, catalogue)
+        plugin = make_plugin(tmp_dir, catalogue, config={"group_guess_without_at": False})
         event = FakeEvent("/mc猜 开始 方块 简单")
         await collect(plugin.mc_guess(event))
         state = await plugin.games.current(event.unified_msg_origin)
@@ -435,3 +439,128 @@ def test_tool_visibility_follows_game_state(tmp_dir, catalogue):
         assert visible is True and playing is True
 
     run(scenario())
+
+
+# ---- v1.3: guesser credit, clue board card -----------------------------------
+class NamedEvent(FakeEvent):
+    def get_sender_name(self) -> str:
+        return "Steve"
+
+
+def test_guess_records_sender_name(tmp_dir, catalogue):
+    async def scenario():
+        plugin = make_plugin(tmp_dir, catalogue)
+        await collect(plugin.mc_guess(NamedEvent("/mc猜 开始 方块 困难")))
+        state = await plugin.games.current("aiocqhttp:GroupMessage:1")
+        answer = answer_of(catalogue, state)
+        other = next(e for e in catalogue.entries("block") if e["id"] != answer["id"])
+        await collect(plugin.mc_guess(NamedEvent(f"/mc猜 猜 {other['name']}")))
+        state = await plugin.games.current("aiocqhttp:GroupMessage:1")
+        assert state["players"] == ["Steve"]
+        # adapters without get_sender_name still work
+        assert plugin._player_name(FakeEvent("x")) == ""
+
+    run(scenario())
+
+
+def test_status_and_give_up_render_clue_board(tmp_dir, catalogue):
+    async def scenario():
+        rendering = FakeRendering(RenderedCard(backend="local", image=b"CARD"))
+        plugin = make_plugin(tmp_dir, catalogue, config={"render_cards": True}, rendering=rendering)
+        await collect(plugin.mc_guess(FakeEvent("/mc猜 开始 方块 简单")))
+        results = await collect(plugin.mc_guess(FakeEvent("/mc猜 状态")))
+        assert results[0][0] == "chain" and rendering.calls == 1
+        results = await collect(plugin.mc_guess(FakeEvent("/mc猜 放弃")))
+        assert results[0][0] == "chain" and rendering.calls == 2
+
+    run(scenario())
+
+
+def test_status_falls_back_to_text_when_render_fails(tmp_dir, catalogue):
+    async def scenario():
+        plugin = make_plugin(tmp_dir, catalogue, config={"render_cards": True}, rendering=FakeRendering(None))
+        await collect(plugin.mc_guess(FakeEvent("/mc猜 开始 方块")))
+        results = await collect(plugin.mc_guess(FakeEvent("/mc猜 状态")))
+        assert results[0][0] == "text" and "进度" in results[0][1]
+
+    run(scenario())
+
+
+# ---- v1.4: group guesses without @, leaderboard --------------------------------
+def test_group_guess_without_at_only_for_exact_names(tmp_dir, catalogue):
+    async def scenario():
+        plugin = make_plugin(tmp_dir, catalogue)
+        await collect(plugin.mc_guess(FakeEvent("/mc猜 开始 方块 简单")))
+        state = await plugin.games.current("aiocqhttp:GroupMessage:1")
+        answer = answer_of(catalogue, state)
+        other = next(e for e in catalogue.entries("block") if e["id"] != answer["id"])
+
+        # ordinary chatter and shortcuts are ignored without @
+        for text in ("今天吃什么", "放弃", "提示", f"是{other['name']}"):
+            assert await collect(plugin.free_text_guess(FakeEvent(text, at=False))) == []
+        assert (await plugin.games.current("aiocqhttp:GroupMessage:1"))["status"] == "playing"
+
+        quiet = FakeEvent(other["name"], at=False)
+        results = await collect(plugin.free_text_guess(quiet))
+        assert results and quiet.stopped
+        # repeating an already-guessed name without @ stays silent
+        assert await collect(plugin.free_text_guess(FakeEvent(other["name"], at=False))) == []
+        results = await collect(plugin.free_text_guess(FakeEvent(f"我猜{answer['name']}", at=False)))
+        assert "猜中了" in feedback_text(results)
+
+    run(scenario())
+
+
+class Player(FakeEvent):
+    def __init__(self, text, name, uid, **kwargs):
+        super().__init__(text, **kwargs)
+        self._name, self._uid = name, uid
+
+    def get_sender_name(self):
+        return self._name
+
+    def get_sender_id(self):
+        return self._uid
+
+
+def test_leaderboard_counts_wins_and_participation(tmp_dir, catalogue):
+    async def scenario():
+        plugin = make_plugin(tmp_dir, catalogue)
+        for winner in ("Alex", "Alex", "Steve"):
+            await collect(plugin.mc_guess(FakeEvent("/mc猜 开始 方块 简单")))
+            state = await plugin.games.current("aiocqhttp:GroupMessage:1")
+            answer = answer_of(catalogue, state)
+            other = next(e for e in catalogue.entries("block") if e["id"] != answer["id"])
+            loser = "Steve" if winner == "Alex" else "Alex"
+            await collect(plugin.mc_guess(Player(f"/mc猜 猜 {other['name']}", loser, f"id-{loser}")))
+            await collect(plugin.mc_guess(Player(f"/mc猜 猜 {answer['name']}", winner, f"id-{winner}")))
+        # same id with a new nickname is still the same player
+        board = await plugin.games.leaderboard("aiocqhttp:GroupMessage:1")
+        assert board["rounds"] == 3
+        assert [(r["name"], r["wins"], r["rounds"], r["best"]) for r in board["players"]] == [
+            ("Alex", 2, 3, 2),
+            ("Steve", 1, 3, 2),
+        ]
+        text = feedback_text(await collect(plugin.mc_guess(FakeEvent("/mc猜 排行"))))
+        assert "1. Alex：猜中 2 次" in text
+
+    run(scenario())
+
+
+def test_rank_card_and_empty_board(tmp_dir, catalogue):
+    async def scenario():
+        rendering = FakeRendering(RenderedCard(backend="local", image=b"CARD"))
+        plugin = make_plugin(tmp_dir, catalogue, config={"render_cards": True}, rendering=rendering)
+        results = await collect(plugin.mc_guess(FakeEvent("/mc猜 排行榜")))
+        assert results[0][0] == "chain" and rendering.calls == 1
+        plain = make_plugin(tmp_dir, catalogue)
+        assert "还没有完成的对局" in feedback_text(await collect(plain.mc_guess(FakeEvent("/mc猜 排行"))))
+
+    run(scenario())
+
+
+def test_last_tool_use_is_pruned(tmp_dir, catalogue):
+    plugin = make_plugin(tmp_dir, catalogue)
+    plugin._last_tool_use = {f"s{i}": -10_000.0 for i in range(100)}
+    plugin._note_tool_use("fresh")
+    assert list(plugin._last_tool_use) == ["fresh"]

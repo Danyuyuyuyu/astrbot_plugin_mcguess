@@ -3,34 +3,22 @@
 from __future__ import annotations
 
 import json
+import re
 
 from astrbot_plugin_mcguess.card_renderer import (
+    auto_columns,
     build_guess_card_html,
     build_help_card_html,
+    build_status_card_html,
     make_guess_card_view,
+    make_status_card_view,
 )
 
 
 def _feedback() -> list[dict]:
     return [
-        {
-            "key": "hardness",
-            "label": "硬度",
-            "status": "exact",
-            "direction": None,
-            "value": "3",
-            "hits": [],
-            "hit_keys": [],
-        },
-        {
-            "key": "tool",
-            "label": "工具",
-            "status": "close",
-            "direction": "up",
-            "value": "镐",
-            "hits": [],
-            "hit_keys": [],
-        },
+        {"key": "hardness", "label": "硬度", "status": "exact", "direction": None, "value": "3", "hits": []},
+        {"key": "tool", "label": "工具", "status": "close", "direction": "up", "value": "镐", "hits": []},
         {
             "key": "obtaining",
             "label": "获得方式",
@@ -40,20 +28,21 @@ def _feedback() -> list[dict]:
             "hits": ["合成"],
             "hit_keys": ["Crafting"],
         },
-        {  # miss tiles may omit optional keys entirely
-            "key": "initial_release",
-            "label": "初始版本",
-            "status": "miss",
-            "direction": "down",
-            "value": "Alpha 1.0.1",
-        },
+        {"key": "initial_release", "label": "初始版本", "status": "miss", "direction": "down", "value": "Alpha 1.0.1"},
+    ]
+
+
+def _history() -> list[dict]:
+    return [
+        {"n": 3, "name": "金块", "player": "Steve", "states": ["exact", "close", "close", "miss"]},
+        {"n": 2, "name": "玻璃", "player": "Alex", "states": ["miss", "miss", "exact", "miss"]},
     ]
 
 
 def _view(**overrides) -> dict:
     kwargs = {
+        "category_key": "block",
         "category_label": "方块",
-        "category_icon": "🧱",
         "difficulty_label": "普通",
         "attempt": 3,
         "max_attempts": 25,
@@ -61,8 +50,11 @@ def _view(**overrides) -> dict:
         "guess_name": "金块",
         "guess_name_en": "Gold Block",
         "feedback": _feedback(),
-        "status_text": "还剩 22 次",
-        "columns": 4,
+        "player": "Steve",
+        "clues": [{"key": "initial_release", "state": "partial", "text": "早于 Alpha 1.0.1"}],
+        "history": _history(),
+        "hints_used": 1,
+        "hint_limit": 3,
     }
     kwargs.update(overrides)
     return make_guess_card_view(**kwargs)
@@ -72,303 +64,200 @@ def _html(**overrides) -> str:
     return build_guess_card_html(_view(**overrides))
 
 
+# ---- view ------------------------------------------------------------------
 def test_view_maps_feedback_in_order():
-    view = _view()
-    tiles = view["tiles"]
+    tiles = _view()["tiles"]
     assert [tile["key"] for tile in tiles] == ["hardness", "tool", "obtaining", "initial_release"]
     assert [tile["status"] for tile in tiles] == ["exact", "close", "close", "miss"]
-    assert tiles[0]["label"] == "硬度" and tiles[0]["value"] == "3"
-    assert tiles[0]["status_label"] == "完全相同" and tiles[0]["status_symbol"] == "🟩"
-    assert tiles[1]["arrow"] == "⬆" and tiles[1]["direction"] == "up"
-    assert tiles[3]["arrow"] == "⬇"
+    assert tiles[1]["direction"] == "up" and tiles[3]["direction"] == "down"
     assert tiles[2]["hits"] == ["合成"]
-    assert tiles[3]["hits"] == []
-    assert view["has_feedback"] is True
+    assert tiles[3]["clue"] == "早于 Alpha 1.0.1"
 
 
-def test_view_metadata_and_defaults():
+def test_view_counts_hits_and_history():
     view = _view()
-    assert view["category_label"] == "方块"
-    assert view["category_icon"] == "🧱"
-    assert view["difficulty_label"] == "普通"
-    assert (view["attempt"], view["max_attempts"], view["remaining"]) == (3, 25, 22)
-    assert view["guess_name"] == "金块"
-    assert view["guess_name_en"] == "Gold Block"
-    assert view["status_text"] == "还剩 22 次"
-    assert view["columns"] == 4
-    # The view is plain JSON-serializable data.
-    json.dumps(view, ensure_ascii=False)
+    assert view["hit"] == 1
+    assert [row["hit"] for row in view["history"]] == [1, 1]
+    assert view["history_more"] == 0
+    assert _view(history_total=10)["history_more"] == 8
 
 
-def test_view_accepts_none_feedback():
-    view = _view(feedback=None)
-    assert view["tiles"] == []
-    assert view["has_feedback"] is False
+def test_exact_tiles_never_show_redundant_clue_or_hits():
+    view = _view(clues=[{"key": "hardness", "state": "known", "text": "= 3"}])
+    assert view["tiles"][0]["clue"] == "" and view["tiles"][0]["hits"] == []
 
 
-def test_view_skips_non_dict_feedback_items():
-    view = _view(feedback=[{"key": "a", "label": "甲", "status": "exact", "value": "1"}, "junk", None])
+def test_view_normalizes_junk_input():
+    view = _view(feedback=[{"status": "weird", "direction": "sideways"}, "junk"], remaining=-2, outcome="??")
     assert len(view["tiles"]) == 1
+    assert view["tiles"][0]["status"] == "miss" and view["tiles"][0]["direction"] == ""
+    assert view["remaining"] == 0 and view["outcome"] == "playing"
 
 
-def test_negative_remaining_is_clamped():
-    assert _view(remaining=-2)["remaining"] == 0
-
-
-def test_columns_normalized_and_clamped():
-    assert _view(columns=3)["columns"] == 3
+def test_columns_auto_and_clamped():
+    assert auto_columns(11) == 4 and auto_columns(9) == 3 and auto_columns(6) == 3 and auto_columns(2) == 2
     assert _view(columns=99)["columns"] == 6
-    assert _view(columns=0)["columns"] == 1
     assert _view(columns="3; }body{display:none}")["columns"] == 4
-    assert _view(columns=None)["columns"] == 4
 
 
-def test_html_contains_header_details():
+# ---- guess card ------------------------------------------------------------
+def test_guess_card_header_and_current_guess():
     html = _html()
-    assert "<!doctype html>" in html
-    assert "<title>MCGuess · 方块</title>" in html
-    assert "MINECRAFT 猜谜 · MCGUESS" in html
-    assert "🧱" in html
-    assert "难度 普通" in html
-    assert "第 3 次" in html
-    assert "剩余" in html
-    assert "<strong>22</strong>" in html
-    assert "/ 25" in html
-    assert "width: 88%" in html  # 22/25 remaining
-    assert "本次猜测" in html and "金块" in html and "Gold Block" in html
-    assert "还剩 22 次" in html
+    assert "<!doctype html>" in html and "<title>MCGuess · 方块</title>" in html
+    assert "猜方块" in html and "普通" in html and "提示 1/3" in html
+    assert "22<small>/ 25</small>" in html and "剩余机会" in html
+    assert "<b>Steve</b> 第 3 次猜" in html and "金块<span>Gold Block</span>" in html
+    assert "1<small>/4</small>" in html  # attribute hits
 
 
-def test_header_progress_bar_is_clamped():
-    assert "width: 100%" in _html(remaining=999)
-    assert "width: 0%" in _html(remaining=-5)
-    assert "width: 0%" in _html(max_attempts=0, remaining=0)
+def test_segment_bar_matches_remaining_and_is_clamped():
+    assert _html().count('<i class="on">') == 22
+    assert _html(remaining=999).count('<i class="on">') == 25
+    assert _html(max_attempts=0, remaining=0).count('<i class="on">') == 0
+    assert 'class="num crit"' in _html(remaining=3)
 
 
-def test_header_mode_accent_classes():
-    assert 'class="board mode-block"' in _html()
-    assert 'class="board mode-item"' in _html(category_label="物品", category_icon="🎒")
-    assert 'class="board mode-mob"' in _html(category_label="生物", category_icon="🐷")
-    assert 'class="board mode-block"' in _html(category_label="未知类别")
+def test_mode_accent_classes():
+    assert 'class="card block"' in _html()
+    assert 'class="card item"' in _html(category_key="item", category_label="物品")
+    assert 'class="card mob"' in _html(category_key="", category_label="生物")
+    assert 'class="card block"' in _html(category_key="", category_label="未知类别")
 
 
-def test_html_grid_columns_follow_view():
-    assert 'style="--cols: 4"' in _html()
-    assert 'style="--cols: 3"' in _html(columns=3)
-    assert "repeat(var(--cols, 4), minmax(0, 1fr))" in _html()
-
-
-def test_html_renders_three_states_and_arrows():
+def test_states_use_shape_not_just_colour():
     html = _html()
-    assert '<article class="tile exact">' in html
-    assert '<article class="tile close">' in html
-    assert '<article class="tile miss">' in html
-    assert html.count('<article class="tile ') == 4
-    assert '<span class="dir up">⬆</span>' in html
-    assert '<span class="dir down">⬇</span>' in html
-    assert "🟩 完全相同" in html
-    assert "🟨 接近" in html
-    assert "⬜ 不匹配" in html
+    assert '<div class="t exact">' in html and '<div class="t close">' in html and '<div class="t miss">' in html
+    assert html.count('class="st" title=') == 4
+    assert "更大</span>" in html and "更小</span>" in html
+    assert '<span class="hit">含 合成</span>' in html
+    assert "Crafting" not in html  # raw keys never leak
 
 
-def test_html_highlights_set_hits_only_as_labels():
+def test_clue_line_and_note_tile_fill_the_grid():
     html = _html()
-    assert '<div class="hits">' in html
-    assert '<span class="hit">合成</span>' in html
-    assert "命中" in html
-    # Raw internal values must not leak into the card.
-    assert "Crafting" not in html
-    assert "hit_keys" not in html
+    assert "<b>线索</b>早于 Alpha 1.0.1" in html
+    # 4 tiles in 4 columns: no hole, no hint note
+    assert "grid-column: span" not in html
+    html = _html(columns=3)
+    assert "grid-column: span 2" in html and "/mc猜 提示" in html and "还剩 2 次" in html
 
 
-def test_html_unknown_status_and_direction_fall_back():
-    feedback = [
-        {"key": "x", "label": "甲", "status": "weird", "direction": "sideways", "value": "1"},
-    ]
-    html = _html(feedback=feedback)
-    assert '<article class="tile miss">' in html
-    assert '<span class="dir' not in html
+def test_history_rows_newest_first_with_players():
+    html = _html()
+    assert html.index(">#3<") < html.index(">#2<")
+    assert '<span class="pl">Alex</span>' in html
+    assert 'class="row cur"' in html
+
+
+def test_won_card_hides_tiles_and_reveals_answer():
+    html = _html(outcome="won", answer_name="金块", participants=3)
+    assert 'class="guess won"' in html and "<b>Steve</b> 猜中了！" in html and "3 人参与" in html
+    assert '<div class="grid"' not in html
+    assert "/mc猜 开始" in html
+
+
+def test_lost_card_reveals_answer_and_keeps_last_feedback():
+    html = _html(outcome="lost", answer_name="铁块", answer_name_en="Block of Iron", remaining=0)
+    assert 'class="guess lost"' in html and "机会用完" in html and "铁块<span>Block of Iron</span>" in html
+    assert '<div class="grid"' in html
 
 
 def test_html_escapes_user_controlled_text():
-    payload = '<script>alert("x")</script>'
+    evil = '<script>alert("x")</script>'
     html = _html(
-        category_label=payload,
-        category_icon=payload,
-        difficulty_label=payload,
-        guess_name=payload,
-        guess_name_en=payload,
-        status_text='"><img src=x onerror=alert(1)>',
-        feedback=[
-            {"key": "k", "label": payload, "status": "close", "direction": "up", "value": payload, "hits": [payload]}
-        ],
+        guess_name=evil,
+        guess_name_en=evil,
+        player=evil,
+        category_label=evil,
+        difficulty_label=evil,
+        feedback=[{"label": evil, "value": evil, "status": "close", "hits": [evil, 42]}],
+        clues=[{"key": "", "text": evil}],
+        history=[{"n": 1, "name": evil, "player": evil, "states": ["exact"]}],
+        hint_notes=[evil],
     )
-    assert "<script" not in html.lower()
-    assert "<img" not in html.lower()
-    assert "&quot;&gt;&lt;img src=x onerror=alert(1)&gt;" in html
-    assert "&lt;script&gt;alert(&quot;x&quot;)&lt;/script&gt;" in html
-    assert "&lt;img src=x onerror=alert(1)&gt;" in html
-    assert '<span class="hit">&lt;script&gt;' in html
+    assert "<script>" not in html
+    assert "&lt;script&gt;" in html
 
 
 def test_empty_feedback_renders_empty_state():
-    html = _html(feedback=[])
-    assert "本次还没有可展示的属性反馈" in html
-    assert "猜中一个名字后" in html
-    assert '<article class="tile ' not in html
-    assert "还剩 22 次" in html
-    assert "剩余" in html
-    assert "完全相同" in html  # legend still present
+    assert "还没有可展示的属性" in _html(feedback=None)
 
 
-def test_card_is_self_contained_without_external_resources():
-    for html in (_html(), _html(feedback=[]), build_help_card_html(_help_view())):
-        assert "http://" not in html
-        assert "https://" not in html
-        assert "<img" not in html.lower()
-        assert "@import" not in html
-        assert "url(" not in html
-        assert "<script" not in html.lower()
+def test_card_is_self_contained():
+    html = _html() + build_status_card_html(make_status_card_view(**_status_kwargs())) + build_help_card_html({})
+    assert not re.search(r"(src|href)=|url\(|@import|https?://", html)
 
 
-def test_html_without_guess_name_hides_guessbar():
-    html = _html(guess_name="", guess_name_en="")
-    assert "本次猜测" not in html
-    assert "第 3 次" in html
+def test_build_functions_tolerate_bad_views():
+    assert "<!doctype html>" in build_guess_card_html(None)  # type: ignore[arg-type]
+    assert "<!doctype html>" in build_status_card_html("junk")  # type: ignore[arg-type]
+    assert 'style="--cols: 6"' in build_guess_card_html({**_view(), "columns": "99"})
 
 
-def _help_view() -> dict:
-    return {
-        "title": "《我的世界猜谜》玩法",
-        "subtitle": "按属性提示逐步锁定答案",
-        "commands": [
-            {"command": "/猜方 开始 [方块|物品|生物] [简单|普通|困难]", "description": "新开一局", "tag": "开始游戏"},
-            {"command": "/猜方 猜 <名字>", "description": "提交一次猜测", "tag": "提交猜测"},
-            {"command": "/猜方 状态", "description": "查看进度", "tag": "查看进度"},
-            {"command": "/猜方 放弃", "description": "公布答案", "tag": "结束本局"},
+def test_view_is_json_serializable():
+    json.dumps(_view())
+    json.dumps(make_status_card_view(**_status_kwargs()))
+
+
+# ---- status card -----------------------------------------------------------
+def _status_kwargs(**overrides) -> dict:
+    kwargs = {
+        "category_key": "item",
+        "category_label": "物品",
+        "difficulty_label": "困难",
+        "attempt": 2,
+        "max_attempts": 25,
+        "remaining": 23,
+        "clues": [
+            {"key": "rarity", "label": "稀有度", "state": "known", "text": "= 普通"},
+            {"key": "usage", "label": "用途", "state": "partial", "text": "含 合成材料；不含 燃料"},
+            {"key": "loot", "label": "掉落方式", "state": "none", "text": ""},
         ],
-        "footer": "每局最多 25 次猜测。🟩 完全相同　🟨 接近　⬜ 不匹配",
+        "history": _history(),
     }
+    kwargs.update(overrides)
+    return kwargs
 
 
-def test_help_card_renders_title_commands_and_footer():
-    html = build_help_card_html(_help_view())
-    assert "<!doctype html>" in html
-    assert "《我的世界猜谜》玩法" in html
-    assert "按属性提示逐步锁定答案" in html
-    assert html.count('<article class="cmd">') == 4
-    assert "/猜方 开始 [方块|物品|生物] [简单|普通|困难]" in html
-    assert ">开始游戏<" in html
-    assert "提交一次猜测" in html
-    assert "每局最多 25 次猜测" in html
+def test_status_card_shows_clue_board():
+    html = build_status_card_html(make_status_card_view(**_status_kwargs()))
+    assert "已知线索" in html and 'class="pill hard"' in html
+    assert '<div class="t status-tile known">' in html and "= 普通" in html
+    assert '含 合成材料<span class="seg2">不含 燃料</span>' in html
+    assert "暂无线索" in html
+    assert 'class="row cur"' not in html  # no "current guess" on the board
 
 
-def test_help_card_empty_commands():
-    html = build_help_card_html({"title": "玩法", "subtitle": "", "commands": [], "footer": ""})
-    assert "暂无可用指令" in html
-    assert '<article class="cmd">' not in html
+def test_give_up_status_card_reveals_answer():
+    view = make_status_card_view(**_status_kwargs(outcome="gaveup", answer_name="钻石"))
+    html = build_status_card_html(view)
+    assert 'class="guess gaveup"' in html and "本局已放弃" in html and "钻石" in html
 
 
-def test_help_card_does_not_fabricate_empty_tags():
-    html = build_help_card_html(
-        {"title": "玩法", "commands": [{"command": "/mc猜 帮助", "description": "显示说明", "tag": ""}]}
-    )
-    assert 'class="cmd-head"' not in html
-    assert 'class="tag"' not in html
-    assert "/mc猜 帮助" in html
-
-
-def test_help_card_footer_is_not_duplicated_with_default_legend():
-    html = build_help_card_html(_help_view())
-    assert html.count("每局最多 25 次猜测") == 1
-    assert "<b>完全相同</b>" not in html
-    assert 'class="legend"' in html
-
-
-def test_help_card_escapes_user_controlled_text():
-    payload = '<script>alert("help")</script>'
+# ---- help card -------------------------------------------------------------
+def test_help_card_renders_commands_and_escapes():
     html = build_help_card_html(
         {
-            "title": payload,
-            "subtitle": payload,
-            "commands": [{"command": payload, "description": payload, "tag": payload}],
-            "footer": payload,
+            "title": "MC 猜谜",
+            "subtitle": "<b>x</b>",
+            "commands": [{"command": "/mc猜 提示", "description": "免费提示"}, "junk", {"command": "<i>"}],
         }
     )
-    assert "<script" not in html.lower()
-    assert "&lt;script&gt;alert(&quot;help&quot;)&lt;/script&gt;" in html
+    assert html.count('<div class="cmd">') == 2
+    assert "/mc猜 提示" in html and "&lt;b&gt;x&lt;/b&gt;" in html and "&lt;i&gt;" in html
 
 
-def test_help_card_layout_is_two_columns():
-    html = build_help_card_html(_help_view())
-    assert "grid-template-columns: repeat(2, minmax(0, 1fr))" in html
+def test_help_card_accepts_bare_list_and_empty():
+    assert html_has(build_help_card_html([{"command": "/a"}]), "/a")
+    assert "暂无可用指令" in build_help_card_html({})
+
+
+def html_has(html: str, needle: str) -> bool:
+    return needle in html
 
 
 def test_renderer_does_not_import_astrbot():
-    import inspect
+    import astrbot_plugin_mcguess.card_renderer as module
 
-    import astrbot_plugin_mcguess.card_renderer as renderer
-
-    source = inspect.getsource(renderer)
-    assert "import astrbot" not in source
-    assert "from astrbot" not in source
-
-
-# ---- boundary / hardening -------------------------------------------------
-
-
-def test_long_unbroken_names_do_not_break_rendering():
-    long_cn = "方块" * 20
-    long_ascii = "A" * 200
-    html = _html(guess_name=long_cn, guess_name_en=long_ascii, category_label=long_cn)
-    assert long_cn in html and long_ascii in html
-    assert "word-break: break-word" in html
-    assert html.count("<article") == html.count("</article>")
-
-
-def test_build_html_clamps_malicious_columns_directly():
-    html = build_guess_card_html(
-        {
-            "tiles": [],
-            "columns": "3;}body{display:none}",
-            "category_label": "方块",
-        }
-    )
-    assert "display:none" not in html
-    assert "display: none" not in html
-    assert 'style="--cols: 4"' in html
-
-
-def test_hits_with_non_string_values_are_safely_escaped():
-    feedback = [
-        {
-            "key": "obtaining",
-            "label": "获得方式",
-            "status": "close",
-            "direction": None,
-            "value": "合成",
-            "hits": [123, "<img src=x onerror=alert(1)>"],
-        }
-    ]
-    html = _html(feedback=feedback)
-    assert '<span class="hit">123</span>' in html
-    assert "<img" not in html.lower()
-    assert "&lt;img src=x onerror=alert(1)&gt;" in html
-
-
-def test_build_guess_card_html_tolerates_non_dict_view():
-    html = build_guess_card_html(None)  # type: ignore[arg-type]
-    assert "本次还没有可展示的属性反馈" in html
-    assert "<title>MCGuess · 猜谜</title>" in html
-
-
-def test_help_card_tolerates_bare_command_list_and_skips_junk():
-    html = build_help_card_html(
-        [  # type: ignore[arg-type]
-            {"command": "/mc猜 状态", "description": "查看进度", "tag": "查看"},
-            "junk",
-            None,
-        ]
-    )
-    assert html.count('<article class="cmd">') == 1
-    assert "查看进度" in html
+    source = open(module.__file__, encoding="utf-8").read()
+    assert "astrbot" not in source.split('"""', 2)[2].lower().replace("astrbot_plugin_mcguess", "")
