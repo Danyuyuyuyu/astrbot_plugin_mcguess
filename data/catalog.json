@@ -233,7 +233,7 @@
     },
     {
      "key": "full_block",
-     "label": "是否为完整方块",
+     "label": "完整方块",
      "kind": "enum",
      "values": {
       "no": "否",

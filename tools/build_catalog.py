@@ -79,7 +79,7 @@ FIELD_SPECS: dict[str, list[dict[str, Any]]] = {
         {"key": "tool", "label": "工具", "kind": "enum"},
         {"key": "luminous", "label": "发光性", "kind": "enum"},
         {"key": "transparent", "label": "透明性", "kind": "enum"},
-        {"key": "full_block", "label": "是否为完整方块", "kind": "enum"},
+        {"key": "full_block", "label": "完整方块", "kind": "enum"},
         {"key": "flammable", "label": "可燃性", "kind": "enum"},
         {"key": "fire_catch", "label": "火焰传播性", "kind": "enum"},
         {"key": "stackable", "label": "堆叠数量", "kind": "number", "tolerance": 0},
