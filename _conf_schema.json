@@ -77,7 +77,7 @@
   "llm_tool_enabled": {
     "type": "bool",
     "default": true,
-    "description": "注册 LLM 工具 mc_guess，支持“帮我猜个方块”“还剩几次”等自然语言；需要模型支持 function calling。"
+    "description": "注册 LLM 工具 mc_guess，支持“我要猜个方块”“还剩几次”等自然语言；需要模型支持 function calling。"
   },
   "llm_tool_cards_only": {
     "type": "bool",
