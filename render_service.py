@@ -9,7 +9,6 @@ plain text".
 from __future__ import annotations
 
 import asyncio
-import logging
 import time
 from dataclasses import dataclass
 from typing import Any, Awaitable, Callable
@@ -69,12 +68,12 @@ class CardRenderService:
         *,
         local: LocalCardRenderer | None = None,
         remote: RemoteRenderer | None = None,
-        logger: logging.Logger | None = None,
+        logger: Any,
     ) -> None:
         self._settings = (settings or RenderSettings()).normalized()
         self._local = local
         self._remote = remote
-        self._logger = logger or logging.getLogger(__name__)
+        self._logger = logger
         self._failures: dict[str, int] = {BACKEND_LOCAL: 0, BACKEND_REMOTE: 0}
         self._blocked_until: dict[str, float] = {BACKEND_LOCAL: 0.0, BACKEND_REMOTE: 0.0}
 

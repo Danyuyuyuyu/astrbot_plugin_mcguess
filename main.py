@@ -14,6 +14,11 @@ from astrbot.api.star import Context, Star, StarTools
 from astrbot.core.message.components import Image as ImageComponent
 from astrbot.core.provider.register import llm_tools
 
+try:  # AstrBot >= 4.20 ships provider-facing content parts; older builds do not.
+    from astrbot.core.agent.message import TextPart as _TextPart
+except ImportError:  # pragma: no cover - keep old AstrBot builds loadable
+    _TextPart = None
+
 from . import core, llm_tool
 from . import card_views
 from .card_renderer import build_guess_card_html, build_help_card_html, build_rank_card_html, build_status_card_html
@@ -117,6 +122,17 @@ PLAYING_SYSTEM_PROMPT = (
     "（action=\"猜\", name=用户说的名字），不要自己编造属性反馈或答案。"
     "用户问进度用 action=\"状态\"，要提示用 action=\"提示\"，放弃用 action=\"放弃\"。"
 )
+
+
+def _temp_text_part(text: str) -> Any | None:
+    """Wrap ``text`` in a provider-only content part that is never saved to history."""
+    if _TextPart is None:  # pragma: no cover - old AstrBot without content parts
+        return None
+    part = _TextPart(text=text)
+    mark_as_temp = getattr(part, "mark_as_temp", None)
+    if callable(mark_as_temp):
+        part = mark_as_temp()
+    return part
 
 
 @dataclass
@@ -798,7 +814,7 @@ class MCGuessPlugin(Star):
 
     @filter.on_llm_request()
     async def _offer_guess_tool(self, event: AstrMessageEvent, req) -> None:
-        """Only offer the tool when the message looks relevant (or right after use)."""
+        """Only offer the tool when relevant; playing hints ride a temporary part."""
         if not self._bool_config("llm_tool_enabled", True):
             if req.func_tool is not None:
                 req.func_tool.remove_tool(llm_tool.NAME)
@@ -809,8 +825,18 @@ class MCGuessPlugin(Star):
         if not offers:
             req.func_tool.remove_tool(llm_tool.NAME)
             return
-        if playing:
-            req.system_prompt = (req.system_prompt or "") + PLAYING_SYSTEM_PROMPT
+        if not playing:
+            return
+        # Never touch req.system_prompt: mutating it breaks the cached prefix.
+        part = _temp_text_part(PLAYING_SYSTEM_PROMPT)
+        if part is None:
+            return
+        parts = getattr(req, "extra_user_content_parts", None)
+        if parts is None:
+            parts = []
+            req.extra_user_content_parts = parts
+        if not any(getattr(item, "text", None) == PLAYING_SYSTEM_PROMPT for item in parts):
+            parts.append(part)
 
     async def _tool_visibility(self, event: AstrMessageEvent) -> tuple[bool, bool]:
         session_id = self._session_id(event)

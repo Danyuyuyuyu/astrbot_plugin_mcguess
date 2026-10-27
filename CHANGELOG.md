@@ -1,5 +1,11 @@
 # 更新日志
 
+## v1.4.1 · 2026-10-27
+
+- **日志规范**：`renderer.py` / `render_service.py` 不再使用 Python 内置 `logging`，logger 改为必传注入（由 `main.py` 传入 AstrBot 的 `self.logger`），符合插件日志规范。
+- **LLM 提示词缓存**：对局中的临时提示从拼接 `req.system_prompt` 改为 `req.extra_user_content_parts` + `TextPart.mark_as_temp()`，不再破坏系统提示词前缀缓存；同一请求自动去重，旧版 AstrBot 缺少该 API 时自动跳过。
+- 新增相关单元测试，卡片渲染逻辑不变。
+
 ## v1.4.0 · 2026-10-27
 
 - **排行榜**：新增 `/mc猜 排行`（别名 `排行榜` / `rank`，LLM 工具 action=排行），按群统计猜中次数、最快猜中、参与局数与猜测次数，并渲染成排行卡片。玩家按发送者 ID 识别，改昵称不丢记录。猜中 / 用完次数 / 放弃时各结算一次。

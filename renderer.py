@@ -10,7 +10,6 @@ from __future__ import annotations
 
 import asyncio
 import importlib.util
-import logging
 import os
 import re
 from dataclasses import dataclass, replace
@@ -141,10 +140,10 @@ class LocalCardRenderer:
         self,
         settings: LocalRenderSettings | None = None,
         *,
-        logger: logging.Logger | None = None,
+        logger: Any,
     ) -> None:
         self._settings = (settings or LocalRenderSettings()).normalized()
-        self._logger = logger or logging.getLogger(__name__)
+        self._logger = logger
         self._playwright: Any = None
         self._browser: Any = None
         self._context: Any = None

@@ -20,6 +20,19 @@ def run(coro):
     return asyncio.run(coro)
 
 
+class FakeLogger:
+    """No-op stand-in for the plugin's AstrBot logger."""
+
+    def info(self, *args: object, **kwargs: object) -> None:
+        pass
+
+    def warning(self, *args: object, **kwargs: object) -> None:
+        pass
+
+
+FAKE_LOGGER = FakeLogger()
+
+
 class FakeRoute:
     def __init__(self) -> None:
         self.aborted = False
@@ -143,7 +156,7 @@ def make_renderer(monkeypatch, **settings) -> tuple[LocalCardRenderer, FakePage,
     chromium = FakeChromium(browser)
     manager = install_fake_playwright(monkeypatch, chromium)
     monkeypatch.setattr(renderer_module, "browser_candidates", lambda: [])
-    renderer = LocalCardRenderer(LocalRenderSettings(**settings))
+    renderer = LocalCardRenderer(LocalRenderSettings(**settings), logger=FAKE_LOGGER)
     return renderer, page, context, browser, chromium, manager
 
 
@@ -217,7 +230,7 @@ def test_launch_retries_without_sandbox(monkeypatch):
     chromium = FakeChromium(browser, fail_launches=1)
     install_fake_playwright(monkeypatch, chromium)
     monkeypatch.setattr(renderer_module, "browser_candidates", lambda: [])
-    renderer = LocalCardRenderer()
+    renderer = LocalCardRenderer(logger=FAKE_LOGGER)
     try:
         run(renderer.render("<html/>"))
     finally:
@@ -233,7 +246,7 @@ def test_launch_failure_raises_render_error(monkeypatch):
     chromium = FakeChromium(browser, fail_launches=2)
     install_fake_playwright(monkeypatch, chromium)
     monkeypatch.setattr(renderer_module, "browser_candidates", lambda: [])
-    renderer = LocalCardRenderer()
+    renderer = LocalCardRenderer(logger=FAKE_LOGGER)
     with pytest.raises(RenderError, match="无法启动 Chromium"):
         run(renderer.render("<html/>"))
     run(renderer.close())
@@ -252,7 +265,7 @@ def test_auto_detects_cached_chromium_when_default_build_is_missing(monkeypatch)
     chromium = RefusingChromium(browser)
     install_fake_playwright(monkeypatch, chromium)
     monkeypatch.setattr(renderer_module, "browser_candidates", lambda: ["/cached/chromium/chrome"])
-    renderer = LocalCardRenderer()
+    renderer = LocalCardRenderer(logger=FAKE_LOGGER)
     try:
         assert run(renderer.render("<html/>")) == b"IMAGE"
     finally:
@@ -266,7 +279,7 @@ def test_missing_configured_browser_path_falls_back_to_default(monkeypatch):
     chromium = FakeChromium(browser)
     install_fake_playwright(monkeypatch, chromium)
     monkeypatch.setattr(renderer_module, "browser_candidates", lambda: [])
-    renderer = LocalCardRenderer(LocalRenderSettings(browser_path="/definitely/missing/chrome"))
+    renderer = LocalCardRenderer(LocalRenderSettings(browser_path="/definitely/missing/chrome"), logger=FAKE_LOGGER)
     try:
         assert run(renderer.render("<html/>")) == b"IMAGE"
     finally:
@@ -282,7 +295,7 @@ def test_configured_browser_path_is_used(monkeypatch, tmp_dir):
     chromium = FakeChromium(browser)
     install_fake_playwright(monkeypatch, chromium)
     monkeypatch.setattr(renderer_module, "browser_candidates", lambda: [])
-    renderer = LocalCardRenderer(LocalRenderSettings(browser_path=str(executable)))
+    renderer = LocalCardRenderer(LocalRenderSettings(browser_path=str(executable)), logger=FAKE_LOGGER)
     try:
         run(renderer.render("<html/>"))
     finally:
@@ -312,7 +325,7 @@ def test_render_failure_is_wrapped_and_page_is_recreated(monkeypatch):
     browser = FakeBrowser(context)
     install_fake_playwright(monkeypatch, FakeChromium(browser))
     monkeypatch.setattr(renderer_module, "browser_candidates", lambda: [])
-    renderer = LocalCardRenderer()
+    renderer = LocalCardRenderer(logger=FAKE_LOGGER)
     try:
         with pytest.raises(RenderError, match="本地渲染失败"):
             run(renderer.render("<html/>"))
@@ -339,6 +352,6 @@ def test_close_releases_all_resources_and_is_idempotent(monkeypatch):
 def test_missing_playwright_package_raises_render_error(monkeypatch):
     monkeypatch.setitem(sys.modules, "playwright", None)
     monkeypatch.setitem(sys.modules, "playwright.async_api", None)
-    renderer = LocalCardRenderer()
+    renderer = LocalCardRenderer(logger=FAKE_LOGGER)
     with pytest.raises(RenderError, match="未安装 playwright"):
         run(renderer.render("<html/>"))

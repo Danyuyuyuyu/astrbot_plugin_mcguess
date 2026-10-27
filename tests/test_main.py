@@ -441,6 +441,59 @@ def test_tool_visibility_follows_game_state(tmp_dir, catalogue):
     run(scenario())
 
 
+class FakeToolSet:
+    def __init__(self) -> None:
+        self.removed: list[str] = []
+
+    def remove_tool(self, name: str) -> None:
+        self.removed.append(name)
+
+
+def llm_request() -> SimpleNamespace:
+    return SimpleNamespace(
+        system_prompt="BASE",
+        func_tool=FakeToolSet(),
+        extra_user_content_parts=[],
+    )
+
+
+def test_playing_prompt_uses_temporary_content_part(tmp_dir, catalogue):
+    if plugin_main._TextPart is None:
+        pytest.skip("this AstrBot build has no extra user content parts")
+
+    async def scenario():
+        plugin = make_plugin(tmp_dir, catalogue)
+        await collect(plugin.mc_guess(FakeEvent("/mc猜 开始 方块 简单")))
+        req = llm_request()
+        await plugin._offer_guess_tool(FakeEvent("我猜一下"), req)
+
+        # The cached system prompt stays byte-for-byte untouched.
+        assert req.system_prompt == "BASE"
+        assert len(req.extra_user_content_parts) == 1
+        part = req.extra_user_content_parts[0]
+        assert part.text == plugin_main.PLAYING_SYSTEM_PROMPT
+        assert part.model_dump_for_context().get("_no_save") is True
+
+        # Repeated hook calls must not stack duplicate reminders.
+        await plugin._offer_guess_tool(FakeEvent("我猜一下"), req)
+        assert len(req.extra_user_content_parts) == 1
+
+    run(scenario())
+
+
+def test_prompt_not_injected_without_playing_round(tmp_dir, catalogue):
+    async def scenario():
+        plugin = make_plugin(tmp_dir, catalogue)
+        req = llm_request()
+        await plugin._offer_guess_tool(FakeEvent("今天天气不错"), req)
+
+        assert req.system_prompt == "BASE"
+        assert req.extra_user_content_parts == []
+        assert req.func_tool.removed == [plugin_main.llm_tool.NAME]
+
+    run(scenario())
+
+
 # ---- v1.3: guesser credit, clue board card -----------------------------------
 class NamedEvent(FakeEvent):
     def get_sender_name(self) -> str:

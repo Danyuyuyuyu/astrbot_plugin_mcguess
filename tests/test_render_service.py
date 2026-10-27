@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import asyncio
-import logging
 
 import pytest
 
@@ -19,6 +18,13 @@ from astrbot_plugin_mcguess.renderer import RenderError
 
 def run(coro):
     return asyncio.run(coro)
+
+
+class FakeLogger:
+    """No-op stand-in for the plugin's AstrBot logger."""
+
+    def warning(self, *args: object, **kwargs: object) -> None:
+        pass
 
 
 class FakeLocal:
@@ -66,7 +72,7 @@ class FakeRemote:
 
 def service(**kwargs) -> CardRenderService:
     settings = RenderSettings(**kwargs.pop("settings", {}))
-    return CardRenderService(settings, logger=logging.getLogger("test"), **kwargs)
+    return CardRenderService(settings, logger=FakeLogger(), **kwargs)
 
 
 # ---- backend planning ------------------------------------------------------
