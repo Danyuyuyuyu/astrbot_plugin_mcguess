@@ -3,9 +3,21 @@
 [![AstrBot](https://img.shields.io/badge/AstrBot-%E2%89%A54.16-6DB33F)](https://github.com/AstrBotDevs/AstrBot)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-在聊天里玩《我的世界》猜谜：每次猜一个**方块 / 物品 / 生物**，按属性对比逐步锁定答案。支持群聊协作、免费提示、排行榜、自然语言和本地渲染的卡片。
+在聊天里玩《我的世界》猜谜：每次猜一个**方块 / 物品 / 生物**，按属性对比逐步锁定答案。支持群聊协作、免费提示、排行榜、自然语言与本地渲染的卡片。
 
-![猜方块卡片](docs/images/guess-card.jpg)
+<p align="center"><img src="docs/images/banner.png" width="880" alt="MCGuess：我的世界猜谜"></p>
+
+## 效果预览
+
+| <img src="docs/images/icon-block.png" width="24" alt="方块"> 方块卡（示例） | <img src="docs/images/icon-mob.png" width="24" alt="生物"> 生物卡（示例） | <img src="docs/images/icon-item.png" width="24" alt="物品"> 物品卡（示例） |
+| --- | --- | --- |
+| <img src="docs/images/guess-card.jpg" width="250" alt="方块卡"> | <img src="docs/images/mob-card.jpg" width="250" alt="生物卡"> | <img src="docs/images/item-card.jpg" width="250" alt="物品卡"> |
+
+| 线索卡 | 排行卡 | 帮助卡 |
+| --- | --- | --- |
+| <img src="docs/images/status-card.jpg" width="250" alt="线索卡"> | <img src="docs/images/rank-card.jpg" width="250" alt="排行卡"> | <img src="docs/images/help-card.jpg" width="250" alt="帮助卡"> |
+
+> 预览图中的对局、玩家与排行数据为演示数据；词库、答案与属性比较逻辑均为真实实现。
 
 ## 特性
 
@@ -17,6 +29,17 @@
 - **自然语言**：LLM 工具支持「我要猜个方块」「还剩几次」「给个提示」。
 - **本地渲染**：Playwright 本地截图，热态约 0.1 秒；失败自动回退远端 / 纯文本。
 - 词库 296 方块 / 195 物品 / 84 生物，含中英文别名，运行时零联网。
+
+## 快速开始
+
+1. **安装插件**：把本目录放进 AstrBot 的 `data/plugins/astrbot_plugin_mcguess/`，或在 WebUI 插件页安装 / 重载；AstrBot 会按 `requirements.txt` 安装 `playwright`。
+2. **本地渲染（可选）**：装一次 Chromium；不装也能用，会自动回退远端 / 文本。
+
+   ```bash
+   .venv/bin/python -m playwright install chromium
+   ```
+
+3. **开一局**：在群里发送 `/mc猜 开始 方块`（或 `物品` / `生物`），之后直接发名字猜。
 
 ## 指令
 
@@ -30,24 +53,6 @@
 | `/mc猜 放弃` | 结束并公布答案 |
 | `/mc猜 排行` | 本群排行榜 |
 | `/mc猜 帮助` | 玩法说明卡片 |
-
-## 卡片预览
-
-| 线索卡（状态 / 放弃） | 排行卡 |
-| --- | --- |
-| ![线索卡](docs/images/status-card.jpg) | ![排行卡](docs/images/rank-card.jpg) |
-
-<img src="docs/images/help-card.jpg" width="560" alt="帮助卡">
-
-## 安装
-
-把本目录放进 AstrBot 的 `data/plugins/astrbot_plugin_mcguess/`，在 WebUI 重载插件；AstrBot 会按 `requirements.txt` 安装 `playwright`。
-
-要让本地渲染生效，再装一次 Chromium（不装也能用，会自动回退远端 / 文本）：
-
-```bash
-.venv/bin/python -m playwright install chromium
-```
 
 ## 配置
 
