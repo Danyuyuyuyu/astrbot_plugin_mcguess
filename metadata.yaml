@@ -5,6 +5,17 @@ short_desc: MC 猜方块/物品/生物
 version: 1.4.2
 author: ZhenXun
 repo: https://github.com/Danyuyuyuyu/astrbot_plugin_mcguess
+category: 娱乐
+tags:
+  - 娱乐
+  - 游戏
+  - 我的世界
+  - Minecraft
+  - MC
+  - 猜谜
+  - 群聊
+  - 多人
+  - 休闲
 astrbot_version: ">=4.16,<5"
 support_platforms:
   - aiocqhttp
