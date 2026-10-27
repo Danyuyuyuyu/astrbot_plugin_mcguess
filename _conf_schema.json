@@ -2,18 +2,20 @@
   "max_attempts": {
     "type": "int",
     "default": 25,
-    "description": "每局最多猜测次数（3-50，建议 15-25）。",
-    "obvious_hint": true
+    "description": "每局最多猜测次数",
+    "hint": "范围 3-50，建议 15-25；默认 25。"
   },
   "hint_limit": {
     "type": "int",
     "default": 3,
-    "description": "每局免费提示次数；设为 0 关闭提示。"
+    "description": "每局免费提示次数",
+    "hint": "设为 0 关闭提示；默认 3。"
   },
   "render_cards": {
     "type": "bool",
     "default": true,
-    "description": "用图片卡片展示猜测反馈与帮助；渲染失败会自动回退为纯文本。"
+    "description": "启用图片卡片",
+    "hint": "用图片展示猜测反馈与帮助；渲染失败会自动回退为纯文本。"
   },
   "render_backend": {
     "type": "string",
@@ -23,7 +25,8 @@
       "local",
       "remote"
     ],
-    "description": "卡片渲染后端：auto=优先本地 Playwright、失败回退远端；local=只用本地；remote=沿用 AstrBot 的 html_render（远端 t2i）。"
+    "description": "卡片渲染后端",
+    "hint": "auto=优先本地 Playwright，失败回退远端；local=只用本地；remote=沿用 AstrBot 的 html_render（远端 t2i）。"
   },
   "card_image_format": {
     "type": "string",
@@ -32,66 +35,79 @@
       "jpeg",
       "png"
     ],
-    "description": "卡片图片格式。jpeg 体积小、发送快；png 文字最锐利但体积大。"
+    "description": "卡片图片格式",
+    "hint": "jpeg 体积小、发送快；png 文字最锐利但体积大。"
   },
   "card_image_quality": {
     "type": "int",
     "default": 80,
-    "description": "JPEG 质量（30-95），仅 card_image_format=jpeg 时生效。"
+    "description": "JPEG 质量",
+    "hint": "范围 30-95，仅 card_image_format=jpeg 时生效。"
   },
   "render_scale": {
     "type": "float",
     "default": 1.5,
-    "description": "本地渲染缩放（0.5-2.0）。卡片 800 px 宽，默认 1.5 倍输出约 1200 px，手机上更清晰；调小可减小图片体积。"
+    "description": "渲染缩放",
+    "hint": "范围 0.5-2.0。卡片宽 800 px，默认 1.5 倍输出约 1200 px，手机上更清晰；调小可减小图片体积。"
   },
   "browser_path": {
     "type": "string",
     "default": "",
-    "description": "Chromium 可执行文件路径；留空使用 playwright install 下载的浏览器。"
+    "description": "Chromium 路径",
+    "hint": "留空使用 playwright install 下载的浏览器；本地渲染异常时可手动指定可执行文件。"
   },
   "local_render_timeout_seconds": {
     "type": "float",
     "default": 20.0,
-    "description": "本地渲染超时（秒），包含首次启动 Chromium 的时间。"
+    "description": "本地渲染超时（秒）",
+    "hint": "包含首次启动 Chromium 的时间；默认 20 秒。"
   },
   "remote_render_fallback": {
     "type": "bool",
     "default": true,
-    "description": "本地渲染失败时是否回退到 AstrBot 的 html_render（远端 t2i）。"
+    "description": "远端渲染回退",
+    "hint": "本地渲染失败时，是否回退到 AstrBot 的 html_render（远端 t2i）。"
   },
   "render_timeout_seconds": {
     "type": "float",
     "default": 15.0,
-    "description": "远端回退渲染的超时（秒）。AstrBot 默认使用公共 t2i 服务，网络波动时可能需要更长时间。"
+    "description": "远端渲染超时（秒）",
+    "hint": "AstrBot 使用公共 t2i 服务，网络波动时可能需要更长时间；默认 15 秒。"
   },
   "free_text_guess": {
     "type": "bool",
     "default": true,
-    "description": "对局中直接发送词条名即算一次猜测（私聊或 @机器人 时生效；群聊免 @ 见下一项）。"
+    "description": "自由文本猜测",
+    "hint": "对局中直接发送词条名即算一次猜测（私聊或 @机器人 时生效；群聊免 @ 见下一项）。"
   },
   "group_guess_without_at": {
     "type": "bool",
     "default": true,
-    "description": "群聊对局进行中，不 @机器人 也能直接猜：整句话必须正好是词条名（或「我猜X」），状态/提示/放弃等仍需 @；重复的名字静默忽略。"
+    "description": "群聊免 @ 猜测",
+    "hint": "对局中整句话正好是词条名（或「我猜X」）即算猜测；状态/提示/放弃等仍需 @；重复的名字静默忽略。"
   },
   "llm_tool_enabled": {
     "type": "bool",
     "default": true,
-    "description": "注册 LLM 工具 mc_guess，支持“我要猜个方块”“还剩几次”等自然语言；需要模型支持 function calling。"
+    "description": "启用 LLM 工具",
+    "hint": "注册 mc_guess 工具，支持「我要猜个方块」「还剩几次」等自然语言；需要模型支持 function calling。"
   },
   "llm_tool_cards_only": {
     "type": "bool",
     "default": true,
-    "description": "LLM 调用时只发送卡片，不让模型再补充一段文字（少一次模型请求，回复更快）。"
+    "description": "LLM 仅返回卡片",
+    "hint": "LLM 调用时只发送卡片，不让模型再补充文字（少一次模型请求，回复更快）。"
   },
   "require_finish_in_group": {
     "type": "bool",
     "default": true,
-    "description": "群聊中已有进行中的对局时，必须先猜中/用完次数/放弃才能开新局；私聊不受限制。"
+    "description": "群聊必须打完本局",
+    "hint": "群聊已有进行中的对局时，必须先猜中/用完次数/放弃才能开新局；私聊不受限制。"
   },
   "idle_timeout_minutes": {
     "type": "int",
     "default": 30,
-    "description": "对局闲置多少分钟后自动结束；0 表示不限制。"
+    "description": "闲置超时（分钟）",
+    "hint": "对局闲置多少分钟后自动结束；0 表示不限制。"
   }
 }

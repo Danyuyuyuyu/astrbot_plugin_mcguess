@@ -1,5 +1,10 @@
 # 更新日志
 
+## v1.4.2 · 2026-10-27
+
+- **配置页优化**：所有配置项改为「短标题 + 浅灰色 hint 说明」，长段说明不再挤在标题里；配置键、默认值与实际行为均未改变。
+- 移除 `max_attempts` 上未生效的 `obvious_hint`（原先没有 `hint`，不会显示）。
+
 ## v1.4.1 · 2026-10-27
 
 - **日志规范**：`renderer.py` / `render_service.py` 不再使用 Python 内置 `logging`，logger 改为必传注入（由 `main.py` 传入 AstrBot 的 `self.logger`），符合插件日志规范。
